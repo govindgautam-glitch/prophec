@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-urbanist: "Urbanist", sans-serif;
+    --font-space-grotesk: "Space Grotesk", sans-serif;
+
+    /* PropheC AI Master Brand & Motion Tokens (Version 3) */
+    --brand-mint: #03FEA7;
+    --brand-dark: #08090B;
+    --canvas-bg: #F3EFEA;
+    --surface: #FFFFFF;
+    --media-surface: #F7F5F2;
+    --text-primary: #0C1015;
+    --text-muted: #59636E;
+    --control-neutral: #E8DFD5;
+    --control-hover: #DCD2C6;
+    --deep-pine: #143E32;
+    --soft-mint: #B8EFD8;
+    --hairline: rgba(12, 16, 21, 0.10);
+    --hairline-dark: rgba(255, 255, 255, 0.10);
+
+    /* Motion Curves */
+    --ease-prophec: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.font-urbanist {
+  font-family: var(--font-urbanist), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk), monospace, sans-serif;
+}
+
+/* Light & Dark Base Classes */
+.bg-brand-dark {
+  background-color: var(--brand-dark);
+}
+
+.bg-canvas-light {
+  background-color: var(--canvas-bg);
+}
+
+/* Glass Floating Navbar (Figma Node 3:448 Preserved) */
+.figma-glass-nav {
+  background: rgba(217, 217, 217, 0.04);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+  border: 1.306px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 0 5.224px 10.447px rgba(255, 255, 255, 0.08),
+    inset 0 -5.224px 10.447px rgba(0, 0, 0, 0.35),
+    0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Adaptive Sticky Navbar over Light Canvas */
+.light-sticky-nav {
+  background: rgba(243, 239, 234, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(232, 223, 213, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(12, 16, 21, 0.08);
+}
+
+/* Sticky Navbar over Dark Argus & Footer Sections */
+.dark-sticky-nav {
+  background: rgba(8, 9, 11, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Figma Agent Card Glass */
+.figma-agent-card {
+  background: rgba(10, 20, 15, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 12px 30px -8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.figma-agent-card:hover {
+  border-color: rgba(3, 254, 167, 0.4);
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 16px 36px -6px rgba(3, 254, 167, 0.25);
+}
+
+/* Pill Buttons */
+.pill-btn-mint {
+  height: 50px;
+  border-radius: 9999px;
+  background-color: var(--brand-mint);
+  color: #08090B;
+  font-family: var(--font-urbanist), sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 18px -2px rgba(3, 254, 167, 0.35);
+  transition: transform 0.2s var(--ease-prophec), box-shadow 0.2s var(--ease-prophec), background-color 0.2s;
+  cursor: pointer;
+}
+
+.pill-btn-mint:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 24px -2px rgba(3, 254, 167, 0.5);
+  background-color: #0dffae;
+}
+
+.pill-btn-mint:active {
+  transform: translateY(0);
+}
+
+.pill-btn-dark {
+  height: 50px;
+  border-radius: 9999px;
+  background-color: #08090B;
+  color: #FFFFFF;
+  font-family: var(--font-urbanist), sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px -2px rgba(8, 9, 11, 0.15);
+  border: 1px solid rgba(12, 16, 21, 0.15);
+  transition: transform 0.2s var(--ease-prophec), background-color 0.2s;
+  cursor: pointer;
+}
+
+.pill-btn-dark:hover {
+  transform: translateY(-1.5px);
+  background-color: #171a20;
+}
+
+.pill-btn-outline {
+  height: 50px;
+  border-radius: 9999px;
+  background-color: transparent;
+  color: #0C1015;
+  border: 1.5px solid var(--control-neutral);
+  font-family: var(--font-urbanist), sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s var(--ease-prophec);
+  cursor: pointer;
+}
+
+.pill-btn-outline:hover {
+  border-color: #0C1015;
+  background-color: rgba(12, 16, 21, 0.03);
+}
+
+/* White Elevated Cards (Carousel & Editorial) */
+.editorial-card {
+  background: var(--surface);
+  border-radius: 28px;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 4px 20px -2px rgba(12, 16, 21, 0.04), 0 2px 6px -1px rgba(12, 16, 21, 0.02);
+  transition: transform 0.3s var(--ease-prophec), box-shadow 0.3s var(--ease-prophec), border-color 0.3s;
+}
+
+.editorial-card:hover {
+  box-shadow: 0 20px 40px -12px rgba(12, 16, 21, 0.08);
+  border-color: rgba(12, 16, 21, 0.16);
+}
+
+/* Circular Control Buttons */
+.circular-control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background-color: var(--control-neutral);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s var(--ease-prophec), transform 0.2s var(--ease-prophec);
+}
+
+.circular-control-btn:hover:not(:disabled) {
+  background-color: var(--control-hover);
+  transform: scale(1.04);
+}
+
+.circular-control-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.circular-control-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Subtle Hero Float Animation */
+@keyframes heroCardDriftA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.4deg);
+  }
+}
+
+@keyframes heroCardDriftB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(6px) rotate(-0.4deg);
+  }
+}
+
+.animate-drift-a {
+  animation: heroCardDriftA 6.5s ease-in-out infinite;
+}
+
+.animate-drift-b {
+  animation: heroCardDriftB 7.5s ease-in-out infinite;
+}
+
+/* Hide scrollbar while preserving touch swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Respect reduced motion across the board */
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift-a,
+  .animate-drift-b {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
