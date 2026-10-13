@@ -35,13 +35,13 @@ export const AboutStatement: React.FC = () => {
         Oversized, Partially Cropped Mint/Yellow Background Geometry 
         Subtle scroll-linked parallax translation & rotation
       */}
-      <div 
+      <div
         className="absolute -top-16 -right-24 md:right-8 w-[360px] md:w-[560px] h-[360px] md:h-[560px] rounded-full bg-gradient-to-br from-[#03FEA7]/20 via-[#B8EFD8]/15 to-[#F8E9A1]/10 blur-3xl pointer-events-none transition-transform duration-300 ease-out -z-0"
         style={{
           transform: `translateY(${scrollProgress * 40}px) rotate(${scrollProgress * 15}deg)`,
         }}
       />
-      <div 
+      <div
         className="absolute top-1/2 -left-28 w-[320px] md:w-[500px] h-[320px] md:h-[500px] rounded-[70px] bg-gradient-to-tr from-[#F8E9A1]/25 via-[#03FEA7]/10 to-transparent blur-2xl pointer-events-none transition-transform duration-300 ease-out -z-0"
         style={{
           transform: `translateY(${-scrollProgress * 30}px) rotate(${12 - scrollProgress * 10}deg)`,
@@ -49,7 +49,7 @@ export const AboutStatement: React.FC = () => {
       />
 
       <div className="relative max-w-5xl mx-auto px-5 md:px-8 z-10">
-        
+
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E8DFD5] text-xs font-mono font-bold tracking-wider text-[#202320]/80 shadow-2xs mb-8">
           <span className="w-2 h-2 rounded-full bg-[#03FEA7]" />
