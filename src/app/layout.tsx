@@ -49,7 +49,7 @@ export default function RootLayout({
       lang="en"
       className={`${urbanist.variable} ${spaceGrotesk.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen bg-[#08090B] text-white font-urbanist selection:bg-[#03FEA7] selection:text-[#08090B]">
+      <body className="min-h-screen bg-[#091c09] text-white font-urbanist selection:bg-white selection:text-[#091c09]">
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NP1TJQ1L7Y"

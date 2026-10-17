@@ -1,0 +1,21 @@
+{
+  "animations": {
+    "robotFloatCycle": {
+      "duration": "6s",
+      "timing": "ease-in-out",
+      "iteration": "infinite",
+      "description": "Gentle floating hover motion with perspective lean and travel"
+    },
+    "robotShadowPulse": {
+      "duration": "6s",
+      "timing": "ease-in-out",
+      "iteration": "infinite",
+      "description": "Ground contact shadow breathing synchronized with robot vertical elevation"
+    },
+    "cardFanning": {
+      "duration": "500ms",
+      "timing": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "description": "Smooth 3D stacked card translation, scale, and z-index ordering"
+    }
+  }
+}

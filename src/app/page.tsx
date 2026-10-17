@@ -12,13 +12,13 @@ import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <div className="relative w-full min-h-screen bg-[#F3EFEA] text-[#0C1015] overflow-x-hidden selection:bg-[#03FEA7] selection:text-[#08090B]">
+    <div className="relative w-full min-h-screen bg-white text-[#091c09] overflow-x-hidden selection:bg-[#091c09] selection:text-white">
       {/* 
-        A. HEADER & PRESERVED FIGMA HERO (FRAME 1:3, 1280 × 832)
-        Green-to-dark gradient, glass navbar, circular artwork,
+        A. HEADER & HERO (FRAME 1:3, 1280 × 832)
+        Deep-green foundation, glass navbar, circular artwork,
         4 agent cards with real capabilities, and pill buttons.
       */}
-      <div className="relative w-full bg-[#08090B]">
+      <div className="relative w-full bg-[#091c09]">
         <Navbar />
         <Hero />
       </div>
@@ -45,7 +45,7 @@ export default function HomePage() {
       <WhatWeBuildSection />
 
       {/* 
-        E. THE AUTOMATION GAP & ARGUS PLATFORM (DARK SECTION #08090B)
+        E. THE AUTOMATION GAP & ARGUS PLATFORM
         4 problem gaps, interactive Argus integration node diagram
         with SVG connection pulses, and 5 automation capabilities.
       */}
@@ -53,13 +53,13 @@ export default function HomePage() {
 
       {/* 
         J. INTERACTIVE GEOMETRIC PLAYGROUND & FINAL INVITATION
-        Google Labs-inspired Matter.js 2D physics canvas with brand mint/pine palette,
+        Google Labs-inspired Matter.js 2D physics canvas with deep green & pure white palette,
         touch-safe controls, reset & shuffle buttons.
       */}
       <InteractiveShapeScene />
 
       {/* 
-        DARK EDITORIAL FOOTER (#08090B)
+        EDITORIAL FOOTER
         "Build smarter. Operate better. Scale further.",
         large authentic logo display (80-90% width), thin rules, and verified links.
       */}

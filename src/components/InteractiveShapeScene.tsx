@@ -7,6 +7,7 @@ import { Sparkles, RotateCcw, Shuffle } from "lucide-react";
 interface ShapeItem {
   body: Matter.Body;
   color: string;
+  strokeColor: string;
   type: "circle" | "rect";
   width?: number;
   height?: number;
@@ -34,19 +35,19 @@ export const InteractiveShapeScene: React.FC = () => {
 
     const basePositions = isMobile
       ? [
-          { x: width * 0.30, y: height * 0.40 },
-          { x: width * 0.70, y: height * 0.45 },
-          { x: width * 0.50, y: height * 0.75 },
-          { x: width * 0.25, y: height * 0.80 },
-          { x: width * 0.75, y: height * 0.82 },
-        ]
+        { x: width * 0.30, y: height * 0.40 },
+        { x: width * 0.70, y: height * 0.45 },
+        { x: width * 0.50, y: height * 0.75 },
+        { x: width * 0.25, y: height * 0.80 },
+        { x: width * 0.75, y: height * 0.82 },
+      ]
       : [
-          { x: width * 0.20, y: height * 0.55 },
-          { x: width * 0.42, y: height * 0.48 },
-          { x: width * 0.65, y: height * 0.62 },
-          { x: width * 0.85, y: height * 0.50 },
-          { x: width * 0.32, y: height * 0.82 },
-        ];
+        { x: width * 0.20, y: height * 0.55 },
+        { x: width * 0.42, y: height * 0.48 },
+        { x: width * 0.65, y: height * 0.62 },
+        { x: width * 0.85, y: height * 0.50 },
+        { x: width * 0.32, y: height * 0.82 },
+      ];
 
     bodiesRef.current.forEach((item, idx) => {
       const pos = basePositions[idx] || item.initialPos;
@@ -113,21 +114,21 @@ export const InteractiveShapeScene: React.FC = () => {
 
     const basePositions = isMobile
       ? [
-          { x: width * 0.28, y: height * 0.35 },
-          { x: width * 0.72, y: height * 0.40 },
-          { x: width * 0.50, y: height * 0.70 },
-          { x: width * 0.24, y: height * 0.80 },
-          { x: width * 0.76, y: height * 0.82 },
-        ]
+        { x: width * 0.28, y: height * 0.35 },
+        { x: width * 0.72, y: height * 0.40 },
+        { x: width * 0.50, y: height * 0.70 },
+        { x: width * 0.24, y: height * 0.80 },
+        { x: width * 0.76, y: height * 0.82 },
+      ]
       : [
-          { x: width * 0.20, y: height * 0.50 },
-          { x: width * 0.44, y: height * 0.42 },
-          { x: width * 0.68, y: height * 0.58 },
-          { x: width * 0.86, y: height * 0.45 },
-          { x: width * 0.32, y: height * 0.80 },
-        ];
+        { x: width * 0.20, y: height * 0.50 },
+        { x: width * 0.44, y: height * 0.42 },
+        { x: width * 0.68, y: height * 0.58 },
+        { x: width * 0.86, y: height * 0.45 },
+        { x: width * 0.32, y: height * 0.80 },
+      ];
 
-    // Body 1: Large Mint Circle (~220px desktop)
+    // Body 1: Large Deep Green Circle (~220px desktop)
     const b1Radius = 110 * rScale;
     const body1 = Matter.Bodies.circle(basePositions[0].x, basePositions[0].y, b1Radius, {
       restitution: 0.75,
@@ -135,7 +136,7 @@ export const InteractiveShapeScene: React.FC = () => {
       density: 0.002,
     });
 
-    // Body 2: Large Rounded Rectangle (~240x180px desktop)
+    // Body 2: Large Pure White Rounded Rectangle (~240x180px desktop)
     const b2W = 240 * rScale;
     const b2H = 170 * rScale;
     const body2 = Matter.Bodies.rectangle(basePositions[1].x, basePositions[1].y, b2W, b2H, {
@@ -145,7 +146,7 @@ export const InteractiveShapeScene: React.FC = () => {
       density: 0.002,
     });
 
-    // Body 3: Large Warm Yellow Circle (~230px desktop)
+    // Body 3: Large Deep Green Circle (~230px desktop)
     const b3Radius = 115 * rScale;
     const body3 = Matter.Bodies.circle(basePositions[2].x, basePositions[2].y, b3Radius, {
       restitution: 0.74,
@@ -153,7 +154,7 @@ export const InteractiveShapeScene: React.FC = () => {
       density: 0.002,
     });
 
-    // Body 4: Large Light Pale Green Pill / Capsule (~250x140px desktop)
+    // Body 4: Large Pure White Pill / Capsule (~250x140px desktop)
     const b4W = 250 * rScale;
     const b4H = 140 * rScale;
     const body4 = Matter.Bodies.rectangle(basePositions[3].x, basePositions[3].y, b4W, b4H, {
@@ -163,7 +164,7 @@ export const InteractiveShapeScene: React.FC = () => {
       density: 0.002,
     });
 
-    // Body 5: Deep Charcoal Accent Circle (~160px desktop)
+    // Body 5: Deep Green Accent Circle (~160px desktop)
     const b5Radius = 80 * rScale;
     const body5 = Matter.Bodies.circle(basePositions[4].x, basePositions[4].y, b5Radius, {
       restitution: 0.78,
@@ -171,12 +172,13 @@ export const InteractiveShapeScene: React.FC = () => {
       density: 0.002,
     });
 
+    // 5 bodies alternating Deep Green (#091c09) and Pure White (#ffffff) with high-contrast borders
     const shapeItems: ShapeItem[] = [
-      { body: body1, color: "#03FEA7", type: "circle", radius: b1Radius, initialPos: basePositions[0] },
-      { body: body2, color: "#B8EFD8", type: "rect", width: b2W, height: b2H, initialPos: basePositions[1] },
-      { body: body3, color: "#F8E9A1", type: "circle", radius: b3Radius, initialPos: basePositions[2] },
-      { body: body4, color: "#D4F6E8", type: "rect", width: b4W, height: b4H, initialPos: basePositions[3] },
-      { body: body5, color: "#202320", type: "circle", radius: b5Radius, initialPos: basePositions[4] },
+      { body: body1, color: "#091c09", strokeColor: "rgba(255, 255, 255, 0.40)", type: "circle", radius: b1Radius, initialPos: basePositions[0] },
+      { body: body2, color: "#ffffff", strokeColor: "#091c09", type: "rect", width: b2W, height: b2H, initialPos: basePositions[1] },
+      { body: body3, color: "#091c09", strokeColor: "rgba(255, 255, 255, 0.40)", type: "circle", radius: b3Radius, initialPos: basePositions[2] },
+      { body: body4, color: "#ffffff", strokeColor: "#091c09", type: "rect", width: b4W, height: b4H, initialPos: basePositions[3] },
+      { body: body5, color: "#091c09", strokeColor: "rgba(255, 255, 255, 0.40)", type: "circle", radius: b5Radius, initialPos: basePositions[4] },
     ];
 
     bodiesRef.current = shapeItems;
@@ -213,7 +215,7 @@ export const InteractiveShapeScene: React.FC = () => {
 
       // Draw bodies with clean edges & subtle elevation
       for (const item of shapeItems) {
-        const { body, color, type } = item;
+        const { body, color, strokeColor, type } = item;
         const { x, y } = body.position;
         const angle = body.angle;
 
@@ -222,7 +224,7 @@ export const InteractiveShapeScene: React.FC = () => {
         ctx.rotate(angle);
 
         ctx.fillStyle = color;
-        ctx.shadowColor = "rgba(12, 16, 21, 0.06)";
+        ctx.shadowColor = "rgba(9, 28, 9, 0.12)";
         ctx.shadowBlur = 16;
         ctx.shadowOffsetY = 6;
 
@@ -231,8 +233,7 @@ export const InteractiveShapeScene: React.FC = () => {
           ctx.arc(0, 0, item.radius, 0, Math.PI * 2);
           ctx.fill();
 
-          // Subtle glossy inner rim
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+          ctx.strokeStyle = strokeColor;
           ctx.lineWidth = 2;
           ctx.stroke();
         } else if (type === "rect" && item.width && item.height) {
@@ -244,7 +245,7 @@ export const InteractiveShapeScene: React.FC = () => {
           ctx.roundRect(-w / 2, -h / 2, w, h, r);
           ctx.fill();
 
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.35)";
+          ctx.strokeStyle = strokeColor;
           ctx.lineWidth = 2;
           ctx.stroke();
         }
@@ -376,42 +377,38 @@ export const InteractiveShapeScene: React.FC = () => {
   return (
     <section
       id="playground"
-      className="relative w-full py-24 md:py-32 bg-[#F3EFEA] text-[#202320] border-t border-[rgba(12,16,21,0.08)] select-none overflow-hidden"
+      className="relative w-full py-14 sm:py-20 md:py-28 bg-white text-[#091c09] border-t border-[rgba(9,28,9,0.10)] select-none overflow-hidden"
       aria-label="Interactive Geometric Shapes Arena"
     >
-      <div className="max-w-6xl mx-auto px-5 md:px-8">
-        
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E8DFD5] text-xs font-mono font-bold tracking-wider text-[#202320]/80 shadow-2xs mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#03FEA7]" />
-              <span>INTERACTIVE PLAYGROUND</span>
-            </div>
-            <h2 className="font-urbanist font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#202320] tracking-tight">
+            <h2 className="font-urbanist font-extrabold text-2xl sm:text-4xl md:text-5xl text-[#091c09] tracking-tight">
               Play with the geometry of PropheC.
             </h2>
-            <p className="font-urbanist text-[#59636E] text-sm md:text-base mt-2 font-medium max-w-xl">
+            <p className="font-urbanist text-[rgba(9,28,9,0.70)] text-xs sm:text-sm md:text-base mt-1.5 sm:mt-2 font-medium max-w-xl">
               Tap, nudge, or drag shapes to explore physical impulses and settling dynamics.
             </p>
           </div>
 
           {/* Clean Controls: Shuffle & Reset */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={shuffleShapes}
               aria-label="Shuffle all geometric shapes"
-              className="circular-control-btn shadow-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#03FEA7]"
+              className="circular-control-btn shadow-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#091c09]"
               title="Shuffle shapes"
             >
-              <Shuffle className="w-4 h-4 text-[#202320]" />
+              <Shuffle className="w-4 h-4 text-[#091c09]" />
             </button>
             <button
               onClick={resetShapes}
               aria-label="Reset shapes to default arrangement"
-              className="px-4 py-2.5 rounded-full bg-white hover:bg-[#E8DFD5] border border-[#E8DFD5] text-xs font-urbanist font-bold text-[#202320] flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
+              className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[rgba(9,28,9,0.06)] border border-[rgba(9,28,9,0.12)] text-xs font-urbanist font-bold text-[#091c09] flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
             >
-              <RotateCcw className="w-3.5 h-3.5 text-[#202320]" />
+              <RotateCcw className="w-3.5 h-3.5 text-[#091c09]" />
               Reset Arrangement
             </button>
           </div>
@@ -420,7 +417,7 @@ export const InteractiveShapeScene: React.FC = () => {
         {/* Clean Physics Arena */}
         <div
           ref={containerRef}
-          className="relative w-full h-[520px] rounded-[32px] bg-white border border-[#E8DFD5] overflow-hidden shadow-xs"
+          className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] rounded-2xl sm:rounded-[32px] bg-white border border-[rgba(9,28,9,0.12)] overflow-hidden shadow-xs"
           style={{ touchAction: "pan-y" }}
         >
           <canvas
@@ -430,12 +427,12 @@ export const InteractiveShapeScene: React.FC = () => {
           />
 
           {/* Centered Editorial Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none z-20">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6 text-center pointer-events-none z-20">
             <div className="max-w-xl mx-auto space-y-2">
-              <h3 className="font-space-grotesk font-extrabold text-3xl sm:text-4xl text-[#202320] tracking-tight leading-tight select-none">
+              <h3 className="font-space-grotesk font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#091c09] tracking-tight leading-tight select-none">
                 Engineering Intelligence for Enterprise
               </h3>
-              <p className="font-urbanist text-xs sm:text-sm text-[#59636E] font-medium max-w-md mx-auto">
+              <p className="font-urbanist text-xs sm:text-sm text-[rgba(9,28,9,0.70)] font-medium max-w-md mx-auto">
                 Deterministic state machines, agent execution, and human oversight.
               </p>
             </div>

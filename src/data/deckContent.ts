@@ -11,7 +11,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
   {
     id: "service-1",
     title: "AI Applications",
-    description: "Custom AI-powered products designed around specific business needs.",
+    description: "Custom AI-powered products designed around specific business needs and user experiences.",
     category: "Applications",
     badge: "01",
     iconType: "applications",
@@ -19,7 +19,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
   {
     id: "service-2",
     title: "AI Agents",
-    description: "Intelligent agents that can interact, respond, qualify, assist and execute.",
+    description: "Intelligent agents that can interact, respond, qualify, assist, and execute tasks.",
     category: "Agents",
     badge: "02",
     iconType: "agents",
@@ -27,7 +27,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
   {
     id: "service-3",
     title: "AI Automation",
-    description: "Automating repetitive workflows and operational processes.",
+    description: "AI automation services that automate repetitive workflows and operational processes, reducing manual effort through intelligent process automation.",
     category: "Automation",
     badge: "03",
     iconType: "automation",
@@ -35,7 +35,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
   {
     id: "service-4",
     title: "AI-Powered Analytics",
-    description: "Turning business data into actionable intelligence.",
+    description: "Turning business data into actionable intelligence that supports better decisions.",
     category: "Analytics",
     badge: "04",
     iconType: "analytics",
@@ -43,7 +43,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
   {
     id: "service-5",
     title: "Intelligent Systems",
-    description: "Embedding AI into existing products, platforms and workflows.",
+    description: "Embedding AI into existing products, platforms, and workflows to make them more capable.",
     category: "Systems",
     badge: "05",
     iconType: "systems",
@@ -51,7 +51,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
   {
     id: "service-6",
     title: "Custom AI Solutions",
-    description: "Purpose-built AI systems for unique business challenges.",
+    description: "Purpose-built custom AI systems designed to address unique business challenges.",
     category: "Solutions",
     badge: "06",
     iconType: "custom",
@@ -61,22 +61,22 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
 export const WHAT_WE_BUILD = [
   {
     title: "Digital Products",
-    description: "Web and mobile applications designed for high performance, intuitive interaction, and modern scale.",
+    description: "We design and develop web applications, mobile apps, and digital products built around user needs and business goals.Every product is designed to be functional today and ready to evolve tomorrow.",
     badge: "Product Engineering",
   },
   {
     title: "Business Systems",
-    description: "Enterprise CRM, ERP, and bespoke operational platforms tailored to specific institutional workflows.",
+    description: "We build custom software solutions such as a customer management system, CRM with workflow automation, ERP, dashboards, and enterprise platforms that connect data, teams, and operations. The goal is to reduce fragmentation and help businesses operate with greater clarity.",
     badge: "Operations",
   },
   {
     title: "AI Ecosystems",
-    description: "Autonomous agents, intelligent decision engines, and cross-platform automated execution loops.",
+    description: "We bring together AI agents, business automation tools, integrations, and intelligent workflows to make systems more capable. Our approach focuses on practical use cases, with human oversight and accountability where needed.",
     badge: "Intelligence",
   },
   {
-    title: "Design",
-    description: "Comprehensive UI/UX design, design systems, and digital product experiences built for clarity and engagement.",
+    title: "Product Design",
+    description: "We create intuitive UI/UX and digital experiences that make complex technology easier to use.From user journeys to interface design, every decision is guided by usability, clarity, and the product's purpose.",
     badge: "Experience",
   },
 ];
@@ -104,54 +104,54 @@ export const ARGUS_CAPABILITIES = [
   {
     id: "whatsapp",
     title: "WhatsApp Automation",
-    description: "Customer enquiries, instant responses, follow-ups and conversations through WhatsApp.",
+    description: "Respond to customer enquiries, manage follow-ups, and streamline conversations through WhatsApp with less manual intervention.",
   },
   {
     id: "agents",
     title: "Ready-Made AI Agents",
-    description: "Specialised sales, customer care, email and operations agents with industry-specific solutions.",
+    description: "Deploy specialised AI agents for tasks such as sales, customer care, email handling, and operations, based on your business requirements.",
   },
   {
     id: "factory",
     title: "Agent Factory",
-    description: "Build, test, deploy and monitor custom AI agents tailored to proprietary workflows.",
+    description: "Build, test, manage, and deploy AI agents tailored to specific workflows and use cases.",
   },
   {
     id: "workflow",
     title: "Workflow Automation",
-    description: "Repetitive tasks across connected systems, with human approval at critical operational steps.",
+    description: "Connect routine processes across tools and systems, with defined steps, approvals, and human intervention where required.",
   },
   {
     id: "governance",
     title: "Enterprise Governance",
-    description: "Audit trails, role-based access and deployment options across cloud, VPC or on-premises environments.",
+    description: "Support greater visibility and control through audit trails, role-based access, and appropriate human oversight.",
   },
 ];
 
 export const PRINCIPLES = [
   {
     title: "End-to-End",
-    description: "Concept through deployment and long-term support.",
+    description: "From concept and planning to deployment and ongoing support, we help carry the work across the full product journey.",
   },
   {
-    title: "AI Agents",
-    description: "Intelligence where it creates genuine business value.",
+    title: "AI Driven",
+    description: "We build intelligence into products and processes wherever it creates meaningful value.",
   },
   {
     title: "Custom-Built",
-    description: "Solutions shaped directly around the business.",
+    description: "Every solution is shaped around your business needs, users, and challenges that are not forced into a generic template.",
   },
   {
     title: "Scalable",
-    description: "Systems designed from day one for sustained growth.",
+    description: "We design systems that can evolve with growing users, operations, data, and complexity.",
   },
   {
     title: "Business-First",
-    description: "Decisions driven strictly by business outcomes.",
+    description: "Technology decisions begin with the problem to solve and the outcome the business needs.",
   },
   {
     title: "Future-Ready",
-    description: "Adaptive technology engineered to evolve with modern AI.",
+    description: "We build with flexibility in mind, so products and systems can adapt as requirements and technology evolve.",
   },
 ];
 

@@ -13,7 +13,6 @@ export const SolutionsSection: React.FC = () => {
       subtitle: "Pipeline acceleration & qualification",
       metric: "128 Qualified Leads / wk",
       icon: Sparkles,
-      color: "#18B951",
       points: [
         "Identifies and qualifies high-intent outbound & inbound leads",
         "Enriches contact profiles directly within Salesforce and HubSpot",
@@ -25,7 +24,6 @@ export const SolutionsSection: React.FC = () => {
       subtitle: "24/7 autonomous support tier",
       metric: "97% Automated Resolution",
       icon: Headphones,
-      color: "#5BE3F1",
       points: [
         "Resolves repetitive tier-1 tickets across Zendesk and Intercom",
         "Context-aware escalation with summarized handover to humans",
@@ -37,7 +35,6 @@ export const SolutionsSection: React.FC = () => {
       subtitle: "System integration & synchronization",
       metric: "63% Workflows Automated",
       icon: Cpu,
-      color: "#94A3FF",
       points: [
         "Cross-system data synchronization between ERPs and internal databases",
         "Automated exception handling and audit trail validation",
@@ -49,7 +46,6 @@ export const SolutionsSection: React.FC = () => {
       subtitle: "High-volume inbox processing",
       metric: "426 Processed Emails / hr",
       icon: Mail,
-      color: "#C084FC",
       points: [
         "Classifies complex inbound emails with semantic intent parsing",
         "Drafts hyper-accurate responses grounded in internal knowledge base",
@@ -66,18 +62,18 @@ export const SolutionsSection: React.FC = () => {
   ];
 
   return (
-    <section id="solutions" className="relative w-full bg-[#081225] py-20 px-4 md:px-8 border-b border-white/5 select-none">
+    <section id="solutions" className="relative w-full bg-[#091c09] py-20 px-4 md:px-8 border-b border-white/10 select-none text-white">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#18B951] mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-mono text-white mb-3">
             <span>ENTERPRISE CAPABILITIES</span>
           </div>
           <h2 className="font-urbanist font-extrabold text-3xl md:text-4xl text-white tracking-tight">
             Autonomous Agents Engineered for Precision
           </h2>
-          <p className="font-urbanist text-white/60 text-sm md:text-base mt-3 leading-relaxed">
+          <p className="font-urbanist text-white/75 text-sm md:text-base mt-3 leading-relaxed">
             Prophec AI agents run across your existing cloud infrastructure, eliminating manual friction without disrupting your established toolchains.
           </p>
         </div>
@@ -89,22 +85,16 @@ export const SolutionsSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="rounded-2xl bg-[#0C1A30]/80 border border-white/10 p-6 md:p-8 hover:border-white/20 transition-all group relative overflow-hidden"
+                className="rounded-2xl bg-[#091c09] border border-white/15 p-6 md:p-8 hover:border-white/30 transition-all group relative overflow-hidden shadow-lg"
               >
                 <div 
-                  className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-15 pointer-events-none transition-opacity group-hover:opacity-30"
-                  style={{ background: item.color }}
+                  className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-10 pointer-events-none bg-white"
                 />
 
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div className="flex items-center gap-3">
                     <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border"
-                      style={{ 
-                        backgroundColor: `${item.color}15`, 
-                        borderColor: `${item.color}35`,
-                        color: item.color,
-                      }}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-white/20 bg-white/10 text-white"
                     >
                       <Icon className="w-6 h-6" />
                     </div>
@@ -112,12 +102,12 @@ export const SolutionsSection: React.FC = () => {
                       <h3 className="font-urbanist font-bold text-lg text-white">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-white/50">{item.subtitle}</p>
+                      <p className="text-xs text-white/60">{item.subtitle}</p>
                     </div>
                   </div>
 
                   <span 
-                    className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/80"
+                    className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-white/10 border border-white/20 text-white"
                   >
                     {item.metric}
                   </span>
@@ -125,8 +115,8 @@ export const SolutionsSection: React.FC = () => {
 
                 <ul className="space-y-2.5 mb-6">
                   {item.points.map((pt, pIdx) => (
-                    <li key={pIdx} className="flex items-start gap-2 text-xs md:text-sm text-white/70 leading-normal">
-                      <CheckCircle2 className="w-4 h-4 text-[#18B951] shrink-0 mt-0.5" />
+                    <li key={pIdx} className="flex items-start gap-2 text-xs md:text-sm text-white/80 leading-normal">
+                      <CheckCircle2 className="w-4 h-4 text-white shrink-0 mt-0.5" />
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -134,7 +124,7 @@ export const SolutionsSection: React.FC = () => {
 
                 <button
                   onClick={() => setIsAuditModalOpen(true)}
-                  className="text-xs font-semibold text-white/80 hover:text-white inline-flex items-center gap-1 group/btn transition-colors"
+                  className="text-xs font-semibold text-white/90 hover:text-white inline-flex items-center gap-1 group/btn transition-colors cursor-pointer"
                 >
                   Configure agent architecture <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
@@ -144,12 +134,12 @@ export const SolutionsSection: React.FC = () => {
         </div>
 
         {/* 4-Step Process Strip */}
-        <div className="rounded-3xl bg-white/[0.02] border border-white/10 p-8 md:p-10">
+        <div className="rounded-3xl bg-white/5 border border-white/15 p-8 md:p-10">
           <div className="text-center mb-10">
             <h3 className="font-urbanist font-bold text-2xl text-white">
               From Workflow Audit to Production Automation
             </h3>
-            <p className="text-xs md:text-sm text-white/50 mt-1">
+            <p className="text-xs md:text-sm text-white/70 mt-1">
               A rigorous engineering framework designed for security, accuracy, and measurable ROI.
             </p>
           </div>
@@ -157,13 +147,13 @@ export const SolutionsSection: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((st, i) => (
               <div key={i} className="relative space-y-2">
-                <span className="font-mono text-2xl font-black text-[#18B951]/60">
+                <span className="font-mono text-2xl font-black text-white/40">
                   {st.num}
                 </span>
                 <h4 className="font-urbanist font-bold text-base text-white">
                   {st.title}
                 </h4>
-                <p className="text-xs text-white/60 leading-relaxed">
+                <p className="text-xs text-white/70 leading-relaxed">
                   {st.desc}
                 </p>
               </div>
