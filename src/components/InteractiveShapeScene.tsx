@@ -833,11 +833,11 @@ export const InteractiveShapeScene: React.FC = () => {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10">
           <div>
             <h2 className="font-urbanist font-extrabold text-2xl sm:text-4xl md:text-5xl text-[#091c09] tracking-tight">
-              Play with the geometry of PropheC.
+              Engineering Intelligence for Enterprise
             </h2>
-            <p className="font-urbanist text-[rgba(9,28,9,0.70)] text-xs sm:text-sm md:text-base mt-1.5 sm:mt-2 font-medium max-w-xl">
+            {/* <p className="font-urbanist text-[rgba(9,28,9,0.70)] text-xs sm:text-sm md:text-base mt-1.5 sm:mt-2 font-medium max-w-xl">
               Tap, nudge, or drag the robots to explore physical impulses and settling dynamics.
-            </p>
+            </p> */}
           </div>
 
           {/* Clean Controls: Shuffle & Reset */}
@@ -869,16 +869,54 @@ export const InteractiveShapeScene: React.FC = () => {
           className="relative w-full h-[560px] sm:h-[600px] md:h-[660px] rounded-2xl sm:rounded-[32px] border border-[rgba(9,28,9,0.12)] overflow-hidden shadow-xs"
           style={{ backgroundColor: "#f4efe9" }}
         >
-          {/* Editorial headline sits behind the robots, so they can tumble over it */}
-          <div className="absolute inset-x-0 top-0 flex flex-col items-center justify-start pt-10 sm:pt-14 md:pt-16 px-4 sm:px-6 text-center pointer-events-none z-0">
-            <div className="max-w-xl mx-auto space-y-2">
-              <h3 className="font-space-grotesk font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#091c09] tracking-tight leading-tight select-none">
-                Engineering Intelligence for Enterprise
-              </h3>
-              <p className="font-urbanist text-xs sm:text-sm text-[rgba(9,28,9,0.70)] font-medium max-w-md mx-auto">
-                Deterministic state machines, agent execution, and human oversight.
-              </p>
-            </div>
+          {/* Floating Social Links matching Google Labs style (Image 1) */}
+          <div
+            className="absolute top-8 sm:top-12 md:top-14 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 sm:gap-3 pointer-events-auto"
+            aria-label="Social media links"
+          >
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/prophec-ai-2b5758444/?isSelfProfile=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow PropheC on LinkedIn"
+              title="LinkedIn"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[rgba(9,28,9,0.22)] hover:border-[#091c09] bg-white/40 hover:bg-white/80 backdrop-blur-md text-[#091c09] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#091c09]"
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.75a1.65 1.65 0 1 0 0 3.3 1.65 1.65 0 0 0 0-3.3z" />
+              </svg>
+            </a>
+
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/prophec.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow PropheC on Instagram"
+              title="Instagram"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[rgba(9,28,9,0.22)] hover:border-[#091c09] bg-white/40 hover:bg-white/80 backdrop-blur-md text-[#091c09] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#091c09]"
+            >
+              <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+
+            {/* X */}
+            <a
+              href="https://x.com/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow PropheC on X"
+              title="X"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[rgba(9,28,9,0.22)] hover:border-[#091c09] bg-white/40 hover:bg-white/80 backdrop-blur-md text-[#091c09] flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#091c09]"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
           </div>
 
           <canvas

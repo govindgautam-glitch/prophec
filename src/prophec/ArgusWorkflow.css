@@ -74,11 +74,15 @@
   display: inline-block;
   font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
   font-size: 11.5px;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0.18em;
-  color: #8fa895;
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 20px;
+  border-radius: 30px;
+  border: 1px solid #ffffff;
+  padding: 10px 20px;
+
 }
 
 .argus-heading {
@@ -247,10 +251,13 @@
 }
 
 @keyframes argus-halo-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(0.96);
     opacity: 0.4;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.85;
@@ -483,14 +490,14 @@
   padding: 12px 28px;
   border-radius: 999px;
   background: rgba(6, 26, 12, 0.75);
-  border: 1px solid rgba(82, 211, 112, 0.32);
+  border: 1px solid #fff;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: #c2dec8;
+  color: #ffffff;
   box-shadow: 0 0 30px rgba(82, 211, 112, 0.15);
 }
 
@@ -507,12 +514,12 @@
   padding: 6px 16px;
   border-radius: 999px;
   background: #072410;
-  border: 1px solid rgba(82, 211, 112, 0.32);
+  border: 1px solid #fff;
   font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #a5b0a4;
+  color: #fff;
   text-transform: uppercase;
   margin-bottom: 18px;
 }
@@ -628,11 +635,13 @@
   .argus-experience-card {
     grid-template-columns: 1fr;
   }
+
   .argus-map-zone {
     border-right: none;
     border-bottom: 1px solid rgba(82, 211, 112, 0.16);
     min-height: 460px;
   }
+
   .argus-intro-grid {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -643,21 +652,26 @@
   .argus-wrapper {
     padding: 70px 0 80px;
   }
+
   .argus-cards-grid {
     grid-template-columns: 1fr;
   }
+
   .argus-channel-btn {
     width: 110px;
     height: 64px;
     font-size: 9.5px;
   }
+
   .argus-core-node {
     width: 115px;
     height: 115px;
   }
+
   .argus-core-name {
     font-size: 15px;
   }
+
   .argus-core-icon {
     width: 26px;
     height: 26px;

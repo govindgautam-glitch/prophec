@@ -181,10 +181,10 @@ export function ArgusWorkflow({ content: c, id = 'argus' }: { content: ArgusCont
                   s.id === 'whatsapp'
                     ? ChannelIcons.whatsapp
                     : s.id === 'email'
-                    ? ChannelIcons.email
-                    : s.id === 'crm'
-                    ? ChannelIcons.crm
-                    : ChannelIcons.accounting;
+                      ? ChannelIcons.email
+                      : s.id === 'crm'
+                        ? ChannelIcons.crm
+                        : ChannelIcons.accounting;
 
                 return (
                   <button
@@ -204,10 +204,10 @@ export function ArgusWorkflow({ content: c, id = 'argus' }: { content: ArgusCont
             </div>
 
             {/* Footnote */}
-            <div className="argus-map-footnote map-footnote">
+            {/* <div className="argus-map-footnote map-footnote">
               <span>{c.mapHint || 'Select anywhere to follow the flow.'}</span>
               <span aria-hidden="true">↗</span>
-            </div>
+            </div> */}
           </div>
 
           {/* RIGHT: Live Workflow Preview */}
@@ -235,13 +235,13 @@ export function ArgusWorkflow({ content: c, id = 'argus' }: { content: ArgusCont
               </ol>
             </div>
 
-            <div className="argus-governance governance-note">
+            {/* <div className="argus-governance governance-note">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 <path d="m9 12 2 2 4-4" />
               </svg>
               <span>{c.governance || 'Human oversight and audit approvals where it matters.'}</span>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -259,7 +259,7 @@ export function ArgusWorkflow({ content: c, id = 'argus' }: { content: ArgusCont
            ================================================================= */}
         <div className="argus-suite-head">
           <div className="argus-suite-pill">
-            <span className="argus-suite-dot" aria-hidden="true" />
+            {/* <span className="argus-suite-dot" aria-hidden="true" /> */}
             <span>THE ARGUS AUTOMATION SUITE</span>
           </div>
 

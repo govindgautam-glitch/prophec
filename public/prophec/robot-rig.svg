@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="robot-rig" id="robot-rig" viewBox="0 0 1024 1536" aria-hidden="true" focusable="false">
+  <defs>
+    <image id="robot-pixels" href="robot-original.png" width="1024" height="1536"/>
+    <!-- Keep the supplied artwork; only its existing arm pixels are articulated. -->
+    <path id="arm-outline" d="M 195 575 L 365 585 L 382 613 L 365 676 L 350 730 L 337 774 L 322 805 L 323 869 L 283 932 L 256 962 L 258 1097 L 86 1097 L 79 965 L 134 885 L 141 804 Z"/>
+    <clipPath id="arm-silhouette"><use href="#arm-outline"/></clipPath>
+    <mask id="body-without-arm" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1536" style="mask-type:luminance">
+      <rect width="1024" height="1536" fill="white"/><use href="#arm-outline" fill="black"/>
+    </mask>
+    <clipPath id="upper-arm-cut"><path d="M -100 -100 H 1200 V 1176 L -100 656 Z"/></clipPath>
+    <clipPath id="forearm-cut"><path d="M -100 652 L 1200 1172 V 1415 L -100 765 Z"/></clipPath>
+    <clipPath id="hand-cut"><path d="M -100 760 L 1200 1410 V 1700 H -100 Z"/></clipPath>
+    <linearGradient id="joint-metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101719"/><stop offset=".42" stop-color="#3d4445"/><stop offset=".65" stop-color="#111719"/><stop offset="1" stop-color="#080b0c"/></linearGradient>
+  </defs>
+  <use href="#robot-pixels" mask="url(#body-without-arm)"/>
+  <g id="shoulder-joint" transform="rotate(0 357 658)">
+    <ellipse cx="357" cy="658" rx="17" ry="36" transform="rotate(22 357 658)" fill="url(#joint-metal)"/>
+    <g clip-path="url(#arm-silhouette)"><use href="#robot-pixels" clip-path="url(#upper-arm-cut)"/></g>
+    <g id="elbow-joint" transform="rotate(0 254 794)">
+      <ellipse cx="254" cy="794" rx="40" ry="19" transform="rotate(23 254 794)" fill="url(#joint-metal)"/>
+      <g clip-path="url(#arm-silhouette)"><use href="#robot-pixels" clip-path="url(#forearm-cut)"/></g>
+      <g id="wrist-joint" transform="rotate(0 195 918)">
+        <ellipse cx="195" cy="918" rx="28" ry="18" transform="rotate(27 195 918)" fill="url(#joint-metal)"/>
+        <g clip-path="url(#arm-silhouette)"><use href="#robot-pixels" clip-path="url(#hand-cut)"/></g>
+        <circle id="palm-anchor" cx="170" cy="984" r="1" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

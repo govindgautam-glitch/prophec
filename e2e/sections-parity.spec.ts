@@ -85,10 +85,10 @@ test.describe("Hero, Industry Tabs & Argus Workflow Parity", () => {
       "Startups",
       "Growing Businesses",
       "Enterprises",
-      "Institutions",
-      "Jewellery",
-      "Hospitality",
-      "Real Estate",
+      // "Institutions",
+      // "Jewellery",
+      // "Hospitality",
+      // "Real Estate",
     ];
 
     for (let i = 0; i < expectedSectors.length; i++) {

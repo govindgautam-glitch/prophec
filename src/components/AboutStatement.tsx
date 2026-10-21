@@ -38,7 +38,7 @@ export const AboutStatement: React.FC = () => {
 
         {/* Eyebrow Label */}
         <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#091c09] shadow-2xs mb-4 sm:mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#02D15D]" />
+          {/* <span className="w-2 h-2 rounded-full bg-[#02D15D]" /> */}
           <span>WHO WE ARE</span>
         </div>
 

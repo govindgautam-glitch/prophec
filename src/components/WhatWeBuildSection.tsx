@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   MonitorSmartphone,
   Database,
@@ -108,78 +109,78 @@ export const WhatWeBuildSection: React.FC = () => {
           onClick: () => setIsModalOpen(true),
         },
       },
-      {
-        id: "sector-3",
-        name: "Institutions",
-        title: "Make complex services feel simple.",
-        description:
-          SECTORS[3]?.detail ||
-          "Centralised management dashboards, reporting portals, and secure portals.",
-        outcomes: [
-          "Service portals and applications",
-          "Administrative workflow tools",
-          "Connected records and dashboards",
-        ],
-        flow: ["People", "Services", "Operations"],
-        action: {
-          label: "Discuss an institutional project",
-          onClick: () => setIsModalOpen(true),
-        },
-      },
-      {
-        id: "sector-4",
-        name: "Jewellery",
-        title: "Connect craft with commerce.",
-        description:
-          SECTORS[4]?.detail ||
-          "Personalised customer software, inventory tracking, and native integrations.",
-        outcomes: [
-          "Digital catalogue experiences",
-          "Customer and inquiry management",
-          "Inventory and operational workflows",
-        ],
-        flow: ["Collections", "Customers", "Operations"],
-        action: {
-          label: "Discuss a jewellery project",
-          onClick: () => setIsModalOpen(true),
-        },
-      },
-      {
-        id: "sector-5",
-        name: "Hospitality",
-        title: "A more connected guest journey.",
-        description:
-          SECTORS[5]?.detail ||
-          "Bespoke reservation architecture and unified guest service ecosystems.",
-        outcomes: [
-          "Guest and property experiences",
-          "Inquiry and service workflows",
-          "Operational dashboards",
-        ],
-        flow: ["Guests", "Service", "Operations"],
-        action: {
-          label: "Discuss a hospitality project",
-          onClick: () => setIsModalOpen(true),
-        },
-      },
-      {
-        id: "sector-6",
-        name: "Real Estate",
-        title: "Move from inquiry to opportunity.",
-        description:
-          SECTORS[6]?.detail ||
-          "Purpose-built property platforms, lead routing, and transaction interoperability.",
-        outcomes: [
-          "Property discovery platforms",
-          "Lead qualification and CRM",
-          "Sales and follow-up workflows",
-        ],
-        flow: ["Discovery", "Inquiry", "Follow-up"],
-        action: {
-          label: "Discuss a real estate project",
-          onClick: () => setIsModalOpen(true),
-        },
-      },
+      // {
+      //   id: "sector-3",
+      //   name: "Institutions",
+      //   title: "Make complex services feel simple.",
+      //   description:
+      //     SECTORS[3]?.detail ||
+      //     "Centralised management dashboards, reporting portals, and secure portals.",
+      //   outcomes: [
+      //     "Service portals and applications",
+      //     "Administrative workflow tools",
+      //     "Connected records and dashboards",
+      //   ],
+      //   flow: ["People", "Services", "Operations"],
+      //   action: {
+      //     label: "Discuss an institutional project",
+      //     onClick: () => setIsModalOpen(true),
+      //   },
+      // },
+      // {
+      //   id: "sector-4",
+      //   name: "Jewellery",
+      //   title: "Connect craft with commerce.",
+      //   description:
+      //     SECTORS[4]?.detail ||
+      //     "Personalised customer software, inventory tracking, and native integrations.",
+      //   outcomes: [
+      //     "Digital catalogue experiences",
+      //     "Customer and inquiry management",
+      //     "Inventory and operational workflows",
+      //   ],
+      //   flow: ["Collections", "Customers", "Operations"],
+      //   action: {
+      //     label: "Discuss a jewellery project",
+      //     onClick: () => setIsModalOpen(true),
+      //   },
+      // },
+      // {
+      //   id: "sector-5",
+      //   name: "Hospitality",
+      //   title: "A more connected guest journey.",
+      //   description:
+      //     SECTORS[5]?.detail ||
+      //     "Bespoke reservation architecture and unified guest service ecosystems.",
+      //   outcomes: [
+      //     "Guest and property experiences",
+      //     "Inquiry and service workflows",
+      //     "Operational dashboards",
+      //   ],
+      //   flow: ["Guests", "Service", "Operations"],
+      //   action: {
+      //     label: "Discuss a hospitality project",
+      //     onClick: () => setIsModalOpen(true),
+      //   },
+      // },
+      // {
+      //   id: "sector-6",
+      //   name: "Real Estate",
+      //   title: "Move from inquiry to opportunity.",
+      //   description:
+      //     SECTORS[6]?.detail ||
+      //     "Purpose-built property platforms, lead routing, and transaction interoperability.",
+      //   outcomes: [
+      //     "Property discovery platforms",
+      //     "Lead qualification and CRM",
+      //     "Sales and follow-up workflows",
+      //   ],
+      //   flow: ["Discovery", "Inquiry", "Follow-up"],
+      //   action: {
+      //     label: "Discuss a real estate project",
+      //     onClick: () => setIsModalOpen(true),
+      //   },
+      // },
     ],
   };
 
@@ -199,7 +200,7 @@ export const WhatWeBuildSection: React.FC = () => {
         <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14 relative z-10">
           <div className="max-w-2xl mb-8 sm:mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#A5B0A4] mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#52D370]" />
+              {/* <span className="w-2 h-2 rounded-full bg-[#52D370]" /> */}
               <span>CAPABILITIES AND ARCHITECTURE</span>
             </div>
             <h2 className="font-urbanist font-extrabold text-2xl sm:text-4xl md:text-5xl text-[#F5F7F3] tracking-tight">
@@ -221,7 +222,7 @@ export const WhatWeBuildSection: React.FC = () => {
                     <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-[#B7C9B2] shadow-xs">
                       {getBuildIcon(idx)}
                     </div>
-                    <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/[0.06] border border-white/10 text-[11px] sm:text-xs font-mono font-semibold text-[#A5B0A4]">
+                    <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/[0.06] border border-white/10 text-[11px] sm:text-xs font-mono font-semibold text-[#ffffff]">
                       {item.badge}
                     </span>
                   </div>
@@ -245,7 +246,7 @@ export const WhatWeBuildSection: React.FC = () => {
         <div className="relative w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14 z-10">
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#091c09] shadow-2xs mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#02D15D]" />
+              {/* <span className="w-2 h-2 rounded-full bg-[#02D15D]" /> */}
               <span>WHY PROPHEC</span>
             </div>
             <h2 className="font-urbanist font-extrabold text-2xl sm:text-4xl md:text-5xl text-[#091c09] tracking-tight">
@@ -293,7 +294,7 @@ export const WhatWeBuildSection: React.FC = () => {
         <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14">
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-14">
             <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#A5B0A4] mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#52D370]" />
+              {/* <span className="w-2 h-2 rounded-full bg-[#52D370]" /> */}
               <span>OUR WORK</span>
             </div>
             <h2 className="font-urbanist font-extrabold text-2xl sm:text-4xl md:text-5xl text-[#F5F7F3] tracking-tight">
@@ -324,12 +325,33 @@ export const WhatWeBuildSection: React.FC = () => {
                 "IDEA IND": "/logos/idea.png",
                 "FAIR Stay": "/logos/fair.png",
               };
+
+              const clientSlugMap: Record<string, string> = {
+                "HobNob Realtech": "hobnob",
+                "Hobnob Realtech": "hobnob",
+                "InnovHer": "innovher",
+                "Innovher": "innovher",
+                "Alliance for Political Intelligence (API)": "api",
+                "Alliance for Political Intelligence": "api",
+                "Bharat Ventures": "bv",
+                "CityVibes": "cityvibes",
+                "Cityvibes": "cityvibes",
+                "Allsoll": "allsoll",
+                "AllSoll": "allsoll",
+                "IdeaIndia": "ideaindia",
+                "IDEA IND": "ideaindia",
+                "FairStay": "fairstay",
+                "FAIR Stay": "fairstay",
+              };
+
               const logoSrc = clientLogoMap[client.name];
+              const slug = clientSlugMap[client.name] || "hobnob";
 
               return (
-                <div
+                <Link
                   key={client.name}
-                  className="group relative rounded-2xl sm:rounded-3xl bg-[#0A1D0E]/85 backdrop-blur-md border border-[rgba(190,210,185,0.16)] p-6 sm:p-7 flex flex-col items-center text-center justify-between transition-all duration-300 hover:border-[rgba(190,210,185,0.38)] hover:bg-[#0E2813] hover:-translate-y-1 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5)]"
+                  href={`/work/${slug}`}
+                  className="group relative rounded-2xl sm:rounded-3xl bg-[#0A1D0E]/85 backdrop-blur-md border border-[rgba(190,210,185,0.16)] p-6 sm:p-7 flex flex-col items-center text-center justify-between transition-all duration-300 hover:border-[#52D370]/60 hover:bg-[#0E2813] hover:-translate-y-1 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5)] cursor-pointer"
                 >
                   {/* Subtle Ambient Hover Glow */}
                   <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-radial from-[rgba(190,210,185,0.06)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -359,11 +381,15 @@ export const WhatWeBuildSection: React.FC = () => {
                       {client.name}
                     </h3>
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.07] border border-white/[0.14] text-[11px] font-mono font-semibold tracking-wider text-[#C5D6C1] uppercase group-hover:bg-white/[0.10] group-hover:text-white transition-all">
-                      {/* <span className="w-1.5 h-1.5 rounded-full bg-[#52D370] shrink-0" /> */}
                       <span>{client.sector}</span>
                     </div>
+
+                    {/* <div className="mt-3.5 inline-flex items-center gap-1 text-xs font-mono text-[#52D370] opacity-80 group-hover:opacity-100 transition-opacity">
+                      <span>View Project</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div> */}
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -377,7 +403,7 @@ export const WhatWeBuildSection: React.FC = () => {
         <div className="relative w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14 z-10">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#091c09] shadow-2xs mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#091c09]" />
+              {/* <span className="w-2 h-2 rounded-full bg-[#091c09]" /> */}
               <span>LEADERSHIP</span>
             </div>
             <h2 className="font-urbanist font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#091c09] tracking-tight leading-[1.12]">
@@ -389,8 +415,7 @@ export const WhatWeBuildSection: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {LEADERSHIP_TEAM.map((leader, idx) => {
-              const isCircle = idx % 2 === 1; // 0=squircle, 1=circle, 2=squircle, 3=circle
+            {LEADERSHIP_TEAM.map((leader) => {
               const photos: Record<string, string> = {
                 "Aditya Mittal": "/Aditya.webp",
                 "Nikhil Kumar": "/Nikhil.webp",
@@ -407,7 +432,7 @@ export const WhatWeBuildSection: React.FC = () => {
                   <div>
                     {/* Portrait Frame with Alternating Squircle vs Circle */}
                     <div
-                      className={`relative w-full aspect-square max-w-[210px] mx-auto mb-5 overflow-hidden shadow-xs border border-black/5 bg-[#F2F4F1] ${isCircle ? "rounded-full" : "rounded-2xl"}`}
+                      className={`relative w-full aspect-square max-w-[210px] mx-auto mb-5 overflow-hidden shadow-xs border border-black/5 bg-[#F2F4F1]`}
                     >
                       {photoSrc ? (
                         <Image

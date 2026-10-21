@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Search, Menu, X, ArrowUpRight } from "lucide-react";
 import { AuditModal, SearchModal } from "./ActionModals";
 
@@ -32,78 +33,70 @@ export const Navbar: React.FC = () => {
       <header className="fixed top-0 left-0 right-0 pt-3 sm:pt-4 md:pt-6 px-3 sm:px-4 z-50 select-none transition-all duration-300">
         <nav
           aria-label="Primary Navigation"
-          className={`w-full max-w-[1240px] mx-auto h-[62px] sm:h-[68px] md:h-[76px] rounded-full px-3.5 sm:px-5 md:px-8 flex items-center justify-between transition-all duration-300 ${
-            isLight
-              ? "light-sticky-nav text-[#091c09]"
-              : "figma-glass-nav text-white"
-          }`}
+          className={`relative w-full max-w-[1240px] mx-auto h-[62px] sm:h-[68px] md:h-[76px] rounded-full px-4 sm:px-6 md:px-8 flex items-center justify-between transition-all duration-300 ${isLight
+            ? "light-sticky-nav text-[#091c09]"
+            : "figma-glass-nav text-white"
+            }`}
         >
           {/* Left: Authentic Brand Logo */}
-          <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
-            <a
-              href="#hero"
+          <div className="flex items-center shrink-0">
+            <Link
+              href="/"
               aria-label="PropheC AI - Home"
-              className={`flex items-center group focus:outline-none focus:ring-2 rounded-full px-1 py-0.5 ${
-                isLight ? "focus:ring-[#091c09]" : "focus:ring-white"
-              }`}
+              className={`flex items-center group focus:outline-none focus:ring-2 rounded-full px-1 py-0.5 ${isLight ? "focus:ring-[#091c09]" : "focus:ring-white"
+                }`}
             >
-              <div className="relative h-[28px] sm:h-[32px] md:h-[36px] w-[130px] sm:w-[150px] md:w-[172px] transition-all flex items-center">
+              <div className="relative h-[26px] sm:h-[30px] md:h-[34px] w-[136px] sm:w-[158px] md:w-[180px] transition-all flex items-center">
                 <Image
-                  src={isLight ? "/brand/prophec-logo-v2-dark.png" : "/brand/prophec-logo-v2.png"}
+                  src={isLight ? "/brand/prophec-logo-final.png" : "/brand/prophec-logo-final-light.png"}
                   alt="PropheC AI"
                   fill
-                  sizes="(max-width: 640px) 130px, 172px"
+                  sizes="(max-width: 640px) 136px, 180px"
                   className="object-contain object-left"
                   priority
                 />
               </div>
-            </a>
+            </Link>
+          </div>
 
-            {/* Desktop Navigation Links */}
-            <div className={`hidden md:flex items-center gap-7 text-[14px] font-urbanist font-semibold tracking-wide transition-colors ${
-              isLight ? "text-[#091c09]/80" : "text-white/80"
+          {/* Center: Desktop Navigation Links */}
+          <div className={`hidden md:flex items-center gap-6 lg:gap-8 text-[14px] font-urbanist font-semibold tracking-wide transition-colors absolute left-1/2 -translate-x-1/2 ${isLight ? "text-[#091c09]/80" : "text-white/80"
             }`}>
-              <a
-                href="#services"
-                className={`py-1 transition-colors ${
-                  isLight ? "hover:text-[#091c09]" : "hover:text-white"
+            <Link
+              href="/#services"
+              className={`py-1 transition-colors ${isLight ? "hover:text-[#091c09]" : "hover:text-white"
                 }`}
-              >
-                Solutions
-              </a>
-              <a
-                href="#argus"
-                className={`py-1 transition-colors ${
-                  isLight ? "hover:text-[#091c09]" : "hover:text-white"
+            >
+              Solutions
+            </Link>
+            <Link
+              href="/#argus"
+              className={`py-1 transition-colors ${isLight ? "hover:text-[#091c09]" : "hover:text-white"
                 }`}
-              >
-                Argus
-              </a>
-              <a
-                href="#build"
-                className={`py-1 transition-colors ${
-                  isLight ? "hover:text-[#091c09]" : "hover:text-white"
+            >
+              Argus
+            </Link>
+            <Link
+              href="/#build"
+              className={`py-1 transition-colors ${isLight ? "hover:text-[#091c09]" : "hover:text-white"
                 }`}
-              >
-                What We Build
-              </a>
-              <a
-                href="#about"
-                className={`py-1 transition-colors ${
-                  isLight ? "hover:text-[#091c09]" : "hover:text-white"
+            >
+              What We Build
+            </Link>
+            <Link
+              href="/#about"
+              className={`py-1 transition-colors ${isLight ? "hover:text-[#091c09]" : "hover:text-white"
                 }`}
-              >
-                About
-              </a>
-              <a
-                href="#work"
-                className={`py-1 transition-colors ${
-                  isLight ? "hover:text-[#091c09]" : "hover:text-white"
+            >
+              About
+            </Link>
+            <Link
+              href="/#work"
+              className={`py-1 transition-colors ${isLight ? "hover:text-[#091c09]" : "hover:text-white"
                 }`}
-              >
-                Our Work
-              </a>
-            </div>
+            >
+              Our Work
+            </Link>
           </div>
 
           {/* Right: Actions & Pill Button */}
@@ -112,17 +105,16 @@ export const Navbar: React.FC = () => {
             <button
               onClick={() => setIsSearchOpen(true)}
               aria-label="Open search dialog"
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all focus:outline-none focus:ring-2 cursor-pointer ${
-                isLight
-                  ? "bg-[rgba(9,28,9,0.06)] hover:bg-[rgba(9,28,9,0.12)] text-[#091c09] focus:ring-[#091c09]"
-                  : "bg-white/10 hover:bg-white/20 text-white focus:ring-white"
-              }`}
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all focus:outline-none focus:ring-2 cursor-pointer ${isLight
+                ? "bg-[rgba(9,28,9,0.06)] hover:bg-[rgba(9,28,9,0.12)] text-[#091c09] focus:ring-[#091c09]"
+                : "bg-white/10 hover:bg-white/20 text-white focus:ring-white"
+                }`}
             >
               <Search className="w-4 h-4" />
             </button>
 
             {/* Primary Action Pill Button */}
-            <button
+            {/* <button
               onClick={() => setIsContactOpen(true)}
               className={`hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full font-urbanist font-bold text-xs tracking-wider transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-sm cursor-pointer ${
                 isLight
@@ -131,18 +123,17 @@ export const Navbar: React.FC = () => {
               }`}
             >
               Build with PropheC <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
+            </button> */}
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={isMobileMenuOpen}
-              className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-                isLight
-                  ? "bg-[rgba(9,28,9,0.06)] hover:bg-[rgba(9,28,9,0.12)] text-[#091c09]"
-                  : "bg-white/10 hover:bg-white/20 text-white"
-              }`}
+              className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer ${isLight
+                ? "bg-[rgba(9,28,9,0.06)] hover:bg-[rgba(9,28,9,0.12)] text-[#091c09]"
+                : "bg-white/10 hover:bg-white/20 text-white"
+                }`}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -152,11 +143,10 @@ export const Navbar: React.FC = () => {
         {/* Mobile Navigation Dropdown */}
         {isMobileMenuOpen && (
           <div
-            className={`md:hidden mt-2.5 max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3 sm:space-y-4 animate-in fade-in slide-in-from-top-2 duration-200 border ${
-              isLight
-                ? "bg-white/98 backdrop-blur-xl border-[rgba(9,28,9,0.12)] text-[#091c09] shadow-xl"
-                : "bg-[#091c09]/98 backdrop-blur-xl border-white/15 text-white shadow-2xl"
-            }`}
+            className={`md:hidden mt-2.5 max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3 sm:space-y-4 animate-in fade-in slide-in-from-top-2 duration-200 border ${isLight
+              ? "bg-white/98 backdrop-blur-xl border-[rgba(9,28,9,0.12)] text-[#091c09] shadow-xl"
+              : "bg-[#091c09]/98 backdrop-blur-xl border-white/15 text-white shadow-2xl"
+              }`}
           >
             <div className="flex flex-col gap-1 font-urbanist text-[15px] sm:text-base font-semibold">
               <a
@@ -209,11 +199,10 @@ export const Navbar: React.FC = () => {
                   setIsMobileMenuOpen(false);
                   setIsContactOpen(true);
                 }}
-                className={`w-full min-h-[46px] py-2.5 sm:py-3 rounded-full font-urbanist font-bold text-sm flex items-center justify-center gap-1.5 shadow-md cursor-pointer ${
-                  isLight
-                    ? "bg-[#091c09] text-white"
-                    : "bg-white text-[#091c09]"
-                }`}
+                className={`w-full min-h-[46px] py-2.5 sm:py-3 rounded-full font-urbanist font-bold text-sm flex items-center justify-center gap-1.5 shadow-md cursor-pointer ${isLight
+                  ? "bg-[#091c09] text-white"
+                  : "bg-white text-[#091c09]"
+                  }`}
               >
                 Build with PropheC <ArrowUpRight className="w-4 h-4" />
               </button>
