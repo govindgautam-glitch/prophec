@@ -292,7 +292,7 @@ export const ProjectCarousel: React.FC<{ id?: string }> = ({ id = "services" }) 
   const [ghostIndex, setGhostIndex] = useState<number | null>(null); // card that is leaving
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [isMotionPaused, setIsMotionPaused] = useState(false);
+  const [isMotionPaused] = useState(false);
   const [isSwapping, setIsSwapping] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
@@ -480,7 +480,36 @@ export const ProjectCarousel: React.FC<{ id?: string }> = ({ id = "services" }) 
       render(target);
     };
 
-    let request: (n: number, direction?: number, auto?: boolean) => void;
+    function request(n: number, direction?: number, auto = false) {
+      if (!scene || !card || !wrapper) return;
+      n = clamp(n);
+      if (!auto) lastInteract = performance.now();
+      if (tx) {
+        queued = n;
+        return;
+      }
+      if (n === i) return;
+      if (!motionAllowed() || typeof card.animate !== "function") {
+        render(n);
+        return;
+      }
+      cancelAnimationFrame(pointerFrame);
+      const job: GestureJob = {
+        target: n,
+        from: i,
+        direction: direction ?? (n > i ? 1 : -1),
+        started: performance.now(),
+        committed: false,
+        grip: null,
+        animations: [],
+      };
+      tx = job;
+      scene.dataset.gesture = "true";
+      scene.dataset.busy = "true";
+      wrapper.setAttribute("aria-busy", "true");
+      setIsSwapping(true);
+      ensureLoop();
+    }
 
     const finish = (job: GestureJob) => {
       if (tx !== job) return;
@@ -520,31 +549,6 @@ export const ProjectCarousel: React.FC<{ id?: string }> = ({ id = "services" }) 
       if (!raf && motionAllowed()) raf = requestAnimationFrame(loop);
     };
 
-    request = (n, direction, auto = false) => {
-      n = clamp(n);
-      if (!auto) lastInteract = performance.now();
-      if (tx) {
-        queued = n;
-        return;
-      }
-      if (n === i) return;
-      if (!motionAllowed() || typeof card.animate !== "function") {
-        render(n);
-        return;
-      }
-      cancelAnimationFrame(pointerFrame);
-      const job: GestureJob = {
-        target: n, from: i, direction: direction ?? (n > i ? 1 : -1),
-        started: performance.now(), committed: false, grip: null, animations: [],
-      };
-      tx = job;
-      scene.dataset.gesture = "true";
-      scene.dataset.busy = "true";
-      wrapper.setAttribute("aria-busy", "true");
-      setIsSwapping(true);
-      ensureLoop();
-    };
-
     const step = (delta: number) => request(logicalIndex() + delta, delta);
     const robotNext = () => request((logicalIndex() + 1) % total, 1);
 
@@ -557,7 +561,13 @@ export const ProjectCarousel: React.FC<{ id?: string }> = ({ id = "services" }) 
       setReducedMotion(reduce.matches);
       scene.dataset.offscreen = String(!inView);
       const orbit = orbitRef.current;
-      if (orbit) allowed ? orbit.unpauseAnimations() : orbit.pauseAnimations();
+      if (orbit) {
+        if (allowed) {
+          orbit.unpauseAnimations();
+        } else {
+          orbit.pauseAnimations();
+        }
+      }
       if (allowed) ensureLoop();
       else {
         cancelAnimationFrame(pointerFrame);

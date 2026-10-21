@@ -407,7 +407,7 @@ export const WhatWeBuildSection: React.FC = () => {
                   <div>
                     {/* Portrait Frame with Alternating Squircle vs Circle */}
                     <div
-                      className="relative w-full aspect-square max-w-[210px] mx-auto mb-5 overflow-hidden shadow-xs border border-black/5 bg-[#F2F4F1]"
+                      className={`relative w-full aspect-square max-w-[210px] mx-auto mb-5 overflow-hidden shadow-xs border border-black/5 bg-[#F2F4F1] ${isCircle ? "rounded-full" : "rounded-2xl"}`}
                     >
                       {photoSrc ? (
                         <Image
