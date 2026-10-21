@@ -61,7 +61,7 @@ export const AI_ECOSYSTEM_SERVICES: ServiceItem[] = [
 export const WHAT_WE_BUILD = [
   {
     title: "Digital Products",
-    description: "We design and develop web applications, mobile apps, and digital products built around user needs and business goals.Every product is designed to be functional today and ready to evolve tomorrow.",
+    description: "We design and develop web applications, mobile apps, and digital products built around user needs and business goals. Every product is designed to be functional today and ready to evolve tomorrow.",
     badge: "Product Engineering",
   },
   {
@@ -76,7 +76,7 @@ export const WHAT_WE_BUILD = [
   },
   {
     title: "Product Design",
-    description: "We create intuitive UI/UX and digital experiences that make complex technology easier to use.From user journeys to interface design, every decision is guided by usability, clarity, and the product's purpose.",
+    description: "We create intuitive UI/UX and digital experiences that make complex technology easier to use. From user journeys to interface design, every decision is guided by usability, clarity, and the product's purpose.",
     badge: "Experience",
   },
 ];
@@ -104,7 +104,7 @@ export const ARGUS_CAPABILITIES = [
   {
     id: "whatsapp",
     title: "WhatsApp Automation",
-    description: "Respond to customer enquiries, manage follow-ups, and streamline conversations through WhatsApp with less manual intervention.",
+    description: "Use WhatsApp automation for business to respond to customer enquiries, manage follow-ups, and streamline conversations with less manual intervention.",
   },
   {
     id: "agents",
@@ -114,12 +114,12 @@ export const ARGUS_CAPABILITIES = [
   {
     id: "factory",
     title: "Agent Factory",
-    description: "Build, test, manage, and deploy AI agents tailored to specific workflows and use cases.",
+    description: "Build, test, manage, and deploy custom AI agents tailored to specific workflows and use cases.",
   },
   {
     id: "workflow",
     title: "Workflow Automation",
-    description: "Connect routine processes across tools and systems, with defined steps, approvals, and human intervention where required.",
+    description: "Connect routine processes across tools and systems with workflow automation tools that include defined steps, approvals, and human intervention where required.",
   },
   {
     id: "governance",
@@ -134,7 +134,7 @@ export const PRINCIPLES = [
     description: "From concept and planning to deployment and ongoing support, we help carry the work across the full product journey.",
   },
   {
-    title: "AI Driven",
+    title: "AI-Driven",
     description: "We build intelligence into products and processes wherever it creates meaningful value.",
   },
   {
@@ -175,43 +175,43 @@ export const IMPACT_THEMES = [
 export const SECTORS = [
   {
     name: "Startups",
-    detail: "Idea validation, MVP architecture, and rapid market scaling.",
+    detail: "Turn early ideas into working products, validate solutions, and build the technology foundation needed for growth.",
   },
   {
     name: "Growing Businesses",
-    detail: "Modernised operations, custom dashboards, and workflow infrastructure.",
+    detail: "Connect fragmented tools, simplify everyday operations, and introduce business automation where it can create meaningful efficiency.",
   },
   {
     name: "Enterprises",
-    detail: "Custom platforms, multi-system integration, and automated governance.",
+    detail: "Integrate existing systems, streamline complex workflows with workflow automation software, and build technology with visibility, governance, and scalability in mind.",
   },
-  {
-    name: "Institutions",
-    detail: "Centralised management dashboards, reporting portals, and secure portals.",
-  },
-  {
-    name: "Jewellery",
-    detail: "Personalised customer software, inventory tracking, and native integrations.",
-  },
-  {
-    name: "Hospitality",
-    detail: "Bespoke reservation architecture and unified guest service ecosystems.",
-  },
-  {
-    name: "Real Estate",
-    detail: "Purpose-built property platforms, lead routing, and transaction interoperability.",
-  },
+  // {
+  //   name: "Institutions",
+  //   detail: "Improve routine communication, streamline administrative processes, and make information easier to manage across teams.",
+  // },
+  // {
+  //   name: "Jewellery",
+  //   detail: "Support enquiry handling, quotation workflows, custom-order updates, and customer follow-ups through connected digital systems and WhatsApp automation for business.",
+  // },
+  // {
+  //   name: "Hospitality",
+  //   detail: "Simplify booking enquiries, guest communication, group quotations, and follow-ups through more connected service workflows.",
+  // },
+  // {
+  //   name: "Real Estate",
+  //   detail: "Organise property enquiries, qualify leads, support site-visit scheduling, and streamline communication across the sales journey.",
+  // },
 ];
 
 export const OUR_WORK_CLIENTS = [
-  { name: "Hobnob Realtech", sector: "Real Estate" },
-  { name: "Innovher", sector: "Ventures" },
-  { name: "Alliance for Political Intelligence", sector: "Intelligence" },
+  { name: "HobNob Realtech", sector: "Real Estate" },
+  { name: "InnovHer", sector: "Ventures" },
+  { name: "Alliance for Political Intelligence (API)", sector: "Intelligence" },
   { name: "Bharat Ventures", sector: "Venture Capital" },
-  { name: "Cityvibes", sector: "Consumer Retail" },
-  { name: "AllSoll", sector: "Digital Enterprise" },
-  { name: "IDEA IND", sector: "Consulting & Growth" },
-  { name: "FAIR Stay", sector: "Hospitality" },
+  { name: "CityVibes", sector: "Consumer Retail" },
+  { name: "Allsoll", sector: "Digital Enterprise" },
+  { name: "IdeaIndia", sector: "Consulting & Growth" },
+  { name: "FairStay", sector: "Hospitality" },
 ];
 
 export const LEADERSHIP_TEAM = [

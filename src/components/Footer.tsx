@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { AuditModal } from "./ActionModals";
+import { AmbientBackgroundDecor } from "./AmbientBackgroundDecor";
 
 interface TopNavItem {
   label: string;
@@ -21,10 +22,11 @@ export const Footer: React.FC = () => {
   return (
     <footer
       id="footer"
-      className="relative w-full bg-[#F3F0EB] text-[#202124] border-t border-[#202124]/10 select-none transition-colors duration-300"
+      className="relative w-full bg-[#F3F0EB] text-[#202124] border-t border-[#202124]/10 select-none overflow-hidden transition-colors duration-300"
       aria-label="Footer"
     >
-      <div className="w-full max-w-[1520px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20">
+      <AmbientBackgroundDecor variant="subtle" />
+      <div className="relative w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14 pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20 z-10">
 
         {/* Top Navigation Row */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 sm:gap-8 pb-14 sm:pb-20 md:pb-28">

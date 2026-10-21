@@ -36,11 +36,11 @@ test.describe("Argus Intelligence Layer Redesign Verification", () => {
       await expect(section.getByText("ARGUS", { exact: true })).toBeVisible();
 
       // Verify all 5 modules are present
-      await expect(section.getByText("WhatsApp Automation")).toBeVisible();
-      await expect(section.getByText("Ready-Made AI Agents")).toBeVisible();
-      await expect(section.getByText("Agent Factory")).toBeVisible();
-      await expect(section.getByText("Workflow Automation")).toBeVisible();
-      await expect(section.getByText("Enterprise Governance")).toBeVisible();
+      await expect(section.getByText("WhatsApp Automation", { exact: true })).toBeVisible();
+      await expect(section.getByText("Ready-Made AI Agents", { exact: true })).toBeVisible();
+      await expect(section.getByText("Agent Factory", { exact: true })).toBeVisible();
+      await expect(section.getByText("Workflow Automation", { exact: true })).toBeVisible();
+      await expect(section.getByText("Enterprise Governance", { exact: true })).toBeVisible();
     });
   }
 

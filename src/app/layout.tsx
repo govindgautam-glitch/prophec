@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Urbanist, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import "@/components/ProjectCarousel.css";
+import "@/prophec/prophec.css";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",

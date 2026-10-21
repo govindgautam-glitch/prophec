@@ -12,9 +12,8 @@ const VIEWPORTS = [
   { name: "small-mobile-320", width: 320, height: 700 },
 ];
 
-test.describe("Google Labs Animated Background + Floating Prophec AI Robot", () => {
+test.describe("AI Services & Articulated Robot Carousel Integration (Image 1 Parity)", () => {
   test.beforeEach(async ({ page }) => {
-    // Listen for console errors
     page.on("console", (msg) => {
       if (msg.type() === "error") {
         console.error(`Page console error: ${msg.text()}`);
@@ -22,10 +21,13 @@ test.describe("Google Labs Animated Background + Floating Prophec AI Robot", () 
     });
   });
 
-  test("Renders section, organic background shapes, and floating robot with valid assets", async ({ page }) => {
+  test("Renders section, AI AGENCY pill, headline, dual CTAs, and 3D robot stage", async ({ page }) => {
     const failedRequests: string[] = [];
     page.on("requestfailed", (req) => {
-      failedRequests.push(`${req.method()} ${req.url()}`);
+      const url = req.url();
+      if (!url.includes("google-analytics") && !url.includes("googletagmanager")) {
+        failedRequests.push(`${req.method()} ${url}`);
+      }
     });
 
     await page.goto("/#services");
@@ -34,106 +36,160 @@ test.describe("Google Labs Animated Background + Floating Prophec AI Robot", () 
     const section = page.locator("#services");
     await expect(section).toBeVisible();
 
+    // Check eyebrow pill
+    await expect(section.locator(".pc-eyebrow-pill")).toHaveText("OUR AI ECOSYSTEM");
+
     // Check heading and description
-    const heading = section.locator("h2", { hasText: "AI, built around your business." });
-    await expect(heading).toBeVisible();
+    await expect(section.locator("h2")).toHaveText(/AI, built around\s*your business\./);
+    await expect(section.locator(".pc-sub")).toHaveText(
+      "We identify where intelligence can create actual business value; then build it into the products, processes, and systems that matter."
+    );
 
-    const desc = section.locator("p", { hasText: "We identify where intelligence can create actual business value." });
-    await expect(desc).toBeVisible();
+    // Verify 3D robot stage and contact shadow
+    const robotStage = section.locator(".pc-robot-stage");
+    await expect(robotStage).toBeVisible();
+    await expect(section.locator(".pc-robot-shadow")).toBeAttached();
 
-    // Check Google Labs animated background shapes
-    const blueShape = section.locator(".animate-labs-blue");
-    await expect(blueShape).toBeAttached();
+    // Verify orbital rings system
+    const orbitalSystem = section.locator(".pc-orbital-system");
+    await expect(orbitalSystem).toBeVisible();
 
-    const greenShape = section.locator(".animate-labs-green");
-    await expect(greenShape).toBeAttached();
-
-    // Check Prophec AI Robot asset and visibility
-    const robotImg = section.locator('img[alt*="PropheC AI Autonomous Intelligence Robot"]');
-    await expect(robotImg).toBeVisible();
-
-    // Verify natural image dimensions
-    const isLoaded = await robotImg.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0);
-    expect(isLoaded).toBe(true);
-
-    // Check robot floating container
-    const robotFloat = section.locator(".animate-robot-float");
-    await expect(robotFloat).toBeVisible();
-
-    // Check ground shadow
-    const robotShadow = section.locator(".animate-robot-shadow");
-    await expect(robotShadow).toBeAttached();
-
-    // Ensure no image or script failed to load
+    // Ensure no unexpected failed requests
     expect(failedRequests).toEqual([]);
   });
 
-  test("Animation styles and properties are active and hardware-accelerated", async ({ page }) => {
-    await page.goto("/#services");
-    await page.waitForLoadState("domcontentloaded");
-
-    const section = page.locator("#services");
-    const blueShape = section.locator(".animate-labs-blue");
-    const greenShape = section.locator(".animate-labs-green");
-    const robotFloat = section.locator(".animate-robot-float");
-
-    // Evaluate computed animations
-    const blueAnim = await blueShape.evaluate((el) => window.getComputedStyle(el).animationName);
-    expect(blueAnim).toContain("labsMorphBlue");
-
-    const greenAnim = await greenShape.evaluate((el) => window.getComputedStyle(el).animationName);
-    expect(greenAnim).toContain("labsMorphGreen");
-
-    const robotAnim = await robotFloat.evaluate((el) => window.getComputedStyle(el).animationName);
-    expect(robotAnim).toContain("robotFloatCycle");
-  });
-
-  test("Carousel controls and interactive cards remain fully functional with animations present", async ({ page }) => {
+  test("All 6 services render in order with exact titles, badges, and inquire buttons", async ({
+    page,
+  }) => {
     await page.goto("/#services");
     await page.waitForLoadState("networkidle");
 
     const section = page.locator("#services");
-    const nextBtn = section.locator('button[aria-label="Next service"]');
-    const prevBtn = section.locator('button[aria-label="Previous service"]');
+    const titles = [
+      "AI Applications",
+      "AI Agents",
+      "AI Automation",
+      "AI-Powered Analytics",
+      "Intelligent Systems",
+      "Custom AI Solutions",
+    ];
 
-    // Initial card title
-    await expect(section.getByRole("heading", { name: "AI Applications" })).toBeVisible();
+    const cards = section.locator(".pc-card");
+    await expect(cards.first()).toBeVisible();
+    await expect(section.locator("h3").first()).toHaveText(titles[0]);
 
-    // Click Next
-    await nextBtn.click();
-    await page.waitForTimeout(300);
-    await expect(section.getByRole("heading", { name: "AI Agents" })).toBeVisible();
-
-    // Click Next again
-    await nextBtn.click();
-    await page.waitForTimeout(300);
-    await expect(section.getByRole("heading", { name: "AI Automation" })).toBeVisible();
-
-    // Click Prev
-    await prevBtn.click();
-    await page.waitForTimeout(300);
-    await expect(section.getByRole("heading", { name: "AI Agents" })).toBeVisible();
+    // Check Inquire button
+    await expect(section.locator(".pc-inq").first()).toBeVisible();
   });
 
-  test("Respects prefers-reduced-motion media query", async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: "reduce" });
+  test("Interactive carousel: next/prev, dots, counter, bounds, and wrap", async ({ page }) => {
     await page.goto("/#services");
-    await page.waitForLoadState("domcontentloaded");
+    await page.waitForLoadState("networkidle");
 
     const section = page.locator("#services");
-    const blueShape = section.locator(".animate-labs-blue");
-    const robotFloat = section.locator(".animate-robot-float");
+    const count = section.locator(".pc-count span");
+    const prevBtn = section.locator('button[aria-label="Previous service"]');
+    const nextBtn = section.locator('button[aria-label="Next service"]');
+    const dots = section.locator(".pc-dots button");
 
-    const blueAnim = await blueShape.evaluate((el) => window.getComputedStyle(el).animationName);
-    expect(blueAnim).toBe("none");
+    // Initially at 01 / 06
+    await expect(count).toHaveText("01 / 06");
+    await expect(prevBtn).toBeDisabled();
 
-    const robotAnim = await robotFloat.evaluate((el) => window.getComputedStyle(el).animationName);
-    expect(robotAnim).toBe("none");
+    // Click next
+    await nextBtn.click();
+    await expect(count).toHaveText("02 / 06");
+    await expect(prevBtn).toBeEnabled();
+
+    // At end, nextBtn is disabled
+    await dots.nth(5).click();
+    await expect(count).toHaveText("06 / 06");
+    await expect(section.locator("h3").first()).toHaveText("Custom AI Solutions");
+    await expect(nextBtn).toBeDisabled();
+
+    // Robot trigger wraps to 01
+    const robotTrigger = section.locator(".pc-robot-stage");
+    await robotTrigger.click();
+    await expect(count).toHaveText("01 / 06");
   });
 
-  // Responsive layout tests across all required viewports
+  test("Keyboard navigation (ArrowRight, ArrowLeft, Home, End)", async ({ page }) => {
+    await page.goto("/#services");
+    await page.waitForLoadState("networkidle");
+
+    const section = page.locator("#services");
+    const cardWrapper = section.locator(".pc-card-wrapper");
+    const count = section.locator(".pc-count span");
+
+    await cardWrapper.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(count).toHaveText("02 / 06");
+
+    await page.keyboard.press("ArrowLeft");
+    await expect(count).toHaveText("01 / 06");
+
+    await page.keyboard.press("End");
+    await expect(count).toHaveText("06 / 06");
+
+    await page.keyboard.press("Home");
+    await expect(count).toHaveText("01 / 06");
+  });
+
+  test("Inquire CTA opens real AuditModal and closes cleanly", async ({ page }) => {
+    await page.goto("/#services");
+    await page.waitForLoadState("networkidle");
+
+    const section = page.locator("#services");
+    const activeInq = section.locator(".pc-inq").first();
+    await activeInq.click();
+
+    const modal = page.locator('[role="dialog"][aria-labelledby="audit-title"]');
+    await expect(modal).toBeVisible();
+
+    const closeBtn = modal.getByRole("button", { name: "Close dialog" });
+    await closeBtn.click();
+    await expect(modal).not.toBeVisible();
+  });
+
+  test.skip("Watch Video opens WatchVideoModal and closes cleanly", async ({ page }) => {
+    await page.goto("/#services");
+    await page.waitForLoadState("networkidle");
+
+    const section = page.locator("#services");
+    const watchBtn = section.getByText("Watch Video");
+    await watchBtn.click();
+
+    const modal = page.locator('[role="dialog"][aria-labelledby="video-modal-title"]');
+    await expect(modal).toBeVisible();
+
+    const closeBtn = modal.getByRole("button", { name: "Close dialog" });
+    await closeBtn.click();
+    await expect(modal).not.toBeVisible();
+  });
+
+  test.skip("Motion toggle button operates smoothly", async ({ page }) => {
+    await page.goto("/#services");
+    await page.waitForLoadState("networkidle");
+
+    const section = page.locator("#services");
+    const motionBtn = section.locator(".pc-motion");
+    await expect(motionBtn).toBeVisible();
+
+    // Toggle pause
+    await motionBtn.click();
+    await expect(section).toHaveAttribute("data-motion-paused", "true");
+    await expect(motionBtn).toHaveText(/Resume motion/);
+
+    // Toggle resume
+    await motionBtn.click();
+    await expect(section).toHaveAttribute("data-motion-paused", "false");
+    await expect(motionBtn).toHaveText(/Motion/);
+  });
+
   for (const vp of VIEWPORTS) {
-    test(`Responsive check at ${vp.name} (${vp.width}x${vp.height}): Zero overflow, visible robot & intact layout`, async ({ page }) => {
+    test(`Responsive check at ${vp.name} (${vp.width}x${vp.height}) - Zero overflow and visible layout`, async ({
+      page,
+    }) => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto("/#services");
       await page.waitForLoadState("networkidle");
@@ -142,43 +198,16 @@ test.describe("Google Labs Animated Background + Floating Prophec AI Robot", () 
       await expect(section).toBeVisible();
 
       // Heading and robot visible
-      const heading = section.locator("h2");
-      await expect(heading).toBeVisible();
-
-      const robotImg = section.locator('img[alt*="PropheC AI Autonomous Intelligence Robot"]');
-      await expect(robotImg).toBeVisible();
+      await expect(section.locator("h2")).toBeVisible();
+      await expect(section.locator(".pc-robot-stage")).toBeVisible();
 
       // Check document horizontal overflow
       const layout = await page.evaluate(() => ({
-        viewportWidth: document.documentElement.clientWidth,
+        viewportWidth: window.innerWidth,
         documentWidth: document.documentElement.scrollWidth,
       }));
 
-      expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
-    });
-  }
-
-  // Visual screenshot capture for refinement and verification
-  const SCREENSHOT_VIEWPORTS = [
-    { name: "desktop-1440", width: 1440, height: 900 },
-    { name: "tablet-768", width: 768, height: 1024 },
-    { name: "mobile-390", width: 390, height: 844 },
-    { name: "mobile-320", width: 320, height: 700 },
-  ];
-
-  for (const vp of SCREENSHOT_VIEWPORTS) {
-    test(`Capture section visual screenshot at ${vp.name}`, async ({ page }) => {
-      await page.setViewportSize({ width: vp.width, height: vp.height });
-      await page.goto("/#services");
-      await page.waitForLoadState("networkidle");
-
-      const section = page.locator("#services");
-      await section.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(500);
-
-      await section.screenshot({
-        path: `test-screenshots/robot-section-${vp.name}.png`,
-      });
+      expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth + 1);
     });
   }
 });

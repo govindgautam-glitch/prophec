@@ -9,23 +9,10 @@ export const Navbar: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [navTheme, setNavTheme] = useState<"hero" | "light">("hero");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY < 650) {
-        setNavTheme("hero");
-      } else {
-        setNavTheme("light");
-      }
-    };
+  // Permanently white background with black text as requested
+  const isLight = true;
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Handle escape key to close mobile menu
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape" && isMobileMenuOpen) {
@@ -39,8 +26,6 @@ export const Navbar: React.FC = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
-
-  const isLight = navTheme === "light";
 
   return (
     <>
@@ -145,7 +130,7 @@ export const Navbar: React.FC = () => {
                   : "bg-white hover:bg-white/90 text-[#091c09]"
               }`}
             >
-              Discuss your project <ArrowUpRight className="w-3.5 h-3.5" />
+              Build with PropheC <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -230,7 +215,7 @@ export const Navbar: React.FC = () => {
                     : "bg-white text-[#091c09]"
                 }`}
               >
-                Discuss your project <ArrowUpRight className="w-4 h-4" />
+                Build with PropheC <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
           </div>

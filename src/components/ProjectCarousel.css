@@ -1,0 +1,1078 @@
+/* Import once after your existing Tailwind stylesheet. No Tailwind config changes. */
+@font-face {
+  font-family: 'PropheC Urbanist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/prophec/fonts/urbanist-400.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Urbanist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/prophec/fonts/urbanist-500.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/prophec/fonts/urbanist-600.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Urbanist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/prophec/fonts/urbanist-700.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Urbanist';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/prophec/fonts/urbanist-800.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/prophec/fonts/space-grotesk-400.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/prophec/fonts/space-grotesk-500.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/prophec/fonts/space-grotesk-600.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PropheC Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/prophec/fonts/space-grotesk-700.ttf') format('truetype')
+}
+
+/* ==========================================================================
+   PROPHEC — AI AGENCY HERO / SERVICES SECTION
+   Root: <section class="pc-scene" id="services">
+   Layout (desktop): headline top-left, copy + CTAs under it, glass service card
+   in the middle, articulated robot on the right with orbital rings behind it.
+   Layout (<1024px): robot first, then everything stacked + centred.
+   ========================================================================== */
+.pc-scene {
+  --pc-ink: #091c09;
+  --pc-ink-2: #163816;
+  --pc-mute: rgba(9, 28, 9, .66);
+  --pc-line: rgba(9, 28, 9, .10);
+  --pc-green: #52d370;
+  --pc-deep: #0b7a34;
+  --pc-ease: cubic-bezier(.22, 1, .36, 1);
+  --pc-urbanist: 'PropheC Urbanist', sans-serif;
+  --pc-space: 'PropheC Space Grotesk', sans-serif;
+  --pc-gutter: 80px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  padding: 100px 0 48px;
+  scroll-margin-top: 96px;
+  color-scheme: light;
+  background: #fff;
+  color: var(--pc-ink);
+  font: 500 16px/normal var(--pc-urbanist);
+  -webkit-text-size-adjust: 100%;
+}
+
+.pc-scene *,
+.pc-scene *::before,
+.pc-scene *::after {
+  box-sizing: border-box;
+}
+
+.pc-scene button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.pc-scene button:disabled {
+  cursor: default;
+}
+
+.pc-scene button:focus-visible,
+.pc-scene [tabindex]:focus-visible {
+  outline: 2px solid var(--pc-ink);
+  outline-offset: 5px;
+}
+
+.pc-scene ::selection {
+  background: var(--pc-ink);
+  color: #fff;
+}
+
+.pc-scene .pc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- atmosphere ---------- */
+.pc-scene .pc-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pc-scene .pc-glow {
+  position: absolute;
+  right: -8%;
+  top: -14%;
+  width: min(980px, 78vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%, rgba(82, 211, 112, .22), rgba(82, 211, 112, .08) 42%, transparent 68%);
+  animation: pc-glow-breathe 9s ease-in-out infinite alternate;
+}
+
+.pc-scene .pc-glow-2 {
+  position: absolute;
+  left: -14%;
+  bottom: -34%;
+  width: min(760px, 70vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82, 211, 112, .09), transparent 66%);
+}
+
+.pc-scene .pc-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(9, 28, 9, .028) 1px, transparent 1px), linear-gradient(90deg, rgba(9, 28, 9, .028) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: linear-gradient(110deg, transparent 20%, rgba(0, 0, 0, .5) 100%);
+  mask-image: linear-gradient(110deg, transparent 20%, rgba(0, 0, 0, .5) 100%);
+}
+
+/* ---------- layout ---------- */
+.pc-scene .pc-wrap,
+.pc-scene .pc-meta {
+  position: relative;
+  width: min(1360px, calc(100% - var(--pc-gutter)));
+  margin-inline: auto;
+}
+
+.pc-scene .pc-wrap {
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 36%) minmax(0, 31%) minmax(0, 33%);
+  grid-template-areas: "head head ." "copy card .";
+  align-items: start;
+  min-height: 560px;
+}
+
+.pc-scene .pc-head {
+  grid-area: head;
+  pointer-events: none;
+}
+
+.pc-scene .pc-copy {
+  grid-area: copy;
+  padding-right: 28px;
+}
+
+.pc-scene .pc-cardzone {
+  grid-area: card;
+  position: relative;
+  padding-top: 4px;
+}
+
+.pc-scene .pc-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  margin: 0 0 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(9, 28, 9, .14);
+  background: rgba(255, 255, 255, .8);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(9, 28, 9, .04);
+  font: 700 11.5px/1.2 var(--pc-space);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.pc-scene .pc-head h2 {
+  margin: 0 0 24px;
+  font: 800 clamp(44px, 4.8vw, 70px)/1.06 var(--pc-urbanist);
+  letter-spacing: -.025em;
+  text-shadow: 0 0 22px #fff, 0 0 6px #fff;
+}
+
+.pc-scene .pc-ai {
+  background: linear-gradient(100deg, #0b7a34 0%, #3fcf6a 50%, #0b7a34 100%);
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  padding-right: .04em;
+  text-shadow: none;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: pc-shimmer 6s ease-in-out infinite alternate;
+}
+
+.pc-scene .pc-sub {
+  max-width: 35ch;
+  margin: 0 0 34px;
+  color: var(--pc-mute);
+  font-size: 17.5px;
+  line-height: 1.62;
+  font-weight: 500;
+  text-shadow: 0 0 12px #fff, 0 0 4px #fff;
+}
+
+.pc-scene .pc-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.pc-scene .pc-cta-primary,
+.pc-scene .pc-cta-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  font: 700 14px/1 var(--pc-urbanist);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .3s var(--pc-ease), box-shadow .3s var(--pc-ease), background .25s;
+}
+
+.pc-scene .pc-cta-primary {
+  padding: 16px 26px;
+  border: 0;
+  background: var(--pc-ink);
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(9, 28, 9, .55);
+}
+
+.pc-scene .pc-cta-primary:hover {
+  background: var(--pc-ink-2);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -12px rgba(9, 28, 9, .55);
+}
+
+.pc-scene .pc-cta-primary svg {
+  width: 15px;
+  height: 15px;
+  transition: transform .3s var(--pc-ease);
+}
+
+.pc-scene .pc-cta-primary:hover svg {
+  transform: translateX(3px);
+}
+
+.pc-scene .pc-cta-video {
+  padding: 9px 20px 9px 9px;
+  background: rgba(255, 255, 255, .85);
+  border: 1px solid var(--pc-line);
+  color: var(--pc-ink);
+  box-shadow: 0 1px 2px rgba(9, 28, 9, .04);
+}
+
+.pc-scene .pc-cta-video:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -14px rgba(9, 28, 9, .3);
+}
+
+.pc-scene .pc-play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pc-ink);
+  color: #fff;
+}
+
+.pc-scene .pc-play svg {
+  width: 12px;
+  height: 12px;
+  margin-left: 1px;
+}
+
+.pc-scene .pc-play::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px solid rgba(9, 28, 9, .25);
+  animation: pc-ping 2.8s var(--pc-ease) infinite;
+}
+
+/* ---------- glass service card ---------- */
+.pc-scene .pc-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  outline: none;
+}
+
+.pc-scene .pc-card {
+  position: relative;
+  z-index: 5;
+  padding: 28px 28px 26px;
+  border: 1px solid rgba(9, 28, 9, .07);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 28px 60px -22px rgba(9, 28, 9, .18), 0 2px 14px rgba(9, 28, 9, .04);
+  will-change: transform;
+}
+
+.pc-scene .pc-card-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.pc-scene .pc-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.pc-scene .pc-tile {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #eaf8ee, #d9f1e0);
+  color: var(--pc-ink);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+.pc-scene .pc-tile svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pc-scene .pc-num {
+  font: 600 12px/1 var(--pc-space);
+  letter-spacing: .08em;
+  color: rgba(9, 28, 9, .42);
+}
+
+.pc-scene .pc-card h3 {
+  margin: 0 0 12px;
+  font: 800 26px/1.15 var(--pc-urbanist);
+  letter-spacing: -.02em;
+}
+
+.pc-scene .pc-card-desc {
+  margin: 0 0 24px;
+  min-height: calc(1.62em * 4);
+  color: var(--pc-mute);
+  font-size: 14.5px;
+  line-height: 1.62;
+  font-weight: 500;
+}
+
+.pc-scene .pc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pc-scene .pc-inq {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  background: var(--pc-ink);
+  color: #fff;
+  font: 700 13px/1 var(--pc-urbanist);
+  box-shadow: 0 8px 18px -10px rgba(9, 28, 9, .6);
+  transition: transform .3s var(--pc-ease), background .25s;
+}
+
+.pc-scene .pc-inq:hover {
+  background: var(--pc-ink-2);
+  transform: translateY(-2px);
+}
+
+.pc-scene .pc-inq svg {
+  width: 13px;
+  height: 13px;
+  transition: transform .3s var(--pc-ease);
+}
+
+.pc-scene .pc-inq:hover svg {
+  transform: translateX(3px);
+}
+
+.pc-scene .pc-card-next {
+  position: absolute;
+  z-index: 7;
+  right: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(9, 28, 9, .08);
+  background: #fff;
+  color: var(--pc-ink);
+  box-shadow: 0 10px 24px -8px rgba(9, 28, 9, .22);
+  transition: transform .3s var(--pc-ease), box-shadow .3s var(--pc-ease);
+}
+
+.pc-scene .pc-card-next svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 1px;
+}
+
+.pc-scene .pc-card-next:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 14px 28px -10px rgba(9, 28, 9, .3);
+}
+
+.pc-scene .pc-card-next:active {
+  transform: translateY(-50%) scale(.95);
+}
+
+/* ---------- controls ---------- */
+.pc-scene .pc-controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.pc-scene .pc-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  border: 1px solid var(--pc-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 1px 2px rgba(9, 28, 9, .04);
+}
+
+.pc-scene .pc-nav {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(9, 28, 9, .7);
+  font-size: 22px;
+  line-height: 1;
+  transition: background .2s, transform .25s var(--pc-ease);
+}
+
+.pc-scene .pc-nav:hover:not(:disabled) {
+  background: rgba(9, 28, 9, .06);
+  color: var(--pc-ink);
+}
+
+.pc-scene .pc-nav:disabled {
+  opacity: .28;
+}
+
+.pc-scene .pc-dots {
+  display: flex;
+  align-items: center;
+}
+
+.pc-scene .pc-dots button {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.pc-scene .pc-dots button::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(9, 28, 9, .2);
+  transition: width .35s var(--pc-ease), background .25s;
+}
+
+.pc-scene .pc-dots button:hover::before {
+  background: rgba(9, 28, 9, .4);
+}
+
+.pc-scene .pc-dots button[aria-current='true']::before {
+  width: 16px;
+  background: var(--pc-ink);
+}
+
+.pc-scene .pc-motion {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  padding: 0 16px 0 14px;
+  border: 1px solid var(--pc-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .86);
+  font: 600 12px/1 var(--pc-urbanist);
+  color: var(--pc-ink);
+  box-shadow: 0 1px 2px rgba(9, 28, 9, .04);
+  transition: background .2s, transform .25s var(--pc-ease);
+}
+
+.pc-scene .pc-motion:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.pc-scene .pc-motion-dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pc-ink);
+}
+
+.pc-scene .pc-motion-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(9, 28, 9, .35);
+  animation: pc-ping 2.4s var(--pc-ease) infinite;
+}
+
+.pc-scene .pc-motion[aria-pressed='false'] .pc-motion-dot {
+  background: rgba(9, 28, 9, .3);
+}
+
+.pc-scene .pc-motion[aria-pressed='false'] .pc-motion-dot::after {
+  display: none;
+}
+
+/* ---------- robot stage ---------- */
+.pc-scene .pc-robot-zone {
+  position: absolute;
+  z-index: 2;
+  right: -2%;
+  top: -76px;
+  bottom: -46px;
+  width: 53%;
+  pointer-events: none;
+}
+
+.pc-scene .pc-robot-stage {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  margin-left: auto;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pc-scene .pc-orbital-system {
+  position: absolute;
+  left: -34%;
+  top: -6%;
+  width: 168%;
+  height: 112%;
+  pointer-events: none;
+  overflow: visible;
+  transform-origin: 50% 52%;
+  animation: pc-orbit-drift 18s ease-in-out infinite alternate;
+}
+
+.pc-scene .pc-robot-path {
+  position: absolute;
+  inset: 0;
+}
+
+.pc-scene .pc-robot-parallax {
+  width: 100%;
+  height: 100%;
+  transform: perspective(1200px) translate3d(var(--pointer-x, 0px), var(--pointer-y, 0px), 0) rotateY(var(--pointer-ry, 0deg));
+  transition: transform .6s var(--pc-ease);
+}
+
+.pc-scene .pc-robot-float {
+  height: 100%;
+  animation: pc-robot-hover 6s ease-in-out infinite;
+}
+
+.pc-scene .pc-robot-figure {
+  height: 100%;
+  position: relative;
+  animation: pc-robot-lean 8s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+
+.pc-scene .pc-robot-rig {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  user-select: none;
+  filter: drop-shadow(0 30px 26px rgba(9, 28, 9, .14));
+}
+
+.pc-scene .pc-robot-shadow {
+  position: absolute;
+  bottom: 3%;
+  left: 22%;
+  width: 58%;
+  height: 3.6%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(9, 28, 9, .34) 0%, rgba(9, 28, 9, .1) 55%, transparent 75%);
+  filter: blur(6px);
+  animation: pc-shadow-pulse 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+.pc-scene .pc-robot-trigger {
+  position: absolute;
+  z-index: 2;
+  left: 12%;
+  top: 4%;
+  width: 78%;
+  height: 88%;
+  padding: 0;
+  border: 0;
+  border-radius: 45%;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pc-scene .pc-robot-cue {
+  position: absolute;
+  left: 4%;
+  top: 52%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  white-space: nowrap;
+  border-radius: 99px;
+  border: 1px solid rgba(9, 28, 9, .14);
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 6px 20px -8px rgba(9, 28, 9, .2);
+  font: 600 10px/1.2 var(--pc-space);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .3s var(--pc-ease), transform .3s var(--pc-ease);
+  pointer-events: none;
+}
+
+.pc-scene .pc-robot-cue svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pc-scene .pc-robot-trigger:hover .pc-robot-cue,
+.pc-scene .pc-robot-trigger:focus-visible .pc-robot-cue,
+.pc-scene[data-busy='true'] .pc-robot-cue {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- gesture thread (palm -> card) ---------- */
+.pc-scene .pc-gesture-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+  opacity: 0;
+}
+
+.pc-scene .pc-gesture-thread {
+  fill: none;
+  stroke: rgba(9, 28, 9, .22);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.pc-scene .pc-gesture-pulse {
+  fill: none;
+  stroke: rgba(11, 122, 52, .9);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 20 600;
+  vector-effect: non-scaling-stroke;
+}
+
+.pc-scene .pc-gesture-contact {
+  fill: #fff;
+  stroke: rgba(9, 28, 9, .65);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.pc-scene .pc-gesture-halo {
+  fill: none;
+  stroke: rgba(82, 211, 112, .6);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------- bottom metadata row ---------- */
+.pc-scene .pc-meta {
+  z-index: 3;
+  margin-top: 52px;
+  padding-top: 22px;
+  border-top: 1px solid var(--pc-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font: 500 11.5px/1.3 var(--pc-space);
+  letter-spacing: .05em;
+  color: rgba(9, 28, 9, .5);
+}
+
+.pc-scene .pc-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pc-scene .pc-meta i {
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: rgba(9, 28, 9, .35);
+}
+
+/* ---------- motion states ---------- */
+.pc-scene[data-gesture='true'] .pc-robot-float,
+.pc-scene[data-gesture='true'] .pc-robot-figure,
+.pc-scene[data-gesture='true'] .pc-robot-shadow {
+  animation-play-state: paused;
+}
+
+.pc-scene[data-motion-paused='true'] *,
+.pc-scene[data-offscreen='true'] * {
+  animation-play-state: paused !important;
+}
+
+.pc-scene[data-motion-paused='true'] .pc-robot-parallax {
+  transform: none;
+}
+
+/* ---------- entrance (plays once, always resolves to visible) ---------- */
+.pc-scene .pc-in {
+  animation: pc-rise .95s var(--pc-ease) both;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+.pc-scene .pc-robot-enter {
+  animation: pc-robot-enter 1.3s .15s var(--pc-ease) both;
+}
+
+@keyframes pc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pc-robot-enter {
+  from {
+    opacity: 0;
+    transform: translateY(46px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pc-shimmer {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes pc-ping {
+  0% {
+    transform: scale(.7);
+    opacity: .9;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pc-glow-breathe {
+  to {
+    transform: translate(-3%, 3%) scale(1.07);
+  }
+}
+
+@keyframes pc-robot-hover {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pc-robot-lean {
+
+  0%,
+  100% {
+    transform: rotate(-1.2deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(1.2deg) scale(1.015);
+  }
+}
+
+@keyframes pc-shadow-pulse {
+  50% {
+    transform: scaleX(.84);
+    opacity: .6;
+  }
+}
+
+@keyframes pc-orbit-drift {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(2.5deg) scale(1.02);
+  }
+
+  100% {
+    transform: rotate(-2deg) scale(.99);
+  }
+}
+
+/* ---------- tablet / mobile: robot first, everything stacked ---------- */
+@media (max-width: 1150px) {
+  .pc-scene {
+    --pc-gutter: 72px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .pc-scene {
+    padding: 28px 0 26px;
+  }
+
+  .pc-scene .pc-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 0;
+  }
+
+  .pc-scene .pc-robot-zone {
+    position: relative;
+    order: -1;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(330px, 82vw, 520px);
+    margin-bottom: 6px;
+  }
+
+  .pc-scene .pc-robot-stage {
+    margin-inline: auto;
+  }
+
+  .pc-scene .pc-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pc-scene .pc-head h2 {
+    font-size: clamp(32px, 7.4vw, 52px);
+  }
+
+  .pc-scene .pc-copy {
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pc-scene .pc-sub {
+    max-width: 40ch;
+    font-size: 15.5px;
+  }
+
+  .pc-scene .pc-ctas {
+    justify-content: center;
+    margin-bottom: 34px;
+  }
+
+  .pc-scene .pc-cardzone {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pc-scene .pc-card-wrapper {
+    max-width: 400px;
+    text-align: left;
+  }
+
+  .pc-scene .pc-card-next {
+    right: -10px;
+  }
+
+  .pc-scene .pc-controls {
+    justify-content: center;
+  }
+
+  .pc-scene .pc-orbital-system {
+    left: -40%;
+    width: 180%;
+  }
+
+  .pc-scene .pc-meta {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  .pc-scene {
+    --pc-gutter: 40px;
+  }
+
+  .pc-scene .pc-eyebrow-pill {
+    margin-bottom: 16px;
+  }
+
+  .pc-scene .pc-head h2 {
+    margin-bottom: 14px;
+  }
+
+  .pc-scene .pc-card {
+    padding: 20px 20px 18px;
+  }
+
+  .pc-scene .pc-card h3 {
+    font-size: 22px;
+  }
+
+  .pc-scene .pc-meta {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 360px) {
+  .pc-scene {
+    --pc-gutter: 32px;
+  }
+
+  .pc-scene .pc-controls {
+    gap: 8px;
+  }
+
+  .pc-scene .pc-cta-primary {
+    padding: 14px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .pc-scene *,
+  .pc-scene *::before,
+  .pc-scene *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .pc-scene .pc-robot-parallax {
+    transform: none !important;
+  }
+
+  .pc-scene .pc-gesture-field {
+    display: none;
+  }
+}

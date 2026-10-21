@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { AmbientBackgroundDecor } from "./AmbientBackgroundDecor";
 
 export const AboutStatement: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,24 +32,15 @@ export const AboutStatement: React.FC = () => {
       className="relative w-full py-14 sm:py-20 md:py-32 bg-white text-[#091c09] border-t border-[rgba(9,28,9,0.10)] select-none overflow-hidden"
       aria-label="Who We Are - PropheC AI Introduction"
     >
-      {/* 
-        Oversized, Partially Cropped Deep Green Ambient Geometry 
-        Subtle scroll-linked parallax translation & rotation using approved transparency
-      */}
-      <div
-        className="absolute -top-16 -right-24 md:right-8 w-[280px] sm:w-[360px] md:w-[560px] h-[280px] sm:h-[360px] md:h-[560px] rounded-full bg-gradient-to-br from-[rgba(9,28,9,0.04)] to-transparent blur-3xl pointer-events-none transition-transform duration-300 ease-out -z-0"
-        style={{
-          transform: `translateY(${scrollProgress * 40}px) rotate(${scrollProgress * 15}deg)`,
-        }}
-      />
-      <div
-        className="absolute top-1/2 -left-28 w-[260px] sm:w-[320px] md:w-[500px] h-[260px] sm:h-[320px] md:h-[500px] rounded-[70px] bg-gradient-to-tr from-[rgba(9,28,9,0.03)] to-transparent blur-2xl pointer-events-none transition-transform duration-300 ease-out -z-0"
-        style={{
-          transform: `translateY(${-scrollProgress * 30}px) rotate(${12 - scrollProgress * 10}deg)`,
-        }}
-      />
+      <AmbientBackgroundDecor />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 md:px-8 z-10">
+      <div className="relative w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14 z-10">
+
+        {/* Eyebrow Label */}
+        <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#091c09] shadow-2xs mb-4 sm:mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#02D15D]" />
+          <span>WHO WE ARE</span>
+        </div>
 
         {/* Large Editorial Statement with Scroll-Linked Word Emphasis */}
         <h2 className="font-urbanist font-extrabold text-[28px] sm:text-[40px] md:text-[56px] lg:text-[66px] text-[#091c09] tracking-tight leading-[1.1] max-w-4xl">
@@ -75,14 +67,15 @@ export const AboutStatement: React.FC = () => {
         {/* Supporting Paragraph */}
         <div className="mt-6 sm:mt-8 md:mt-12 max-w-3xl space-y-4 sm:space-y-5">
           <p className="font-urbanist font-semibold text-base sm:text-lg md:text-2xl text-[#091c09]/90 leading-relaxed">
-            PropheC is an AI-driven technology company helping startups, businesses, institutions, and
-            organisations , custom software and scalable technology ecosystems.
+            PropheC is an AI-driven technology company helping startups, businesses, institutions, and organisations turn ideas into intelligent digital products, custom software, and scalable technology ecosystems.
           </p>
 
           <p className="font-urbanist font-medium text-sm sm:text-base md:text-xl text-[rgba(9,28,9,0.70)] leading-relaxed pt-3 border-t border-[rgba(9,28,9,0.10)]">
-            From websites and mobile applications to AI-powered tools,business process automation,
-            dashboards, SaaS platforms, CRM management, ERP, and custom software, we bring strategy, design, engineering, and
-            intelligence together to build technology around real business needs.
+            From websites and mobile applications to AI-powered tools, business process automation, dashboards, SaaS platforms, CRM management, ERP, and custom software, we bring strategy, design, engineering, and intelligence together to build technology around real business needs.
+          </p>
+
+          <p className="font-urbanist font-semibold text-sm sm:text-base md:text-lg text-[#0b7a34] tracking-wide">
+            From concept to deployment and beyond.
           </p>
         </div>
 
