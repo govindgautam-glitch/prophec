@@ -204,11 +204,11 @@ export const SECTORS = [
 ];
 
 export const OUR_WORK_CLIENTS = [
-  { name: "HobNob Realtech", sector: "Real Estate" },
-  { name: "InnovHer", sector: "Ventures" },
+  // { name: "HobNob Realtech", sector: "Real Estate" },
+  // { name: "InnovHer", sector: "Ventures" },
   { name: "Alliance for Political Intelligence (API)", sector: "Intelligence" },
-  { name: "Bharat Ventures", sector: "Venture Capital" },
-  { name: "CityVibes", sector: "Consumer Retail" },
+  // { name: "Bharat Ventures", sector: "Venture Capital" },
+  // { name: "CityVibes", sector: "Consumer Retail" },
   { name: "Allsoll", sector: "Digital Enterprise" },
   { name: "IdeaIndia", sector: "Consulting & Growth" },
   { name: "FairStay", sector: "Hospitality" },
