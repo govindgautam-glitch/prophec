@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Lint, Typecheck, Build & Smoke Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies (clean reproducible install)
+        run: npm ci
+
+      - name: Lint verification
+        run: npm run lint
+
+      - name: TypeScript typecheck
+        run: npm run typecheck
+
+      - name: Production Next.js build
+        run: npm run build
+
+      - name: Start Next.js production server
+        run: |
+          npm run start > server.log 2>&1 &
+
+      - name: Wait for server ready
+        run: |
+          echo "Waiting for Next.js server to start on http://localhost:3000..."
+          READY=0
+          for i in $(seq 1 30); do
+            if curl -s -f http://localhost:3000 > /dev/null 2>&1; then
+              echo "Server ready after $((i * 2)) seconds"
+              READY=1
+              break
+            fi
+            sleep 2
+          done
+          if [ $READY -ne 1 ]; then
+            echo "Server did not respond within 60 seconds"
+            echo "=== server.log ==="
+            cat server.log
+            exit 1
+          fi
+
+      - name: Run browser smoke validation
+        run: npm run test:smoke
