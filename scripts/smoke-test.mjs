@@ -28,14 +28,13 @@ async function runSmokeTests() {
   console.log(`[smoke-test] Received HTML (${(html.length / 1024).toFixed(1)} KB)`);
 
   const requiredTokens = [
-    { name: "Protected Figma Hero Headline", pattern: "AI that runs the work behind your business" },
+    { name: "Hero Headline", pattern: "Beyond Digital." },
     { name: "Editorial Statement", pattern: "Building the systems behind modern businesses" },
-    { name: "AI Ecosystem Carousel", pattern: "AI, built around your business" },
-    { name: "Argus Intelligence Layer", pattern: "Connected intelligence across your existing tools" },
-    { name: "Interactive Playground", pattern: "Play with the geometry of PropheC" },
-    { name: "Light Google Labs Footer", pattern: "Build smarter. Operate better. Scale further" },
-    { name: "Light Logo Variant", pattern: "prophec-logo-dark.png" },
-    { name: "Dark Logo Variant", pattern: "prophec-logo.png" },
+    { name: "AI Ecosystem Carousel", pattern: "OUR AI ECOSYSTEM" },
+    { name: "Argus Intelligence Layer", pattern: "ARGUS BY PROPHEC LABS" },
+    { name: "Interactive Playground", pattern: "Engineering Intelligence for Enterprise" },
+    { name: "Footer Navigation", pattern: "Other teams and product areas" },
+    { name: "Logo Asset", pattern: "prophec-logo" },
   ];
 
   for (const token of requiredTokens) {

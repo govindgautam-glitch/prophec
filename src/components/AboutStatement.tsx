@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { AmbientBackgroundDecor } from "./AmbientBackgroundDecor";
 
 export const AboutStatement: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,36 +29,21 @@ export const AboutStatement: React.FC = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full py-24 md:py-36 bg-[#F3EFEA] text-[#202320] border-t border-[rgba(12,16,21,0.08)] select-none overflow-hidden"
+      className="relative w-full py-14 sm:py-20 md:py-32 bg-white text-[#091c09] border-t border-[rgba(9,28,9,0.10)] select-none overflow-hidden"
       aria-label="Who We Are - PropheC AI Introduction"
     >
-      {/* 
-        Oversized, Partially Cropped Mint/Yellow Background Geometry 
-        Subtle scroll-linked parallax translation & rotation
-      */}
-      <div
-        className="absolute -top-16 -right-24 md:right-8 w-[360px] md:w-[560px] h-[360px] md:h-[560px] rounded-full bg-gradient-to-br from-[#03FEA7]/20 via-[#B8EFD8]/15 to-[#F8E9A1]/10 blur-3xl pointer-events-none transition-transform duration-300 ease-out -z-0"
-        style={{
-          transform: `translateY(${scrollProgress * 40}px) rotate(${scrollProgress * 15}deg)`,
-        }}
-      />
-      <div
-        className="absolute top-1/2 -left-28 w-[320px] md:w-[500px] h-[320px] md:h-[500px] rounded-[70px] bg-gradient-to-tr from-[#F8E9A1]/25 via-[#03FEA7]/10 to-transparent blur-2xl pointer-events-none transition-transform duration-300 ease-out -z-0"
-        style={{
-          transform: `translateY(${-scrollProgress * 30}px) rotate(${12 - scrollProgress * 10}deg)`,
-        }}
-      />
+      <AmbientBackgroundDecor />
 
-      <div className="relative max-w-5xl mx-auto px-5 md:px-8 z-10">
+      <div className="relative w-full max-w-[1240px] mx-auto px-4 sm:px-5 md:px-9 lg:px-14 z-10">
 
-        {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E8DFD5] text-xs font-mono font-bold tracking-wider text-[#202320]/80 shadow-2xs mb-8">
-          <span className="w-2 h-2 rounded-full bg-[#03FEA7]" />
+        {/* Eyebrow Label */}
+        <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-[11px] sm:text-xs font-mono font-bold tracking-wider text-[#091c09] shadow-2xs mb-4 sm:mb-6">
+          {/* <span className="w-2 h-2 rounded-full bg-[#02D15D]" /> */}
           <span>WHO WE ARE</span>
         </div>
 
         {/* Large Editorial Statement with Scroll-Linked Word Emphasis */}
-        <h2 className="font-urbanist font-extrabold text-[32px] sm:text-[44px] md:text-[62px] lg:text-[68px] text-[#202320] tracking-tight leading-[1.08] max-w-4xl">
+        <h2 className="font-urbanist font-extrabold text-[28px] sm:text-[40px] md:text-[56px] lg:text-[66px] text-[#091c09] tracking-tight leading-[1.1] max-w-4xl">
           {headlineWords.map((word, idx) => {
             // Sequential reveal based on scroll progress
             const wordThreshold = 0.2 + (idx / headlineWords.length) * 0.45;
@@ -66,9 +52,9 @@ export const AboutStatement: React.FC = () => {
             return (
               <span
                 key={word}
-                className="inline-block mr-[0.28em] transition-all duration-300 ease-out"
+                className="inline-block mr-[0.24em] transition-all duration-300 ease-out"
                 style={{
-                  color: isLit ? "#202320" : "rgba(32, 35, 32, 0.35)",
+                  color: isLit ? "#091c09" : "rgba(9, 28, 9, 0.28)",
                   transform: isLit ? "translateY(0)" : "translateY(2px)",
                 }}
               >
@@ -79,18 +65,22 @@ export const AboutStatement: React.FC = () => {
         </h2>
 
         {/* Supporting Paragraph */}
-        <div className="mt-8 md:mt-12 max-w-3xl space-y-5">
-          <p className="font-urbanist font-semibold text-lg sm:text-xl md:text-2xl text-[#202320]/90 leading-relaxed">
-            PropheC is an AI-driven technology company that helps startups, businesses, institutions and organisations turn ideas into intelligent digital products and scalable technology ecosystems.
+        <div className="mt-6 sm:mt-8 md:mt-12 max-w-3xl space-y-4 sm:space-y-5">
+          <p className="font-urbanist font-semibold text-base sm:text-lg md:text-2xl text-[#091c09]/90 leading-relaxed">
+            PropheC is an AI-driven technology company helping startups, businesses, institutions, and organisations turn ideas into intelligent digital products, custom software, and scalable technology ecosystems.
           </p>
 
-          <p className="font-urbanist font-medium text-base sm:text-lg md:text-xl text-[#59636E] leading-relaxed pt-2 border-t border-[rgba(12,16,21,0.08)]">
-            From websites and mobile applications to AI tools, automation, dashboards, SaaS, CRM, ERP and custom software—from concept to deployment and beyond.
+          <p className="font-urbanist font-medium text-sm sm:text-base md:text-xl text-[rgba(9,28,9,0.70)] leading-relaxed pt-3 border-t border-[rgba(9,28,9,0.10)]">
+            From websites and mobile applications to AI-powered tools, business process automation, dashboards, SaaS platforms, CRM management, ERP, and custom software, we bring strategy, design, engineering, and intelligence together to build technology around real business needs.
+          </p>
+
+          <p className="font-urbanist font-semibold text-sm sm:text-base md:text-lg text-[#0b7a34] tracking-wide">
+            From concept to deployment and beyond.
           </p>
         </div>
 
         {/* Quick Scope Indicators */}
-        <div className="mt-12 pt-8 flex flex-wrap items-center gap-3">
+        {/* <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 flex flex-wrap items-center gap-2 sm:gap-3">
           {[
             "AI Tools & Agents",
             "Custom ERP & CRM",
@@ -100,13 +90,13 @@ export const AboutStatement: React.FC = () => {
           ].map((scope) => (
             <div
               key={scope}
-              className="px-4 py-2 rounded-full bg-white/95 border border-[#E8DFD5] text-xs font-urbanist font-bold text-[#202320] shadow-2xs flex items-center gap-2 transition-transform hover:scale-105"
+              className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-[11px] sm:text-xs font-urbanist font-bold text-[#091c09] shadow-2xs flex items-center gap-2 transition-transform hover:scale-105"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#03FEA7]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#091c09]" />
               <span>{scope}</span>
             </div>
           ))}
-        </div>
+        </div> */}
 
       </div>
     </section>

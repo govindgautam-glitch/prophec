@@ -1,0 +1,679 @@
+/* ==========================================================================
+   PROPHEC — ARGUS PLATFORM & WORKFLOW SECTION (Image Parity)
+   Deep emerald dark palette, tech grid, interactive node map,
+   glass preview panel, central banner pill, and 5-card automation suite.
+   ========================================================================== */
+
+.argus-wrapper {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  background-color: #041408;
+  color: #ffffff;
+  padding: 100px 0 120px;
+  scroll-margin-top: 100px;
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+}
+
+/* Background Atmosphere */
+.argus-bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(82, 211, 112, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82, 211, 112, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 40%, black 50%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 50%, transparent 85%);
+}
+
+.argus-bg-glow-top {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1000px, 90vw);
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82, 211, 112, 0.12) 0%, rgba(82, 211, 112, 0.03) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.argus-bg-glow-mid {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(900px, 85vw);
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(82, 211, 112, 0.10) 0%, rgba(82, 211, 112, 0.02) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.argus-container {
+  position: relative;
+  z-index: 2;
+  width: min(1280px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* Header Styles */
+.argus-header {
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto 52px;
+}
+
+.argus-eyebrow {
+  display: inline-block;
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11.5px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  border: 1px solid #ffffff;
+  padding: 10px 20px;
+
+}
+
+.argus-heading {
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+  font-size: clamp(34px, 5.2vw, 62px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0 0 28px;
+}
+
+.argus-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  max-width: 860px;
+  margin: 0 auto 34px;
+  text-align: left;
+}
+
+.argus-intro-col {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #a5bdb0;
+  font-weight: 400;
+}
+
+.argus-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 30px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #05180B;
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease;
+}
+
+.argus-cta-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 35px rgba(82, 211, 112, 0.5), 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.argus-cta-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.argus-cta-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* Big Unified Glassmorphic Card */
+.argus-experience-card {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  border-radius: 28px;
+  background: rgba(6, 26, 12, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(82, 211, 112, 0.22);
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.7), 0 0 50px rgba(82, 211, 112, 0.06);
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+
+/* Map Zone */
+.argus-map-zone {
+  position: relative;
+  min-height: 490px;
+  padding: 30px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(82, 211, 112, 0.16);
+}
+
+.argus-map-kicker {
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #8fa895;
+  text-transform: uppercase;
+}
+
+.argus-map-canvas {
+  position: absolute;
+  inset: 45px 0 35px;
+  width: 100%;
+  height: calc(100% - 80px);
+  pointer-events: none;
+}
+
+.argus-svg-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.argus-path {
+  fill: none;
+  stroke: rgba(82, 211, 112, 0.22);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+  transition: stroke 0.3s ease;
+  vector-effect: non-scaling-stroke;
+}
+
+.argus-path.is-active {
+  stroke: #52D370;
+  stroke-width: 2.2;
+  stroke-dasharray: 6 8;
+  animation: argus-flow-pulse 1.8s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(82, 211, 112, 0.6));
+}
+
+@keyframes argus-flow-pulse {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+/* Center ARGUS Core */
+.argus-core-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 138px;
+  height: 138px;
+  border-radius: 26px;
+  background: #ffffff;
+  color: #07190A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: auto;
+  box-shadow: 0 0 45px rgba(82, 211, 112, 0.38), 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.argus-core-node:hover {
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.argus-core-halo {
+  position: absolute;
+  inset: -14px;
+  border-radius: 34px;
+  border: 1.5px solid rgba(82, 211, 112, 0.35);
+  animation: argus-halo-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes argus-halo-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+.argus-core-icon {
+  width: 32px;
+  height: 32px;
+  color: #07190A;
+  margin-bottom: 6px;
+}
+
+.argus-core-name {
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #07190A;
+  line-height: 1;
+}
+
+.argus-core-sub {
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 9.5px;
+  color: rgba(7, 25, 10, 0.7);
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+/* 4 Surrounding Channel Nodes */
+.argus-channel-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 132px;
+  height: 74px;
+  border-radius: 18px;
+  background: rgba(6, 28, 13, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: #8fa895;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.25s ease;
+  z-index: 5;
+}
+
+.argus-channel-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  transition: stroke 0.25s ease;
+}
+
+.argus-channel-btn:hover {
+  border-color: rgba(82, 211, 112, 0.5);
+  color: #ffffff;
+  background: rgba(8, 36, 17, 0.95);
+  transform: translate(-50%, -50%) scale(1.03);
+}
+
+.argus-channel-btn.is-active {
+  background: #092c15;
+  border: 2px solid #52D370;
+  color: #ffffff;
+  box-shadow: 0 0 28px rgba(82, 211, 112, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.argus-channel-btn.is-active svg {
+  color: #52D370;
+  stroke: #52D370;
+}
+
+/* Channel Node Positioning */
+.argus-node-whatsapp {
+  left: 19%;
+  top: 25%;
+}
+
+.argus-node-email {
+  left: 81%;
+  top: 25%;
+}
+
+.argus-node-crm {
+  left: 19%;
+  top: 75%;
+}
+
+.argus-node-accounting {
+  left: 81%;
+  top: 75%;
+}
+
+.argus-map-footnote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  color: #8fa895;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+/* Preview Zone (Right Side) */
+.argus-preview-zone {
+  padding: 34px 38px 28px;
+  background: rgba(4, 20, 9, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.argus-preview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.argus-preview-kicker {
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #8fa895;
+  text-transform: uppercase;
+}
+
+.argus-preview-badge {
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #082914;
+  border: 1px solid rgba(82, 211, 112, 0.45);
+  color: #52D370;
+}
+
+.argus-preview-title {
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 14px;
+}
+
+.argus-preview-desc {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #a5bdb0;
+  margin: 0 0 24px;
+  font-weight: 400;
+}
+
+.argus-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.argus-step-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: #f0f5f1;
+}
+
+.argus-step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.argus-governance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  color: #8fa895;
+  line-height: 1.4;
+}
+
+.argus-governance svg {
+  width: 16px;
+  height: 16px;
+  color: #52D370;
+  flex-shrink: 0;
+}
+
+/* Floating Banner Pill */
+.argus-floating-pill-wrap {
+  text-align: center;
+  margin: 0 0 64px;
+}
+
+.argus-floating-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: rgba(6, 26, 12, 0.75);
+  border: 1px solid #fff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  box-shadow: 0 0 30px rgba(82, 211, 112, 0.15);
+}
+
+/* Automation Suite Section */
+.argus-suite-head {
+  max-width: 860px;
+  margin-bottom: 38px;
+}
+
+.argus-suite-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #072410;
+  border: 1px solid #fff;
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.argus-suite-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #52D370;
+  box-shadow: 0 0 10px #52D370;
+}
+
+.argus-suite-title {
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 14px;
+}
+
+.argus-suite-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #a5bdb0;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* 5 Cards Grid */
+.argus-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.argus-module-card {
+  position: relative;
+  border-radius: 20px;
+  background: rgba(6, 24, 11, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(82, 211, 112, 0.18);
+  padding: 26px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.argus-module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(82, 211, 112, 0.4), transparent);
+}
+
+.argus-module-card:hover {
+  transform: translateY(-4px);
+  border-color: #52D370;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.6), 0 0 35px rgba(82, 211, 112, 0.2);
+}
+
+.argus-card-icon {
+  width: 28px;
+  height: 28px;
+  color: #52D370;
+  margin-bottom: 24px;
+}
+
+.argus-card-kicker {
+  font-family: var(--pc-space, 'PropheC Space Grotesk', monospace);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(82, 211, 112, 0.75);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.argus-card-title {
+  font-family: var(--pc-urbanist, 'PropheC Urbanist', sans-serif);
+  font-size: 17.5px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0 0 12px;
+  min-height: 44px;
+}
+
+.argus-card-desc {
+  font-size: 12.5px;
+  line-height: 1.62;
+  color: #a5bdb0;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .argus-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .argus-experience-card {
+    grid-template-columns: 1fr;
+  }
+
+  .argus-map-zone {
+    border-right: none;
+    border-bottom: 1px solid rgba(82, 211, 112, 0.16);
+    min-height: 460px;
+  }
+
+  .argus-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .argus-wrapper {
+    padding: 70px 0 80px;
+  }
+
+  .argus-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .argus-channel-btn {
+    width: 110px;
+    height: 64px;
+    font-size: 9.5px;
+  }
+
+  .argus-core-node {
+    width: 115px;
+    height: 115px;
+  }
+
+  .argus-core-name {
+    font-size: 15px;
+  }
+
+  .argus-core-icon {
+    width: 26px;
+    height: 26px;
+  }
+}

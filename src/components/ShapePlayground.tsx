@@ -5,14 +5,11 @@ import Matter from "matter-js";
 import { RotateCcw, Sparkles, Move, Zap } from "lucide-react";
 
 interface ShapePlaygroundProps {
-  currentTheme: "emerald" | "indigo" | "cyan" | "pearl";
-  onThemeChange: (theme: "emerald" | "indigo" | "cyan" | "pearl") => void;
+  currentTheme?: "emerald" | "indigo" | "cyan" | "pearl";
+  onThemeChange?: (theme: "emerald" | "indigo" | "cyan" | "pearl") => void;
 }
 
-export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
-  currentTheme,
-  onThemeChange,
-}) => {
+export const ShapePlayground: React.FC<ShapePlaygroundProps> = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<Matter.Engine | null>(null);
@@ -20,39 +17,6 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
   const isPausedRef = useRef(false);
   const [interactiveMode, setInteractiveMode] = useState<"gravity" | "float">("gravity");
   const [clickCount, setClickCount] = useState(0);
-
-  const themeColors = {
-    emerald: {
-      primary: "#18B951",
-      secondary: "#2FF882",
-      tertiary: "#0D2419",
-      accent: "#68D391",
-      bg: "#07140F",
-    },
-    indigo: {
-      primary: "#94A3FF",
-      secondary: "#6366F1",
-      tertiary: "#171C36",
-      accent: "#C7D2FE",
-      bg: "#0D1024",
-    },
-    cyan: {
-      primary: "#5BE3F1",
-      secondary: "#06B6D4",
-      tertiary: "#0D2730",
-      accent: "#A5F3FC",
-      bg: "#071820",
-    },
-    pearl: {
-      primary: "#2EE59D",
-      secondary: "#10B981",
-      tertiary: "#1E2D24",
-      accent: "#D1FAE5",
-      bg: "#151F19",
-    },
-  };
-
-  const colors = themeColors[currentTheme];
 
   // Initialize and manage Matter.js Physics Engine
   useEffect(() => {
@@ -103,20 +67,19 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
       restitution: 0.7,
     });
 
-    // Create 7 Playful Google Labs-style Shapes (circles, capsules, hexagons)
+    // Create 7 Playful Shapes (alternating Deep Green & Pure White)
     const shapeConfigs = [
-      { type: "circle", x: width * 0.2, y: 120, r: 36, colorKey: "primary", label: "Agent" },
-      { type: "circle", x: width * 0.35, y: 90, r: 48, colorKey: "secondary", label: "Argus" },
-      { type: "rect", x: width * 0.5, y: 150, w: 90, h: 42, colorKey: "primary", label: "Audit" },
-      { type: "circle", x: width * 0.65, y: 100, r: 40, colorKey: "secondary", label: "Flow" },
-      { type: "polygon", x: width * 0.8, y: 130, sides: 6, r: 38, colorKey: "accent", label: "Scale" },
-      { type: "circle", x: width * 0.28, y: 220, r: 28, colorKey: "accent", label: "Sync" },
-      { type: "rect", x: width * 0.6, y: 210, w: 80, h: 36, colorKey: "primary", label: "Neural" },
+      { type: "circle", x: width * 0.2, y: 120, r: 36, isWhite: false, label: "Agent" },
+      { type: "circle", x: width * 0.35, y: 90, r: 48, isWhite: true, label: "Argus" },
+      { type: "rect", x: width * 0.5, y: 150, w: 90, h: 42, isWhite: false, label: "Audit" },
+      { type: "circle", x: width * 0.65, y: 100, r: 40, isWhite: true, label: "Flow" },
+      { type: "polygon", x: width * 0.8, y: 130, sides: 6, r: 38, isWhite: false, label: "Scale" },
+      { type: "circle", x: width * 0.28, y: 220, r: 28, isWhite: true, label: "Sync" },
+      { type: "rect", x: width * 0.6, y: 210, w: 80, h: 36, isWhite: false, label: "Neural" },
     ];
 
     const shapes: Matter.Body[] = shapeConfigs.map((cfg) => {
       let body: Matter.Body;
-      const renderColor = colors[cfg.colorKey as keyof typeof colors];
 
       if (cfg.type === "circle") {
         body = Matter.Bodies.circle(cfg.x, cfg.y, cfg.r || 36, {
@@ -140,8 +103,7 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
 
       // Store visual metadata on body
       (body as unknown as { customData: unknown }).customData = {
-        colorKey: cfg.colorKey,
-        baseColor: renderColor,
+        isWhite: cfg.isWhite,
         label: cfg.label,
         type: cfg.type,
         r: cfg.r || 35,
@@ -175,7 +137,7 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
       ctx.clearRect(0, 0, width, height);
 
       // Draw subtle grid
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+      ctx.strokeStyle = "rgba(9, 28, 9, 0.04)";
       ctx.lineWidth = 1;
       for (let x = 0; x < width; x += 40) {
         ctx.beginPath();
@@ -192,8 +154,11 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
 
       // Draw each physics shape
       shapes.forEach((body) => {
-        const data = (body as unknown as { customData: { colorKey: keyof typeof colors; label: string } }).customData;
-        const color = colors[data.colorKey] || colors.primary;
+        const data = (body as unknown as { customData: { isWhite: boolean; label: string } }).customData;
+        const isWhite = data.isWhite;
+        const color = isWhite ? "#ffffff" : "#091c09";
+        const strokeColor = isWhite ? "#091c09" : "rgba(255, 255, 255, 0.40)";
+        const textColor = isWhite ? "#091c09" : "#ffffff";
 
         ctx.save();
         ctx.translate(body.position.x, body.position.y);
@@ -207,19 +172,20 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
         }
         ctx.closePath();
 
-        // Glow & Fill
-        ctx.shadowColor = color;
-        ctx.shadowBlur = 15;
+        // Fill with shadow
+        ctx.shadowColor = "rgba(9, 28, 9, 0.12)";
+        ctx.shadowBlur = 12;
+        ctx.shadowOffsetY = 4;
         ctx.fillStyle = color;
         ctx.fill();
 
         ctx.shadowBlur = 0;
-        ctx.lineWidth = 1.5;
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = strokeColor;
         ctx.stroke();
 
         // Label inside shape
-        ctx.fillStyle = "#050B14";
+        ctx.fillStyle = textColor;
         ctx.font = "bold 11px 'Urbanist', sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -242,57 +208,53 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
     );
     observer.observe(containerRef.current);
 
-    // Visibility change handler (pauses tab catch-up spikes)
+    // Visibility change handler
     const handleVisibilityChange = () => {
       isPausedRef.current = document.hidden;
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Clean up
+    // Click to add impulse
+    const handleCanvasClick = (e: MouseEvent) => {
+      if (!canvasRef.current) return;
+      const rect = canvasRef.current.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      shapes.forEach((body) => {
+        const dx = body.position.x - clickX;
+        const dy = body.position.y - clickY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 160 && dist > 0) {
+          const forceMag = (1 - dist / 160) * 0.08;
+          Matter.Body.applyForce(body, body.position, {
+            x: (dx / dist) * forceMag,
+            y: (dy / dist) * forceMag - 0.04,
+          });
+        }
+      });
+
+      setClickCount((c) => c + 1);
+    };
+
+    canvas.addEventListener("click", handleCanvasClick);
+
     return () => {
       cancelAnimationFrame(animId);
       observer.disconnect();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      canvas.removeEventListener("click", handleCanvasClick);
+      Matter.World.clear(engine.world, false);
       Matter.Engine.clear(engine);
     };
-  }, [currentTheme, colors]);
+  }, []);
 
-  // Click or tap impulse: applies upward + lateral impulse
-  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!canvasRef.current || !engineRef.current) return;
-    const rect = canvasRef.current.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const clickY = e.clientY - rect.top;
-
-    setClickCount((c) => c + 1);
-
-    bodiesRef.current.forEach((body) => {
-      const dx = body.position.x - clickX;
-      const dy = body.position.y - clickY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      // If clicked near shape, give high impulse, else general agitation
-      if (dist < 180) {
-        const forceMagnitude = 0.045 * (1 - dist / 220);
-        Matter.Body.applyForce(body, body.position, {
-          x: (dx / dist) * forceMagnitude * 1.5,
-          y: -0.06 - Math.random() * 0.03, // strong upward impulse
-        });
-      } else {
-        Matter.Body.applyForce(body, body.position, {
-          x: (Math.random() - 0.5) * 0.015,
-          y: -0.02 - Math.random() * 0.02,
-        });
-      }
-    });
-  };
-
-  // Reset Shapes to Deterministic Arrangement
-  const handleReset = () => {
-    if (!containerRef.current) return;
+  const resetArrangement = () => {
+    if (!containerRef.current || !engineRef.current) return;
     const width = containerRef.current.clientWidth;
 
-    const initialPositions = [
+    const basePositions = [
       { x: width * 0.2, y: 120 },
       { x: width * 0.35, y: 90 },
       { x: width * 0.5, y: 150 },
@@ -303,20 +265,18 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
     ];
 
     bodiesRef.current.forEach((body, idx) => {
-      if (initialPositions[idx]) {
-        Matter.Body.setPosition(body, initialPositions[idx]);
-        Matter.Body.setVelocity(body, { x: 0, y: 0 });
-        Matter.Body.setAngularVelocity(body, 0);
-        Matter.Body.setAngle(body, 0);
-      }
+      const pos = basePositions[idx] || { x: width * 0.5, y: 150 };
+      Matter.Body.setPosition(body, pos);
+      Matter.Body.setVelocity(body, { x: 0, y: 0 });
+      Matter.Body.setAngularVelocity(body, 0);
+      Matter.Body.setAngle(body, 0);
     });
   };
 
-  // Toggle Float/Zero Gravity mode
   const toggleGravity = () => {
     if (!engineRef.current) return;
     if (interactiveMode === "gravity") {
-      engineRef.current.gravity.y = -0.05; // gentle float
+      engineRef.current.gravity.y = -0.15;
       setInteractiveMode("float");
     } else {
       engineRef.current.gravity.y = 0.8;
@@ -325,82 +285,62 @@ export const ShapePlayground: React.FC<ShapePlaygroundProps> = ({
   };
 
   return (
-    <section id="playground" className="relative w-full py-20 px-4 md:px-8 border-b border-white/5 select-none transition-colors duration-500 bg-[var(--section-bg,#07140F)] text-[var(--text-primary,#F4FFF8)]">
+    <section id="playground" className="relative w-full py-20 px-4 md:px-8 border-b border-[rgba(9,28,9,0.10)] select-none bg-white text-[#091c09]">
       <div className="max-w-6xl mx-auto">
         
-        {/* Header & Controls */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
+        {/* Header Block */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[var(--accent,#18B951)] mb-3">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>GOOGLE LABS-INSPIRED INTERACTION</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[rgba(9,28,9,0.12)] text-xs font-mono font-bold text-[#091c09] mb-3 shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#091c09]" />
+              <span>INTERACTIVE PHYSICS LAB</span>
             </div>
-            <h2 className="font-urbanist font-extrabold text-3xl md:text-5xl tracking-tight">
-              Interactive Physics & Theme Lab
+            <h2 className="font-urbanist font-extrabold text-3xl md:text-5xl text-[#091c09] tracking-tight">
+              Matter.js Geometric Arena
             </h2>
-            <p className="text-sm md:text-base text-[var(--text-muted,#84A995)] mt-2 max-w-xl">
-              Tap or click to launch shapes with physics-bounded impulses. Switch lower-section theme palettes below without touching the hero.
+            <p className="font-urbanist text-[rgba(9,28,9,0.70)] text-sm md:text-base mt-2 max-w-xl font-medium">
+              Click anywhere inside the arena to create explosive impulse fields. Tap reset to align them back to blueprint state.
             </p>
           </div>
 
-          {/* Theme Palette Switchers (Scoped strictly to lower sections) */}
-          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-white/5 border border-white/10 flex-wrap">
-            <span className="text-xs text-white/50 px-2 font-mono">THEME:</span>
-            {(["emerald", "indigo", "cyan", "pearl"] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => onThemeChange(t)}
-                className={`px-3 py-1 rounded-xl text-xs font-medium capitalize transition-all ${
-                  currentTheme === t
-                    ? "bg-[var(--accent,#18B951)] text-black font-bold shadow-md"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Physics Canvas Arena */}
-        <div 
-          ref={containerRef}
-          className="relative w-full h-[440px] rounded-3xl border border-white/10 bg-black/40 overflow-hidden shadow-2xl"
-        >
-          <canvas
-            ref={canvasRef}
-            onClick={handleCanvasClick}
-            className="w-full h-full cursor-pointer touch-pan-y"
-            title="Click or tap to toss shapes"
-          />
-
-          {/* Floating Canvas Controls Overlay */}
-          <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+          {/* Controller Actions */}
+          <div className="flex items-center gap-3">
             <button
               onClick={toggleGravity}
-              className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-xs text-white flex items-center gap-1.5 transition-all"
+              className={`px-3.5 py-1.5 rounded-full text-xs font-urbanist font-bold border transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs ${
+                interactiveMode === "float"
+                  ? "bg-[#091c09] text-white border-[#091c09]"
+                  : "bg-white text-[#091c09] border-[rgba(9,28,9,0.12)] hover:bg-[rgba(9,28,9,0.04)]"
+              }`}
             >
-              <Zap className="w-3.5 h-3.5 text-[var(--accent,#18B951)]" />
-              <span>{interactiveMode === "gravity" ? "Zero-G Float" : "Normal Gravity"}</span>
+              {interactiveMode === "float" ? <Move className="w-3.5 h-3.5" /> : <Zap className="w-3.5 h-3.5" />}
+              <span>{interactiveMode === "float" ? "Float Mode" : "Gravity Mode"}</span>
             </button>
 
             <button
-              onClick={handleReset}
-              className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-xs text-white flex items-center gap-1.5 transition-all"
+              onClick={resetArrangement}
+              className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[rgba(9,28,9,0.04)] border border-[rgba(9,28,9,0.12)] text-[#091c09] font-urbanist font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset</span>
             </button>
           </div>
+        </div>
 
-          {/* Canvas Subtitle Overlay */}
-          <div className="absolute bottom-4 left-4 pointer-events-none flex items-center gap-3 text-xs text-white/40 font-mono">
-            <div className="flex items-center gap-1.5">
-              <Move className="w-3.5 h-3.5" />
-              <span>Click arena to trigger kinetic impulse</span>
-            </div>
-            <span>•</span>
-            <span>Impulses triggered: {clickCount}</span>
+        {/* Physics Canvas Arena */}
+        <div
+          ref={containerRef}
+          className="relative w-full h-[440px] rounded-3xl bg-white border border-[rgba(9,28,9,0.12)] overflow-hidden shadow-sm"
+        >
+          <canvas
+            ref={canvasRef}
+            className="w-full h-full cursor-crosshair"
+            title="Click to interact"
+          />
+
+          {/* Floating Instructions */}
+          <div className="absolute bottom-4 left-4 pointer-events-none text-[11px] font-mono text-[rgba(9,28,9,0.60)] bg-white/90 backdrop-blur-xs px-3 py-1 rounded-full border border-[rgba(9,28,9,0.12)]">
+            <span>Interactions: {clickCount} • Physics Engine: Matter.js</span>
           </div>
         </div>
 
