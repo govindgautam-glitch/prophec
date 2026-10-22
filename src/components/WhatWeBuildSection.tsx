@@ -258,7 +258,7 @@ export const WhatWeBuildSection: React.FC = () => {
           </div>
 
           {/* 6 Principles Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {PRINCIPLES.map((p) => (
               <div
                 key={p.title}
@@ -306,7 +306,7 @@ export const WhatWeBuildSection: React.FC = () => {
           </div>
 
           {/* Dark Translucent Client Logo Grid with Elevated Logo Showcase Tiles */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {OUR_WORK_CLIENTS.map((client) => {
               const clientLogoMap: Record<string, string> = {
                 "HobNob Realtech": "/logos/hobnob.png",
@@ -414,7 +414,7 @@ export const WhatWeBuildSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {LEADERSHIP_TEAM.map((leader) => {
               const photos: Record<string, string> = {
                 "Aditya Mittal": "/Aditya.webp",
