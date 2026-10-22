@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WORK_PROJECTS, WORK_PROJECTS_BY_SLUG } from "@/data/ourWorkProjects";
@@ -49,8 +49,6 @@ export default async function WorkProjectPage({ params }: PageProps) {
   if (!project) {
     notFound();
   }
-
-  const otherProjects = WORK_PROJECTS.filter((p) => p.slug !== slug);
 
   return (
     <div className="relative w-full min-h-screen bg-[#091c09] text-white selection:bg-[#52D370] selection:text-[#091c09] overflow-x-hidden">

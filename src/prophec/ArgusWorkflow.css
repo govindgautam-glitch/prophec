@@ -654,7 +654,36 @@
   }
 
   .argus-cards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .argus-module-card {
+    padding: 18px 14px 16px;
+    border-radius: 16px;
+  }
+
+  .argus-card-icon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 12px;
+  }
+
+  .argus-card-kicker {
+    font-size: 9px;
+    margin-bottom: 6px;
+  }
+
+  .argus-card-title {
+    font-size: 14px;
+    line-height: 1.3;
+    min-height: auto;
+    margin-bottom: 8px;
+  }
+
+  .argus-card-desc {
+    font-size: 11px;
+    line-height: 1.5;
   }
 
   .argus-channel-btn {
