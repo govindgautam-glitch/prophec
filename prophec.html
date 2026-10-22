@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PropheC AI — AI-Driven Technology, Intelligent Systems & Custom Software</title>
+  <meta name="description" content="PropheC builds intelligent digital products, AI-powered systems, AI business automation, and scalable custom software solutions." />
+  
+  <!-- Modern Typography: Urbanist & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       1. CSS CUSTOM PROPERTIES & TOKENS (PropheC Dual-Tone Theme v5.0)
+       ========================================================================== */
+    :root {
+      --font-urbanist: "Urbanist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-space: "Space Grotesk", monospace, sans-serif;
+
+      /* Primary Dual-Tone Primitives */
+      --brand-green: #091c09;
+      --brand-white: #ffffff;
+
+      /* Editorial Footer Palette */
+      --editorial-sand: #F3F0EB;
+      --editorial-ink: #202124;
+      --editorial-mute: #5f6368;
+
+      /* Accents */
+      --accent-emerald: #52D370;
+      --accent-forest: #0b7a34;
+      --accent-sage: #B7C9B2;
+      --accent-sage-light: #C5D6C1;
+      --accent-amber: #FDC836;
+      --accent-spark: #FDC836;
+      --accent-spark-glow: rgba(253, 200, 54, 0.40);
+      --accent-spark-subtle: rgba(253, 200, 54, 0.14);
+
+      /* Controlled Transparencies */
+      --dark-surface: rgba(9, 28, 9, 0.84);
+      --dark-card-border: rgba(255, 255, 255, 0.16);
+      --dark-text-muted: rgba(255, 255, 255, 0.75);
+
+      --light-surface: #ffffff;
+      --light-border: rgba(9, 28, 9, 0.10);
+      --light-text-muted: rgba(9, 28, 9, 0.70);
+      --light-media-bg: rgba(9, 28, 9, 0.03);
+
+      /* Motion */
+      --ease-prophec: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-fanning: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--brand-white);
+      color: var(--brand-green);
+      font-family: var(--font-urbanist);
+      font-size: 16px;
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    ::selection {
+      background-color: var(--brand-green);
+      color: var(--brand-white);
+    }
+
+    .dark-surface ::selection {
+      background-color: var(--accent-spark);
+      color: var(--brand-green);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    /* Container Bounds */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(1rem, 4vw, 3.5rem);
+      padding-right: clamp(1rem, 4vw, 3.5rem);
+      position: relative;
+    }
+
+    /* Eyebrow Pill Chips */
+    .eyebrow-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: var(--font-space);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 1px 3px rgba(9, 28, 9, 0.04);
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .eyebrow-chip.light {
+      background-color: var(--brand-white);
+      border: 1px solid rgba(9, 28, 9, 0.12);
+      color: var(--brand-green);
+    }
+
+    .eyebrow-chip.dark {
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--brand-white);
+    }
+
+    .eyebrow-chip.dark .dot {
+      background-color: var(--accent-spark);
+      box-shadow: 0 0 10px var(--accent-spark);
+      animation: pulseSpark 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseSpark {
+      0%, 100% { opacity: 0.85; transform: scale(1); box-shadow: 0 0 8px var(--accent-spark); }
+      50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 14px var(--accent-spark); }
+    }
+
+    .eyebrow-chip .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+
+    /* Buttons */
+    .btn-pill-primary-white {
+      height: 48px;
+      border-radius: 9999px;
+      background-color: #ffffff;
+      color: #091c09;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.40);
+      box-shadow: 0 4px 18px -2px rgba(255, 255, 255, 0.25);
+      transition: all 0.2s var(--ease-prophec);
+      cursor: pointer;
+    }
+    .btn-pill-primary-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -2px rgba(255, 255, 255, 0.38);
+      background-color: #f7fdf7;
+    }
+
+    .btn-pill-outline-white {
+      height: 48px;
+      border-radius: 9999px;
+      background-color: transparent;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.24);
+      transition: all 0.2s var(--ease-prophec);
+      cursor: pointer;
+    }
+    .btn-pill-outline-white:hover {
+      transform: translateY(-2px);
+      border-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-pill-primary-green {
+      height: 48px;
+      border-radius: 9999px;
+      background-color: #091c09;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(9, 28, 9, 0.3);
+      box-shadow: 0 4px 18px -2px rgba(9, 28, 9, 0.25);
+      transition: all 0.2s var(--ease-prophec);
+      cursor: pointer;
+    }
+    .btn-pill-primary-green:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -2px rgba(9, 28, 9, 0.35);
+      background-color: #0e2b0e;
+    }
+
+    .btn-pill-outline-green {
+      height: 48px;
+      border-radius: 9999px;
+      background-color: transparent;
+      color: #091c09;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1.5px solid rgba(9, 28, 9, 0.20);
+      transition: all 0.2s var(--ease-prophec);
+      cursor: pointer;
+    }
+    .btn-pill-outline-green:hover {
+      transform: translateY(-2px);
+      border-color: #091c09;
+      background-color: rgba(9, 28, 9, 0.04);
+    }
+
+    /* Circular Controls */
+    .btn-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: rgba(9, 28, 9, 0.06);
+      color: var(--brand-green);
+      border: 1px solid rgba(9, 28, 9, 0.12);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s var(--ease-prophec);
+      cursor: pointer;
+    }
+    .btn-circle:hover:not(:disabled) {
+      background-color: rgba(9, 28, 9, 0.12);
+      transform: scale(1.06);
+    }
+    .btn-circle:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Ambient Decorative Curves & Gradient Backdrops */
+    .ambient-decor-wrapper {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-blob-left {
+      position: absolute;
+      width: 520px;
+      height: 580px;
+      top: 15%;
+      left: -140px;
+      border-radius: 48% 52% 58% 42% / 42% 58% 48% 52%;
+      background: radial-gradient(ellipse at 35% 50%, rgba(195, 232, 205, 0.48) 0%, rgba(155, 222, 175, 0.22) 42%, rgba(82, 211, 112, 0.07) 68%, transparent 82%);
+      filter: blur(40px);
+    }
+
+    .ambient-blob-right {
+      position: absolute;
+      width: 600px;
+      height: 640px;
+      top: -60px;
+      right: -130px;
+      border-radius: 58% 42% 48% 52% / 52% 48% 52% 48%;
+      background: radial-gradient(ellipse at 65% 45%, rgba(195, 232, 205, 0.52) 0%, rgba(155, 222, 175, 0.25) 45%, rgba(82, 211, 112, 0.08) 70%, transparent 85%);
+      filter: blur(42px);
+    }
+
+    /* ==========================================================================
+       2. NAVIGATION BAR
+       ========================================================================== */
+    header.site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1rem 0;
+      z-index: 1000;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    nav.navbar {
+      pointer-events: auto;
+      max-width: 1240px;
+      margin: 0 auto;
+      height: 70px;
+      border-radius: 9999px;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(9, 28, 9, 0.12);
+      box-shadow: 0 10px 30px -10px rgba(9, 28, 9, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+      color: var(--brand-green);
+    }
+    .nav-brand span.ai {
+      color: var(--accent-forest);
+      font-size: 0.8em;
+      margin-left: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: rgba(9, 28, 9, 0.80);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--brand-green);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-search-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-green);
+      background: rgba(9, 28, 9, 0.05);
+      border: 1px solid rgba(9, 28, 9, 0.08);
+      transition: all 0.2s;
+    }
+    .nav-search-btn:hover {
+      background: rgba(9, 28, 9, 0.10);
+      transform: scale(1.05);
+    }
+
+    .nav-cta-btn {
+      height: 40px;
+      padding: 0 1.25rem;
+      border-radius: 9999px;
+      background: var(--brand-green);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .nav-cta-btn:hover {
+      background: #0e2b0e;
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(9, 28, 9, 0.05);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 28, 9, 0.7);
+      backdrop-filter: blur(12px);
+      z-index: 10000;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer.open {
+      display: block;
+      opacity: 1;
+    }
+    .drawer-content {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 85%;
+      max-width: 380px;
+      background: #ffffff;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: transform 0.3s var(--ease-prophec);
+    }
+    .mobile-drawer.open .drawer-content {
+      transform: translateX(0);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION (Dark Command Canvas: #091c09)
+       ========================================================================== */
+    section.hero-section {
+      position: relative;
+      background-color: var(--brand-green);
+      color: #ffffff;
+      padding-top: 140px;
+      padding-bottom: 90px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(90deg, transparent, black 60%);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 60%);
+      pointer-events: none;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-copy h1 span.subtext {
+      color: rgba(255, 255, 255, 0.70);
+      font-weight: 700;
+    }
+
+    .hero-lead {
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Orbiting Art Canvas */
+    .orbit-scene-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orbit-svg-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .orbit-center-core {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      background: rgba(9, 28, 9, 0.90);
+      border: 1.5px solid rgba(253, 200, 54, 0.35);
+      box-shadow: 
+        inset 0 0 20px rgba(253, 200, 54, 0.12),
+        0 0 25px rgba(253, 200, 54, 0.15),
+        0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 5;
+    }
+    .orbit-center-core svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--accent-spark);
+      fill: none;
+      stroke-width: 1.8;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 0 6px rgba(253, 200, 54, 0.4));
+    }
+    .orbit-center-core span {
+      font-family: var(--font-space);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.90);
+      line-height: 1.2;
+    }
+
+    /* Counter-Rotating Rotor System */
+    .orbit-rotor {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      animation: orbitRotateCW 65s linear infinite;
+    }
+    .orbit-scene-container:hover .orbit-rotor {
+      animation-play-state: paused;
+    }
+
+    .orbit-node-slot {
+      position: absolute;
+      width: 170px;
+      height: 70px;
+      margin-left: -85px;
+      margin-top: -35px;
+    }
+    /* 4 Node Coordinates on a 420px diameter orbit (radius 210px) */
+    .slot-0 { top: 50%; left: 88%; }
+    .slot-1 { top: 88%; left: 50%; }
+    .slot-2 { top: 50%; left: 12%; }
+    .slot-3 { top: 12%; left: 50%; }
+
+    .orbit-card-counter {
+      width: 100%;
+      height: 100%;
+      animation: orbitRotateCCW 65s linear infinite;
+    }
+    .orbit-scene-container:hover .orbit-card-counter {
+      animation-play-state: paused;
+    }
+
+    .orbit-agent-btn {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      background: rgba(9, 28, 9, 0.86);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.25s var(--ease-prophec);
+    }
+    .orbit-agent-btn:hover, .orbit-agent-btn.active {
+      border-color: rgba(253, 200, 54, 0.65);
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(253, 200, 54, 0.22);
+      background: rgba(14, 40, 14, 0.96);
+    }
+    .orbit-agent-btn.active .icon-box {
+      background: rgba(253, 200, 54, 0.18);
+      border-color: rgba(253, 200, 54, 0.50);
+      color: var(--accent-spark);
+      box-shadow: 0 0 10px rgba(253, 200, 54, 0.35);
+    }
+    .orbit-agent-btn .icon-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      shrink: 0;
+      color: #ffffff;
+      transition: all 0.25s;
+    }
+    .orbit-agent-btn .text-box strong {
+      display: block;
+      font-size: 0.84rem;
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .orbit-agent-btn .text-box small {
+      display: block;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    @keyframes orbitRotateCW {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes orbitRotateCCW {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    /* Live Telemetry Readout */
+    .hero-readout {
+      position: absolute;
+      bottom: -40px;
+      right: 0;
+      max-width: 320px;
+      background: rgba(9, 28, 9, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(14px);
+      border-radius: 16px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.82rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .hero-readout .kicker {
+      font-family: var(--font-space);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent-spark);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* ==========================================================================
+       4. ABOUT STATEMENT (Editorial Light Canvas)
+       ========================================================================== */
+    section.about-section {
+      position: relative;
+      background-color: var(--brand-white);
+      color: var(--brand-green);
+      padding: 120px 0 100px;
+      border-top: 1px solid var(--light-border);
+      overflow: hidden;
+    }
+
+    .about-headline {
+      font-size: clamp(1.8rem, 4.2vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      max-width: 900px;
+      margin-bottom: 2.5rem;
+    }
+    .about-headline span.word {
+      display: inline-block;
+      margin-right: 0.22em;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .about-headline span.word.lit {
+      color: var(--brand-green);
+    }
+    .about-headline span.word.dim {
+      color: rgba(9, 28, 9, 0.28);
+    }
+
+    .about-text-lead {
+      font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+      font-weight: 600;
+      line-height: 1.6;
+      color: rgba(9, 28, 9, 0.90);
+      max-width: 820px;
+      margin-bottom: 1.5rem;
+    }
+    .about-text-sub {
+      font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+      font-weight: 500;
+      line-height: 1.65;
+      color: var(--light-text-muted);
+      max-width: 820px;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--light-border);
+      margin-bottom: 1.5rem;
+    }
+    .about-punchline {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-forest);
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================================================
+       5. AI ECOSYSTEM 3D SPATIAL CAROUSEL
+       ========================================================================== */
+    section.carousel-section {
+      position: relative;
+      background-color: var(--brand-white);
+      color: var(--brand-green);
+      padding: 80px 0 120px;
+      overflow: hidden;
+    }
+
+    .carousel-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3rem;
+    }
+    .carousel-header h2 {
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .carousel-header p {
+      font-size: 1.1rem;
+      color: var(--light-text-muted);
+      max-width: 600px;
+    }
+
+    .carousel-stage-container {
+      position: relative;
+      width: 100%;
+      min-height: 480px;
+      perspective: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .carousel-cards-track {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-card {
+      position: absolute;
+      width: clamp(290px, 60vw, 380px);
+      height: 420px;
+      background: #ffffff;
+      border-radius: 28px;
+      border: 1px solid rgba(9, 28, 9, 0.12);
+      box-shadow: 0 10px 30px -8px rgba(9, 28, 9, 0.08);
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: grab;
+      transition: transform 0.5s var(--ease-fanning), opacity 0.5s ease, box-shadow 0.5s ease;
+      will-change: transform;
+    }
+    .service-card:active {
+      cursor: grabbing;
+    }
+    .service-card.active {
+      box-shadow: 0 24px 50px -12px rgba(9, 28, 9, 0.16), 0 0 0 1.5px rgba(253, 200, 54, 0.45);
+      border-color: rgba(253, 200, 54, 0.50);
+    }
+    .service-card.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 3px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, transparent, var(--accent-spark), transparent);
+    }
+    .service-card.active .num-badge {
+      color: #996c00;
+      font-weight: 800;
+    }
+    .service-card.active .icon-chip {
+      background: rgba(253, 200, 54, 0.14);
+      border-color: rgba(253, 200, 54, 0.40);
+      box-shadow: 0 0 12px rgba(253, 200, 54, 0.22);
+    }
+
+    .service-card .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .service-card .num-badge {
+      font-family: var(--font-space);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: rgba(9, 28, 9, 0.65);
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+    .service-card .icon-chip {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(9, 28, 9, 0.04);
+      border: 1px solid rgba(9, 28, 9, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-green);
+      transition: all 0.3s;
+    }
+    .service-card .card-body h3 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+      color: var(--brand-green);
+    }
+    .service-card .card-body p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--light-text-muted);
+    }
+    .service-card .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(9, 28, 9, 0.08);
+    }
+    .service-card .category-tag {
+      font-family: var(--font-space);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(9, 28, 9, 0.60);
+    }
+
+    .carousel-nav-bar {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .carousel-index-readout {
+      font-family: var(--font-space);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+    }
+    .carousel-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* ==========================================================================
+       6. WHAT WE BUILD, PRINCIPLES & INDUSTRY TABS
+       ========================================================================== */
+    section.build-section {
+      background-color: var(--brand-white);
+      color: var(--brand-green);
+      padding: 100px 0;
+      border-top: 1px solid var(--light-border);
+      position: relative;
+    }
+
+    .build-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 5rem;
+    }
+    .build-tile {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid var(--light-border);
+      padding: 2rem;
+      transition: all 0.3s var(--ease-prophec);
+      box-shadow: 0 4px 16px rgba(9, 28, 9, 0.03);
+    }
+    .build-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(9, 28, 9, 0.08);
+      border-color: rgba(9, 28, 9, 0.22);
+    }
+    .build-tile .icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(9, 28, 9, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-green);
+      margin-bottom: 1.5rem;
+    }
+    .build-tile h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .build-tile p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--light-text-muted);
+    }
+
+    /* Industry Tabs */
+    .tabs-container {
+      margin-top: 3rem;
+      margin-bottom: 5rem;
+      background: #fafbfa;
+      border: 1px solid var(--light-border);
+      border-radius: 32px;
+      padding: clamp(1.5rem, 3vw, 3rem);
+    }
+    .tab-buttons-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 1px solid rgba(9, 28, 9, 0.12);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--brand-green);
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--brand-green);
+      color: #ffffff;
+      border-color: var(--brand-green);
+    }
+    .tab-panel {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .tab-panel.active {
+      display: grid;
+    }
+    .tab-panel h4 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .tab-panel p {
+      font-size: 1.05rem;
+      color: var(--light-text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .outcomes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .outcomes-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .outcomes-list li svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent-forest);
+      shrink: 0;
+    }
+    .flow-steps-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid var(--light-border);
+      padding: 2.5rem;
+      box-shadow: 0 8px 24px rgba(9, 28, 9, 0.04);
+    }
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .flow-step-box {
+      flex: 1;
+      padding: 1.25rem 0.5rem;
+      text-align: center;
+      border-radius: 16px;
+      background: rgba(9, 28, 9, 0.03);
+      border: 1px solid rgba(9, 28, 9, 0.08);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .flow-arrow {
+      color: rgba(9, 28, 9, 0.4);
+    }
+
+    /* Client Showcase Row */
+    .client-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .client-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid var(--light-border);
+      padding: 1.75rem;
+      transition: all 0.25s;
+    }
+    .client-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(9, 28, 9, 0.06);
+      border-color: rgba(9, 28, 9, 0.2);
+    }
+    .client-card .sector-chip {
+      font-family: var(--font-space);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(9, 28, 9, 0.6);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .client-card h5 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .client-card p {
+      font-size: 0.86rem;
+      color: var(--light-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Leadership Team */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .leader-card {
+      background: #fafbfa;
+      border: 1px solid var(--light-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+    }
+    .leader-card strong {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .leader-card span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--light-text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .leader-card small {
+      font-family: var(--font-space);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-forest);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       7. ARGUS WORKFLOW AUTOMATION SECTION
+       ========================================================================== */
+    section.argus-section {
+      background-color: var(--brand-white);
+      color: var(--brand-green);
+      padding: 100px 0;
+      border-top: 1px solid var(--light-border);
+      position: relative;
+    }
+
+    .argus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .argus-node-graph {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fafbfa;
+      border: 1px solid var(--light-border);
+      border-radius: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .argus-core-center {
+      position: relative;
+      z-index: 10;
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      background: #ffffff;
+      border: 2px solid var(--brand-green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(9, 28, 9, 0.1), inset 0 0 16px rgba(253, 200, 54, 0.15);
+      text-align: center;
+    }
+    .argus-core-center strong {
+      font-family: var(--font-space);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .argus-core-center small {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #996c00;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .argus-core-center small::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-spark);
+      box-shadow: 0 0 6px var(--accent-spark);
+    }
+
+    .satellite-node {
+      position: absolute;
+      width: 110px;
+      height: 64px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid rgba(9, 28, 9, 0.14);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 15;
+      transition: all 0.25s var(--ease-prophec);
+      box-shadow: 0 6px 16px rgba(9, 28, 9, 0.04);
+      text-align: center;
+    }
+    .satellite-node.active {
+      background: var(--brand-green);
+      color: #ffffff;
+      border-color: var(--accent-spark);
+      box-shadow: 0 12px 28px rgba(9, 28, 9, 0.25), 0 0 18px rgba(253, 200, 54, 0.35);
+      transform: scale(1.08);
+    }
+    .satellite-node.active small {
+      color: var(--accent-spark);
+      opacity: 1;
+      font-weight: 700;
+    }
+    .satellite-node strong {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .satellite-node small {
+      font-size: 0.68rem;
+      opacity: 0.75;
+      transition: color 0.2s;
+    }
+
+    .node-whatsapp { top: 25px; left: 50%; transform: translateX(-50%); }
+    .node-email { top: 50%; right: 25px; transform: translateY(-50%); }
+    .node-crm { bottom: 25px; left: 50%; transform: translateX(-50%); }
+    .node-erp { top: 50%; left: 25px; transform: translateY(-50%); }
+
+    .node-whatsapp.active { transform: translateX(-50%) scale(1.08); }
+    .node-email.active { transform: translateY(-50%) scale(1.08); }
+    .node-crm.active { transform: translateX(-50%) scale(1.08); }
+    .node-erp.active { transform: translateY(-50%) scale(1.08); }
+
+    .argus-pulse-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .argus-preview-box {
+      background: #fafbfa;
+      border-radius: 28px;
+      border: 1px solid var(--light-border);
+      padding: 2.2rem;
+    }
+    .argus-preview-box h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.75rem;
+    }
+    .argus-preview-box p.desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--light-text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .argus-steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .argus-steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(9, 28, 9, 0.08);
+      font-family: var(--font-space);
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      shrink: 0;
+    }
+
+    /* ==========================================================================
+       8. ROBOT PHYSICS PLAYGROUND (HTML5 Canvas 2D)
+       ========================================================================== */
+    section.playground-section {
+      background-color: var(--brand-white);
+      color: var(--brand-green);
+      padding: 100px 0;
+      border-top: 1px solid var(--light-border);
+      position: relative;
+    }
+
+    .playground-wrapper {
+      position: relative;
+      width: 100%;
+      background: #fafbfa;
+      border: 1.5px solid var(--light-border);
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(9, 28, 9, 0.04);
+      margin-top: 2.5rem;
+    }
+
+    canvas#robot-canvas {
+      display: block;
+      width: 100%;
+      height: 480px;
+      cursor: grab;
+      touch-action: none;
+    }
+    canvas#robot-canvas:active {
+      cursor: grabbing;
+    }
+
+    .playground-toolbar {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 20;
+    }
+    .tool-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(9, 28, 9, 0.12);
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--brand-green);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .tool-btn:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(9, 28, 9, 0.08);
+    }
+
+    .playground-hint {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.5rem;
+      font-family: var(--font-space);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(9, 28, 9, 0.5);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       9. WARM SAND EDITORIAL FOOTER
+       ========================================================================== */
+    footer.site-footer {
+      position: relative;
+      background-color: var(--editorial-sand);
+      color: var(--editorial-ink);
+      padding: 100px 0 60px;
+      border-top: 1px solid rgba(32, 33, 36, 0.12);
+      overflow: hidden;
+    }
+
+    .footer-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .footer-top-row span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--editorial-ink);
+    }
+    .footer-top-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-top-nav a {
+      font-size: 0.95rem;
+      color: var(--editorial-mute);
+      transition: color 0.2s;
+    }
+    .footer-top-nav a:hover {
+      color: var(--editorial-ink);
+    }
+
+    .footer-giant-brand {
+      font-size: clamp(3.2rem, 13vw, 13rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.84;
+      margin-bottom: 3.5rem;
+      word-break: break-word;
+      user-select: none;
+    }
+
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(32, 33, 36, 0.15);
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-columns-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      font-size: 0.86rem;
+    }
+    .footer-col h6 {
+      font-family: var(--font-space);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--editorial-mute);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .footer-col a {
+      color: var(--editorial-ink);
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .footer-col a:hover {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       10. ACTION MODALS (Audit & Cmd+K Search)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 28, 9, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .modal-backdrop.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-window {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      background: #091c09;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.25s var(--ease-prophec);
+    }
+    .modal-backdrop.open .modal-window {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--accent-spark);
+      box-shadow: 0 0 0 3px rgba(253, 200, 54, 0.22);
+    }
+
+    /* Search Results in Modal */
+    .search-input-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.25rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+    }
+    .search-input-box input {
+      flex: 1;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.1rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .search-results-list {
+      max-height: 320px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .search-result-item {
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .search-result-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+      .hero-copy h1, .hero-lead { margin-left: auto; margin-right: auto; }
+      .hero-button-row { justify-content: center; }
+      .hero-readout { position: relative; bottom: 0; margin-top: 1.5rem; width: 100%; max-width: 100%; }
+      .tab-panel { grid-template-columns: 1fr; gap: 2rem; }
+      .argus-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-header">
+    <nav class="navbar" id="main-nav" aria-label="Primary Navigation">
+      <a href="#home" class="nav-brand" aria-label="PropheC AI - Home">
+        PropheC<span class="ai">AI</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Solutions</a></li>
+        <li><a href="#argus">Argus</a></li>
+        <li><a href="#build">What We Build</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#playground">Playground</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="open-search-btn" aria-label="Open search dialog (Cmd+K)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+
+        <button class="nav-cta-btn" id="nav-audit-trigger">
+          <span>Book an AI Audit</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobile-menu-open" aria-label="Toggle mobile menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-content">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="nav-brand">PropheC<span class="ai">AI</span></span>
+        <button class="modal-close-btn" id="mobile-drawer-close" style="position:static;">✕</button>
+      </div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:1.2rem; font-size:1.2rem; font-weight:700;">
+        <li><a href="#services" class="mobile-nav-link">Solutions</a></li>
+        <li><a href="#argus" class="mobile-nav-link">Argus Platform</a></li>
+        <li><a href="#build" class="mobile-nav-link">What We Build</a></li>
+        <li><a href="#about" class="mobile-nav-link">About PropheC</a></li>
+        <li><a href="#playground" class="mobile-nav-link">Physics Playground</a></li>
+      </ul>
+      <div style="margin-top:auto;">
+        <button class="btn-pill-primary-green" id="mobile-audit-btn" style="width:100%;">Book an AI Audit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HERO SECTION (Dark Command Canvas: #091c09)
+       ========================================================================== -->
+  <section class="hero-section dark-surface" id="home">
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="container hero-layout">
+      <!-- Left Copy -->
+      <div class="hero-copy">
+        <div class="eyebrow-chip dark">
+          <span class="dot"></span>
+          <span>AI-Driven Technology & Digital Solutions</span>
+        </div>
+
+        <h1>
+          Beyond Digital.<br />
+          <span class="subtext">Into Intelligent.</span>
+        </h1>
+
+        <p class="hero-lead">
+          PropheC builds intelligent digital products, AI-powered systems, AI business automation, and scalable custom software solutions that help businesses work smarter, solve complex challenges, and move forward with clarity.
+        </p>
+
+        <div class="hero-button-row">
+          <button class="btn-pill-primary-white" id="hero-build-cta">
+            <span>Build with PropheC</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <a href="#argus" class="btn-pill-outline-white">
+            <span>Explore Argus</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Orbital Rotor System -->
+      <div class="orbit-scene-container" id="hero-orbit-stage">
+        <!-- Radial Concentric SVG Geometry -->
+        <svg class="orbit-svg-art" viewBox="0 0 580 580" fill="none">
+          <defs>
+            <radialGradient id="orbit-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+              <stop offset="60%" stop-color="#ffffff" stop-opacity="0.04" />
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="290" cy="290" r="260" fill="url(#orbit-glow)" />
+          <circle cx="290" cy="290" r="100" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1.2" />
+          <circle cx="290" cy="290" r="150" stroke="#ffffff" stroke-opacity="0.20" stroke-width="1.2" />
+          <circle cx="290" cy="290" r="210" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.2" stroke-dasharray="4 8" />
+          <circle cx="290" cy="290" r="265" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1" />
+          <line x1="0" y1="290" x2="580" y2="290" stroke="#ffffff" stroke-opacity="0.1" />
+          <line x1="290" y1="0" x2="290" y2="580" stroke="#ffffff" stroke-opacity="0.1" />
+        </svg>
+
+        <!-- Center Hexagonal Prism Core -->
+        <div class="orbit-center-core">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          <span>INTELLIGENCE<br />IN MOTION</span>
+        </div>
+
+        <!-- Rotating Rotor System with 4 Upright Counter-Rotating Nodes -->
+        <div class="orbit-rotor" id="orbit-rotor">
+          <!-- Slot 0: Sales Agent -->
+          <div class="orbit-node-slot slot-0">
+            <div class="orbit-card-counter">
+              <button class="orbit-agent-btn active" data-index="0" data-agent="sales">
+                <div class="icon-box">⚡</div>
+                <div class="text-box">
+                  <strong>Sales Agent</strong>
+                  <small>Pipeline qualification</small>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slot 1: Customer Care -->
+          <div class="orbit-node-slot slot-1">
+            <div class="orbit-card-counter">
+              <button class="orbit-agent-btn" data-index="1" data-agent="care">
+                <div class="icon-box">🎧</div>
+                <div class="text-box">
+                  <strong>Customer Care</strong>
+                  <small>Support & routing</small>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slot 2: Workflow Automation -->
+          <div class="orbit-node-slot slot-2">
+            <div class="orbit-card-counter">
+              <button class="orbit-agent-btn" data-index="2" data-agent="flow">
+                <div class="icon-box">🔄</div>
+                <div class="text-box">
+                  <strong>Workflow Auto</strong>
+                  <small>Cross-system execution</small>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slot 3: Human Oversight -->
+          <div class="orbit-node-slot slot-3">
+            <div class="orbit-card-counter">
+              <button class="orbit-agent-btn" data-index="3" data-agent="human">
+                <div class="icon-box">🛡️</div>
+                <div class="text-box">
+                  <strong>Human Oversight</strong>
+                  <small>Audit & approvals</small>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Readout Panel -->
+        <div class="hero-readout" id="hero-telemetry-readout">
+          <span class="kicker">ACTIVE WORKFLOW CAPABILITY</span>
+          <p id="hero-readout-desc">Qualify an inquiry, capture context and route the next conversation.</p>
+          <span style="font-family:var(--font-space); font-size:0.7rem; opacity:0.6; display:block; margin-top:6px;" id="hero-readout-index">01 / 04</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT STATEMENT (Light Editorial Canvas)
+       ========================================================================== -->
+  <section class="about-section" id="about">
+    <div class="ambient-decor-wrapper">
+      <div class="ambient-blob-left"></div>
+      <div class="ambient-blob-right"></div>
+    </div>
+
+    <div class="container" style="position:relative; z-index:2;">
+      <div class="eyebrow-chip light">
+        <span class="dot"></span>
+        <span>WHO WE ARE</span>
+      </div>
+
+      <h2 class="about-headline" id="about-headline">
+        <span class="word lit">Building</span>
+        <span class="word lit">the</span>
+        <span class="word lit">systems</span>
+        <span class="word lit">behind</span>
+        <span class="word lit">modern</span>
+        <span class="word lit">businesses.</span>
+      </h2>
+
+      <p class="about-text-lead">
+        PropheC is an AI-driven technology company helping startups, businesses, institutions, and organisations turn ideas into intelligent digital products, custom software, and scalable technology ecosystems.
+      </p>
+
+      <p class="about-text-sub">
+        From websites and mobile applications to AI-powered tools, business process automation, dashboards, SaaS platforms, CRM management, ERP, and custom software, we bring strategy, design, engineering, and intelligence together to build technology around real business needs.
+      </p>
+
+      <p class="about-punchline">
+        From concept to deployment and beyond.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       AI ECOSYSTEM 3D SPATIAL CAROUSEL
+       ========================================================================== -->
+  <section class="carousel-section" id="services">
+    <div class="container">
+      <div class="carousel-header">
+        <div class="eyebrow-chip light">
+          <span class="dot"></span>
+          <span>AI ECOSYSTEM SERVICES</span>
+        </div>
+        <h2>Services crafted for impact.</h2>
+        <p>Explore the six pillars of our AI engineering practice, purpose-built to modernize operations and accelerate product capability.</p>
+      </div>
+
+      <!-- 3D Carousel Stage -->
+      <div class="carousel-stage-container" id="carousel-stage">
+        <div class="carousel-cards-track" id="cards-track">
+          <!-- Card 1 -->
+          <div class="service-card" data-idx="0">
+            <div class="card-top">
+              <span class="num-badge">01 / 06</span>
+              <div class="icon-chip">✨</div>
+            </div>
+            <div class="card-body">
+              <h3>AI Applications</h3>
+              <p>Custom AI-powered products designed around specific business needs and user experiences.</p>
+            </div>
+            <div class="card-bottom">
+              <span class="category-tag">Applications</span>
+              <span style="font-weight:700;">Explore →</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="service-card" data-idx="1">
+            <div class="card-top">
+              <span class="num-badge">02 / 06</span>
+              <div class="icon-chip">🤖</div>
+            </div>
+            <div class="card-body">
+              <h3>AI Agents</h3>
+              <p>Intelligent autonomous agents that interact, qualify leads, assist support, and execute operations.</p>
+            </div>
+            <div class="card-bottom">
+              <span class="category-tag">Agents</span>
+              <span style="font-weight:700;">Explore →</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="service-card" data-idx="2">
+            <div class="card-top">
+              <span class="num-badge">03 / 06</span>
+              <div class="icon-chip">⚡</div>
+            </div>
+            <div class="card-body">
+              <h3>AI Automation</h3>
+              <p>AI automation services that automate repetitive workflows, reducing manual effort through intelligent processing.</p>
+            </div>
+            <div class="card-bottom">
+              <span class="category-tag">Automation</span>
+              <span style="font-weight:700;">Explore →</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="service-card" data-idx="3">
+            <div class="card-top">
+              <span class="num-badge">04 / 06</span>
+              <div class="icon-chip">📊</div>
+            </div>
+            <div class="card-body">
+              <h3>AI Analytics</h3>
+              <p>Turning fragmented business data into actionable telemetry and intelligence that supports confident decisions.</p>
+            </div>
+            <div class="card-bottom">
+              <span class="category-tag">Analytics</span>
+              <span style="font-weight:700;">Explore →</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="service-card" data-idx="4">
+            <div class="card-top">
+              <span class="num-badge">05 / 06</span>
+              <div class="icon-chip">🧩</div>
+            </div>
+            <div class="card-body">
+              <h3>Intelligent Systems</h3>
+              <p>Embedding AI into existing platforms, CRM, and enterprise ERP tools to make legacy workflows autonomous.</p>
+            </div>
+            <div class="card-bottom">
+              <span class="category-tag">Systems</span>
+              <span style="font-weight:700;">Explore →</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="service-card" data-idx="5">
+            <div class="card-top">
+              <span class="num-badge">06 / 06</span>
+              <div class="icon-chip">⚙️</div>
+            </div>
+            <div class="card-body">
+              <h3>Custom Solutions</h3>
+              <p>Purpose-built custom software and machine learning architectures designed for your proprietary edge.</p>
+            </div>
+            <div class="card-bottom">
+              <span class="category-tag">Solutions</span>
+              <span style="font-weight:700;">Explore →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Pagination Controls -->
+      <div class="carousel-nav-bar">
+        <div class="carousel-index-readout" id="carousel-indicator">
+          01 / 06 — AI Applications
+        </div>
+        <div class="carousel-controls-group">
+          <button class="btn-circle" id="carousel-prev-btn" aria-label="Previous card">←</button>
+          <button class="btn-circle" id="carousel-next-btn" aria-label="Next card">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WHAT WE BUILD, PRINCIPLES & INDUSTRY TABS
+       ========================================================================== -->
+  <section class="build-section" id="build">
+    <div class="container">
+      <div class="eyebrow-chip light">
+        <span class="dot"></span>
+        <span>WHAT WE BUILD</span>
+      </div>
+
+      <h2 style="font-size:clamp(2.2rem, 3.8vw, 3.4rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:1rem;">
+        Technology shaped around your world.
+      </h2>
+      <p style="font-size:1.15rem; color:var(--light-text-muted); max-width:650px;">
+        Every industry has different workflows, customer expectations, and operational challenges. We build with those differences in mind.
+      </p>
+
+      <!-- 4 Core Pillars -->
+      <div class="build-grid-4">
+        <div class="build-tile">
+          <div class="icon-wrap">💻</div>
+          <h3>Digital Products</h3>
+          <p>Web applications, mobile apps, and digital platforms built around user needs and business goals. Engineered to be functional today and ready to scale tomorrow.</p>
+        </div>
+
+        <div class="build-tile">
+          <div class="icon-wrap">🏢</div>
+          <h3>Business Systems</h3>
+          <p>Custom customer management systems, workflow-automated CRMs, ERPs, and executive dashboards that unify data, teams, and daily operations.</p>
+        </div>
+
+        <div class="build-tile">
+          <div class="icon-wrap">🧠</div>
+          <h3>AI Ecosystems</h3>
+          <p>Deploying AI agents, automated communication pipelines, and intelligent routing across WhatsApp, Email, and internal tools with human audit trails.</p>
+        </div>
+
+        <div class="build-tile">
+          <div class="icon-wrap">🎨</div>
+          <h3>Product Design</h3>
+          <p>High-fidelity UI/UX design systems that make complex multi-tiered technology feel natural, responsive, and effortless to operate.</p>
+        </div>
+      </div>
+
+      <!-- Industry Sectors Tabs -->
+      <div class="tabs-container">
+        <div class="tab-buttons-row">
+          <button class="tab-btn active" data-tab="startups">Startups</button>
+          <button class="tab-btn" data-tab="growing">Growing Businesses</button>
+          <button class="tab-btn" data-tab="enterprises">Enterprises</button>
+        </div>
+
+        <!-- Startups Panel -->
+        <div class="tab-panel active" id="tab-startups">
+          <div>
+            <h4>From the first idea to the next stage.</h4>
+            <p>Turn early concepts into working software, validate market demand with high-fidelity MVPs, and establish clean engineering foundations.</p>
+            <ul class="outcomes-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Product Discovery & Rapid MVP Architecture</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> High-conversion Web and Mobile Experiences</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Connected APIs and Cloud Foundations</li>
+            </ul>
+            <button class="btn-pill-primary-green open-audit-modal">Discuss a Startup Project</button>
+          </div>
+          <div class="flow-steps-card">
+            <span style="font-family:var(--font-space); font-size:0.75rem; font-weight:700; color:var(--accent-forest); text-transform:uppercase;">Illustrative Delivery Approach</span>
+            <div class="flow-diagram">
+              <div class="flow-step-box">1. Concept</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step-box">2. MVP Build</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step-box">3. Growth</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Growing Businesses Panel -->
+        <div class="tab-panel" id="tab-growing">
+          <div>
+            <h4>Build beyond operational workarounds.</h4>
+            <p>Eliminate fragmented spreadsheets and manual data entry by connecting internal workflows into custom dashboards and automated pipelines.</p>
+            <ul class="outcomes-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom CRM & Multi-channel Operations</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> WhatsApp & Email Process Automation</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-time Business Visibility Dashboards</li>
+            </ul>
+            <button class="btn-pill-primary-green open-audit-modal">Discuss Your Next Stage</button>
+          </div>
+          <div class="flow-steps-card">
+            <span style="font-family:var(--font-space); font-size:0.75rem; font-weight:700; color:var(--accent-forest); text-transform:uppercase;">Illustrative Delivery Approach</span>
+            <div class="flow-diagram">
+              <div class="flow-step-box">1. Processes</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step-box">2. Systems</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step-box">3. Visibility</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enterprises Panel -->
+        <div class="tab-panel" id="tab-enterprises">
+          <div>
+            <h4>Intelligence across the organization.</h4>
+            <p>Integrate legacy systems, enforce compliance audit trails, and introduce autonomous agents that scale operational throughput safely.</p>
+            <ul class="outcomes-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Platforms & Legacy Integrations</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Enterprise Governance & Audit Approval Flows</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Autonomous Departmental AI Agents</li>
+            </ul>
+            <button class="btn-pill-primary-green open-audit-modal">Request Enterprise Consultation</button>
+          </div>
+          <div class="flow-steps-card">
+            <span style="font-family:var(--font-space); font-size:0.75rem; font-weight:700; color:var(--accent-forest); text-transform:uppercase;">Illustrative Delivery Approach</span>
+            <div class="flow-diagram">
+              <div class="flow-step-box">1. Architecture</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step-box">2. Integration</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step-box">3. Governance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client Work Showcase -->
+      <h3 style="font-size:1.8rem; font-weight:800; margin-top:4rem; margin-bottom:1rem;">Selected Portfolio Engagements</h3>
+      <div class="client-showcase-grid">
+        <div class="client-card">
+          <div class="sector-chip">Intelligence</div>
+          <h5>API</h5>
+          <p>Alliance for Political Intelligence — A balanced digital presence bringing different viewpoints into thoughtful civil discourse.</p>
+        </div>
+        <div class="client-card">
+          <div class="sector-chip">Digital Enterprise</div>
+          <h5>Allsoll</h5>
+          <p>Brand strategy, creative experiences, and technology infrastructure connecting marketing with operations.</p>
+        </div>
+        <div class="client-card">
+          <div class="sector-chip">Consulting & Growth</div>
+          <h5>Idea IND</h5>
+          <p>Turning early ideas into actionable software possibilities and high-conversion market tools.</p>
+        </div>
+        <div class="client-card">
+          <div class="sector-chip">Hospitality</div>
+          <h5>FairStay</h5>
+          <p>A connected property discovery platform designed to make booking and inquiries transparent and effortless.</p>
+        </div>
+      </div>
+
+      <!-- Leadership Team -->
+      <h3 style="font-size:1.8rem; font-weight:800; margin-top:4rem; margin-bottom:1rem;">Leadership & Engineering Direction</h3>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <strong>Aditya Mittal</strong>
+          <span>Manager, Growth & Partnerships</span>
+          <small>IDEA IND</small>
+        </div>
+        <div class="leader-card">
+          <strong>Nikhil Kumar</strong>
+          <span>Chief Technical Officer</span>
+          <small>PROPHEC</small>
+        </div>
+        <div class="leader-card">
+          <strong>Kartik Choudhary</strong>
+          <span>Head of Strategy & Intelligence</span>
+          <small>IDEA IND</small>
+        </div>
+        <div class="leader-card">
+          <strong>Tanishka Patel</strong>
+          <span>Chief of Design & Experience</span>
+          <small>ALLSOLL</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ARGUS WORKFLOW AUTOMATION SECTION
+       ========================================================================== -->
+  <section class="argus-section" id="argus">
+    <div class="container">
+      <div class="eyebrow-chip light">
+        <span class="dot"></span>
+        <span>INTRODUCING ARGUS BY PROPHEC LABS</span>
+      </div>
+
+      <h2 style="font-size:clamp(2.2rem, 3.8vw, 3.4rem); font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin-bottom:1rem;">
+        AI that runs the work behind your business.
+      </h2>
+      <p style="font-size:1.1rem; color:var(--light-text-muted); max-width:700px; margin-bottom:2rem;">
+        Businesses operate across WhatsApp, email, CRM, and accounting software—but when they don't talk to each other, inquiries get lost and follow-ups stall. Argus unites these touchpoints into one autonomous, auditable workflow.
+      </p>
+
+      <div class="argus-grid">
+        <!-- Interactive Graph Network -->
+        <div class="argus-node-graph">
+          <!-- Animated Connector Lines SVG -->
+          <svg class="argus-pulse-svg" viewBox="0 0 500 500" fill="none">
+            <line x1="250" y1="250" x2="250" y2="60" stroke="#FDC836" stroke-width="2.5" id="line-whatsapp" />
+            <line x1="250" y1="250" x2="420" y2="250" stroke="#091c09" stroke-width="2" id="line-email" stroke-opacity="0.2" stroke-dasharray="3 6" />
+            <line x1="250" y1="250" x2="250" y2="440" stroke="#091c09" stroke-width="2" id="line-crm" stroke-opacity="0.2" stroke-dasharray="3 6" />
+            <line x1="250" y1="250" x2="80" y2="250" stroke="#091c09" stroke-width="2" id="line-erp" stroke-opacity="0.2" stroke-dasharray="3 6" />
+          </svg>
+
+          <!-- Central Core -->
+          <div class="argus-core-center">
+            <strong>ARGUS</strong>
+            <small>Core AI Hub</small>
+          </div>
+
+          <!-- Satellite Nodes -->
+          <div class="satellite-node node-whatsapp active" data-node="whatsapp">
+            <strong>WhatsApp</strong>
+            <small>Messaging Sync</small>
+          </div>
+          <div class="satellite-node node-email" data-node="email">
+            <strong>Email</strong>
+            <small>Inbox Dispatch</small>
+          </div>
+          <div class="satellite-node node-crm" data-node="crm">
+            <strong>CRM</strong>
+            <small>Pipeline Tracking</small>
+          </div>
+          <div class="satellite-node node-erp" data-node="erp">
+            <strong>Accounting / ERP</strong>
+            <small>Tally Ledger</small>
+          </div>
+        </div>
+
+        <!-- Telemetry Step-by-Step Preview -->
+        <div class="argus-preview-box">
+          <div class="eyebrow-chip light" style="margin-bottom:0.75rem;">
+            <span>ACTIVE INTEGRATION</span>
+          </div>
+          <h3 id="argus-telemetry-title">WhatsApp Direct Automation</h3>
+          <p class="desc" id="argus-telemetry-desc">
+            A conversation starts on WhatsApp → Argus parses customer intent, verifies live product catalog stock, answers pricing inquiries, and synchronizes the deal stage into your CRM.
+          </p>
+
+          <ul class="argus-steps-list" id="argus-telemetry-steps">
+            <li><span class="step-number">1</span><span>Receive & interpret customer inbound WhatsApp inquiry</span></li>
+            <li><span class="step-number">2</span><span>Understand intent & evaluate purchasing timeline</span></li>
+            <li><span class="step-number">3</span><span>Query live inventory database and generate dynamic quote</span></li>
+            <li><span class="step-number">4</span><span>Auto-update CRM lead record & alert account manager</span></li>
+          </ul>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+            <button class="btn-pill-primary-green open-audit-modal">Request Argus Access</button>
+            <span style="font-size:0.8rem; font-weight:600; color:var(--accent-forest);">✓ Human oversight & audit approvals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ROBOT PHYSICS PLAYGROUND (HTML5 Canvas 2D)
+       ========================================================================== -->
+  <section class="playground-section" id="playground">
+    <div class="container">
+      <div class="eyebrow-chip light">
+        <span class="dot"></span>
+        <span>INTERACTIVE LABS</span>
+      </div>
+      <h2 style="font-size:clamp(2.2rem, 3.8vw, 3.4rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:0.5rem;">
+        Tactile Robot Physics Playground
+      </h2>
+      <p style="font-size:1.1rem; color:var(--light-text-muted); max-width:650px;">
+        Six procedural robots simulated with real-time physics, eye-tracking vectors, spring-based antennae, and squash-and-stretch collision mechanics. Fling them around or shuffle the arena.
+      </p>
+
+      <div class="playground-wrapper">
+        <div class="playground-toolbar">
+          <button class="tool-btn" id="btn-shuffle-bots">
+            <span>🔀</span> Shuffle
+          </button>
+          <button class="tool-btn" id="btn-reset-bots">
+            <span>↺</span> Reset Arena
+          </button>
+        </div>
+
+        <canvas id="robot-canvas"></canvas>
+
+        <div class="playground-hint">
+          Click and drag robots to throw • Click to make them smile • Keyboard: [Space] Shuffle, [R] Reset
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WARM SAND EDITORIAL FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <span>Other teams and product areas</span>
+        <ul class="footer-top-nav">
+          <li><a href="#home">PropheC AI</a></li>
+          <li><a href="#argus">Technology</a></li>
+          <li><a href="#services">Solutions</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-giant-brand">
+        PropheC Ai
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-columns-grid">
+        <div class="footer-col">
+          <h6>PropheC AI</h6>
+          <ul>
+            <li><a href="#home">Platform Home</a></li>
+            <li><a href="#services">AI Applications</a></li>
+            <li><a href="#services">AI Agents</a></li>
+            <li><a href="#argus">Argus Platform</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h6>About</h6>
+          <ul>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#build">Design Principles</a></li>
+            <li><a href="#build">Leadership Team</a></li>
+            <li><a href="#build">Selected Work</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h6>Services</h6>
+          <ul>
+            <li><a href="#services">Workflow Automation</a></li>
+            <li><a href="#services">Custom Software</a></li>
+            <li><a href="#services">Enterprise Dashboards</a></li>
+            <li><a href="#services">CRM & ERP Systems</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h6>Security & Governance</h6>
+          <ul>
+            <li><a href="#argus">Audit Verification</a></li>
+            <li><a href="#argus">Human Oversight</a></li>
+            <li><a href="#argus">Role-Based Access</a></li>
+            <li><a href="#argus">Data Privacy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h6>Connect</h6>
+          <ul>
+            <li><a href="mailto:contact@prophec.ai">contact@prophec.ai</a></li>
+            <li><a href="#home">Schedule Consultation</a></li>
+            <li><span>Bengaluru • Delhi • Global</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:3rem; font-size:0.78rem; color:var(--editorial-mute); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+        <span>© 2026 PropheC AI. All rights reserved.</span>
+        <span>WCAG 2.1 AAA Compliant • Precision Engineering</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       ACTION MODALS: BOOK AN AI AUDIT & CMD+K SEARCH
+       ========================================================================== -->
+  <!-- Audit Modal -->
+  <div class="modal-backdrop" id="audit-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="close-audit-modal">✕</button>
+
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
+        <div style="width:40px; height:40px; border-radius:12px; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center;">
+          📅
+        </div>
+        <div>
+          <h3 style="font-size:1.35rem; font-weight:800;">Book an AI Audit</h3>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.65);">Workflow analysis to production automation</p>
+        </div>
+      </div>
+
+      <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.3rem 0.75rem; border-radius:9999px; background:var(--accent-spark); color:#091c09; font-size:0.72rem; font-weight:800; font-family:var(--font-space); margin-bottom:1.25rem; letter-spacing:0.04em;">
+        <span>★</span>
+        <span>FREE 30-MIN ARCHITECTURE REVIEW</span>
+      </div>
+
+      <form id="audit-form">
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.8); line-height:1.5; margin-bottom:1.25rem;">
+          Our engineering team analyzes operational bottlenecks across your teams and crafts tailored AI agent architectures for sales, support, and custom software.
+        </p>
+
+        <div class="form-group">
+          <label for="work-email">Work Email Address</label>
+          <input type="email" id="work-email" class="form-input" required placeholder="founder@company.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="project-scope">Primary Focus Area</label>
+          <select id="project-scope" class="form-select">
+            <option value="automation">WhatsApp & Workflow Automation</option>
+            <option value="custom-app">Custom Web or Mobile Application</option>
+            <option value="agents">AI Agents (Sales / Support)</option>
+            <option value="enterprise">ERP, CRM & Data Dashboards</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="project-notes">Operational Challenges (Optional)</label>
+          <textarea id="project-notes" class="form-textarea" rows="3" placeholder="Tell us about the systems you are connecting..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-pill-primary-white" style="width:100%; height:48px;">
+          Submit Audit Request
+        </button>
+      </form>
+
+      <div id="audit-success" style="display:none; text-align:center; padding:2rem 0;">
+        <div style="font-size:3rem; margin-bottom:1rem;">🎉</div>
+        <h4 style="font-size:1.4rem; font-weight:800; margin-bottom:0.5rem;">Request Received!</h4>
+        <p style="font-size:0.9rem; color:rgba(255,255,255,0.75); margin-bottom:1.5rem;">
+          Our technical directors will review your systems and reach out within 24 business hours.
+        </p>
+        <button class="btn-pill-outline-white" id="audit-success-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cmd+K Spotlight Search Modal -->
+  <div class="modal-backdrop" id="search-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="close-search-modal">✕</button>
+
+      <div class="search-input-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="global-search-input" placeholder="Search services, Argus capabilities, case studies..." autofocus />
+      </div>
+
+      <div class="search-results-list" id="search-results">
+        <!-- Results populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       INTERACTIVE JAVASCRIPT ENGINE
+       ========================================================================== -->
+  <script>
+    (function() {
+      // 1. Navigation Sticky & Scroll State
+      const headerNav = document.getElementById('main-nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+          headerNav.style.boxShadow = '0 14px 40px -10px rgba(9, 28, 9, 0.16)';
+        } else {
+          headerNav.style.boxShadow = '0 10px 30px -10px rgba(9, 28, 9, 0.08)';
+        }
+      }, { passive: true });
+
+      // Mobile Menu
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const mobileOpenBtn = document.getElementById('mobile-menu-open');
+      const mobileCloseBtn = document.getElementById('mobile-drawer-close');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      mobileOpenBtn.addEventListener('click', () => mobileDrawer.classList.add('open'));
+      mobileCloseBtn.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+      });
+
+      // 2. Modals (Audit & Search)
+      const auditModal = document.getElementById('audit-modal');
+      const searchModal = document.getElementById('search-modal');
+      const closeAuditBtn = document.getElementById('close-audit-modal');
+      const closeSearchBtn = document.getElementById('close-search-modal');
+
+      function openModal(m) {
+        m.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal(m) {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.open-audit-modal, #nav-audit-trigger, #hero-build-cta, #mobile-audit-btn').forEach(btn => {
+        btn.addEventListener('click', () => openModal(auditModal));
+      });
+      closeAuditBtn.addEventListener('click', () => closeModal(auditModal));
+      closeSearchBtn.addEventListener('click', () => closeModal(searchModal));
+
+      document.getElementById('open-search-btn').addEventListener('click', () => openModal(searchModal));
+
+      // Global ESC and Cmd+K Shortcuts
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal(auditModal);
+          closeModal(searchModal);
+          mobileDrawer.classList.remove('open');
+        }
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          if (searchModal.classList.contains('open')) {
+            closeModal(searchModal);
+          } else {
+            openModal(searchModal);
+          }
+        }
+      });
+
+      // Close on backdrop click
+      auditModal.addEventListener('click', (e) => {
+        if (e.target === auditModal) closeModal(auditModal);
+      });
+      searchModal.addEventListener('click', (e) => {
+        if (e.target === searchModal) closeModal(searchModal);
+      });
+
+      // Audit Form Submission
+      const auditForm = document.getElementById('audit-form');
+      const auditSuccess = document.getElementById('audit-success');
+      auditForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        auditForm.style.display = 'none';
+        auditSuccess.style.display = 'block';
+      });
+      document.getElementById('audit-success-close').addEventListener('click', () => {
+        closeModal(auditModal);
+        setTimeout(() => {
+          auditForm.style.display = 'block';
+          auditSuccess.style.display = 'none';
+          auditForm.reset();
+        }, 300);
+      });
+
+      // 3. Search Index & Filter
+      const searchItems = [
+        { title: "AI Applications", cat: "Solutions", url: "#services" },
+        { title: "AI Agents", cat: "Solutions", url: "#services" },
+        { title: "AI Automation", cat: "Solutions", url: "#services" },
+        { title: "AI Analytics", cat: "Solutions", url: "#services" },
+        { title: "Intelligent Systems", cat: "Solutions", url: "#services" },
+        { title: "Custom Solutions", cat: "Solutions", url: "#services" },
+        { title: "Argus Platform", cat: "Platform", url: "#argus" },
+        { title: "WhatsApp Direct Automation", cat: "Argus", url: "#argus" },
+        { title: "Email Inbox Dispatch", cat: "Argus", url: "#argus" },
+        { title: "CRM Pipeline Sync", cat: "Argus", url: "#argus" },
+        { title: "Accounting / ERP Reconciliation", cat: "Argus", url: "#argus" },
+        { title: "Startup Engineering", cat: "Industries", url: "#build" },
+        { title: "Enterprise Governance", cat: "Capabilities", url: "#build" },
+        { title: "Robot Physics Playground", cat: "Labs", url: "#playground" },
+      ];
+
+      const searchInput = document.getElementById('global-search-input');
+      const searchResultsBox = document.getElementById('search-results');
+
+      function renderSearch(query) {
+        const q = query.toLowerCase().trim();
+        const filtered = searchItems.filter(item => 
+          item.title.toLowerCase().includes(q) || item.cat.toLowerCase().includes(q)
+        );
+        searchResultsBox.innerHTML = '';
+        if (filtered.length === 0) {
+          searchResultsBox.innerHTML = '<div style="padding:1rem; opacity:0.6; text-align:center;">No matching results</div>';
+          return;
+        }
+        filtered.forEach(res => {
+          const a = document.createElement('a');
+          a.href = res.url;
+          a.className = 'search-result-item';
+          a.innerHTML = `<strong>${res.title}</strong><span style="font-family:var(--font-space); font-size:0.7rem; color:var(--accent-emerald);">${res.cat}</span>`;
+          a.addEventListener('click', () => closeModal(searchModal));
+          searchResultsBox.appendChild(a);
+        });
+      }
+      renderSearch('');
+      searchInput.addEventListener('input', (e) => renderSearch(e.target.value));
+
+      // 4. Hero Orbit Telemetry Click Listener
+      const agentDetails = [
+        { title: "Sales Agent", desc: "Qualify an inquiry, capture context and route the next conversation." },
+        { title: "Customer Care", desc: "Understand customer intent, resolve common FAQs, and triage VIP escalations." },
+        { title: "Workflow Automation", desc: "Coordinate next actions across WhatsApp, Gmail, HubSpot, and ERP tools." },
+        { title: "Human Oversight", desc: "Keep decisions, payment approvals, and compliance exceptions visible to your team." }
+      ];
+      const orbitButtons = document.querySelectorAll('.orbit-agent-btn');
+      const heroReadoutDesc = document.getElementById('hero-readout-desc');
+      const heroReadoutIndex = document.getElementById('hero-readout-index');
+
+      orbitButtons.forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+          orbitButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          heroReadoutDesc.textContent = agentDetails[idx].desc;
+          heroReadoutIndex.textContent = `0${idx + 1} / 04`;
+        });
+      });
+
+      // 5. 3D Spatial Carousel Fanning Engine
+      const cards = Array.from(document.querySelectorAll('.service-card'));
+      const indicator = document.getElementById('carousel-indicator');
+      let activeCardIndex = 0;
+
+      const titles = [
+        "AI Applications", "AI Agents", "AI Automation", 
+        "AI Analytics", "Intelligent Systems", "Custom Solutions"
+      ];
+
+      function updateCarousel(idx) {
+        activeCardIndex = (idx + cards.length) % cards.length;
+        indicator.textContent = `0${activeCardIndex + 1} / 06 — ${titles[activeCardIndex]}`;
+
+        cards.forEach((card, i) => {
+          const offset = i - activeCardIndex;
+          card.classList.toggle('active', offset === 0);
+
+          if (offset === 0) {
+            card.style.transform = `translateX(0px) scale(1) rotate(0deg)`;
+            card.style.zIndex = '10';
+            card.style.opacity = '1';
+            card.style.pointerEvents = 'auto';
+          } else if (offset === 1 || offset === -(cards.length - 1)) {
+            card.style.transform = `translateX(180px) scale(0.92) rotate(4deg)`;
+            card.style.zIndex = '5';
+            card.style.opacity = '0.7';
+            card.style.pointerEvents = 'auto';
+          } else if (offset === -1 || offset === (cards.length - 1)) {
+            card.style.transform = `translateX(-180px) scale(0.92) rotate(-4deg)`;
+            card.style.zIndex = '5';
+            card.style.opacity = '0.7';
+            card.style.pointerEvents = 'auto';
+          } else {
+            card.style.transform = `translateX(${offset * 120}px) scale(0.85) rotate(0deg)`;
+            card.style.zIndex = '1';
+            card.style.opacity = '0';
+            card.style.pointerEvents = 'none';
+          }
+        });
+      }
+      updateCarousel(0);
+
+      document.getElementById('carousel-prev-btn').addEventListener('click', () => updateCarousel(activeCardIndex - 1));
+      document.getElementById('carousel-next-btn').addEventListener('click', () => updateCarousel(activeCardIndex + 1));
+
+      // Click on neighbor card to focus
+      cards.forEach((c, i) => {
+        c.addEventListener('click', () => {
+          if (activeCardIndex !== i) updateCarousel(i);
+        });
+      });
+
+      // Touch & Drag on Carousel
+      let startX = 0;
+      let isDragging = false;
+      const stage = document.getElementById('carousel-stage');
+      stage.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+      });
+      stage.addEventListener('pointerup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const delta = e.clientX - startX;
+        if (delta > 40) updateCarousel(activeCardIndex - 1);
+        if (delta < -40) updateCarousel(activeCardIndex + 1);
+      });
+
+      // 6. Industry Tabs
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanels.forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          const panelId = 'tab-' + btn.getAttribute('data-tab');
+          document.getElementById(panelId).classList.add('active');
+        });
+      });
+
+      // 7. Argus Interactive Node Graph
+      const satNodes = document.querySelectorAll('.satellite-node');
+      const argusTitle = document.getElementById('argus-telemetry-title');
+      const argusDesc = document.getElementById('argus-telemetry-desc');
+      const argusSteps = document.getElementById('argus-telemetry-steps');
+
+      const argusData = {
+        whatsapp: {
+          title: "WhatsApp Direct Automation",
+          desc: "Lead initiates WhatsApp conversation → Argus parses intent, checks live product inventory, responds with quotation guidelines, and synchronizes lead status into your CRM.",
+          steps: [
+            "Receive & parse customer inbound message",
+            "Understand intent & qualify sales readiness",
+            "Query live inventory and generate price quote",
+            "Auto-update CRM lead status and alert reps"
+          ]
+        },
+        email: {
+          title: "Email Dispatch & Quotation Automation",
+          desc: "Inbound RFQ arrives via Email → Argus triages priority, extracts attached PDF requirements, drafts contextual proposals, and routes to executive for 1-click approval.",
+          steps: [
+            "Extract & evaluate customer RFQ document attachments",
+            "Draft contextual reply grounded in enterprise guidelines",
+            "Prompt human supervisor for one-click review",
+            "Dispatch approved quotation & log response in record"
+          ]
+        },
+        crm: {
+          title: "CRM Pipeline Sync Integration",
+          desc: "Meeting concludes or transaction occurs → Argus automatically moves deal stages, enriches contact details, and creates assigned tasks for account managers.",
+          steps: [
+            "Sync interaction transcripts across tools",
+            "Automate pipeline stage progression without manual entry",
+            "Deduplicate records across email & phone contacts",
+            "Assign follow-up reminders to responsible agents"
+          ]
+        },
+        erp: {
+          title: "Accounting & Tally ERP Reconciliation",
+          desc: "Purchase order confirmed → Argus reconciles ledger entries, validates inventory balances, and generates accounting draft invoices ready for financial sign-off.",
+          steps: [
+            "Automated invoice ledger matching against purchase orders",
+            "Real-time inventory deduction & stock-level alerts",
+            "Seamless interoperability with Tally & custom ERPs",
+            "Comprehensive audit log for compliance records"
+          ]
+        }
+      };
+
+      satNodes.forEach(node => {
+        node.addEventListener('click', () => {
+          satNodes.forEach(n => n.classList.remove('active'));
+          node.classList.add('active');
+          const key = node.getAttribute('data-node');
+          const d = argusData[key];
+          argusTitle.textContent = d.title;
+          argusDesc.textContent = d.desc;
+          argusSteps.innerHTML = d.steps.map((s, idx) => 
+            `<li><span class="step-number">${idx + 1}</span><span>${s}</span></li>`
+          ).join('');
+
+          // Highlight corresponding SVG line with living amber pulse
+          ['whatsapp', 'email', 'crm', 'erp'].forEach(k => {
+            const line = document.getElementById('line-' + k);
+            if (k === key) {
+              line.setAttribute('stroke', '#FDC836');
+              line.setAttribute('stroke-width', '2.5');
+              line.setAttribute('stroke-opacity', '1');
+              line.removeAttribute('stroke-dasharray');
+            } else {
+              line.setAttribute('stroke', '#091c09');
+              line.setAttribute('stroke-width', '2');
+              line.setAttribute('stroke-opacity', '0.2');
+              line.setAttribute('stroke-dasharray', '3 6');
+            }
+          });
+        });
+      });
+
+      // 8. HTML5 Canvas 2D Robot Physics Playground
+      const canvas = document.getElementById('robot-canvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = canvas.parentElement.clientWidth;
+      let height = canvas.height = 480;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = canvas.parentElement.clientWidth;
+        height = canvas.height = 480;
+      });
+
+      // 6 Robot Entities with Simulated Physics
+      const robots = [
+        { id: 1, x: width * 0.18, y: 150, vx: 0, vy: 0, r: 42, color: "#091c09", eyeColor: "#ffffff", shape: "circle", name: "Dot", mood: "idle", blinkTimer: 100 },
+        { id: 2, x: width * 0.32, y: 220, vx: 0, vy: 0, r: 45, color: "#ffffff", eyeColor: "#091c09", shape: "box", name: "Boxy", mood: "idle", blinkTimer: 140 },
+        { id: 3, x: width * 0.50, y: 120, vx: 0, vy: 0, r: 48, color: "#091c09", eyeColor: "#FDC836", shape: "pill", name: "Pill", mood: "idle", blinkTimer: 180 },
+        { id: 4, x: width * 0.68, y: 180, vx: 0, vy: 0, r: 44, color: "#ffffff", eyeColor: "#091c09", shape: "dome", name: "Dome", mood: "idle", blinkTimer: 90 },
+        { id: 5, x: width * 0.82, y: 240, vx: 0, vy: 0, r: 38, color: "#091c09", eyeColor: "#52D370", shape: "circle", name: "Spark", mood: "idle", blinkTimer: 210 }
+      ];
+
+      let pointer = { x: width / 2, y: height / 2, isDown: false, draggedBot: null };
+
+      canvas.addEventListener('pointermove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = e.clientX - rect.left;
+        pointer.y = e.clientY - rect.top;
+        if (pointer.draggedBot) {
+          pointer.draggedBot.vx = (pointer.x - pointer.draggedBot.x) * 0.45;
+          pointer.draggedBot.vy = (pointer.y - pointer.draggedBot.y) * 0.45;
+          pointer.draggedBot.x = pointer.x;
+          pointer.draggedBot.y = pointer.y;
+          pointer.draggedBot.mood = "wide";
+        }
+      });
+
+      canvas.addEventListener('pointerdown', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = e.clientX - rect.left;
+        pointer.y = e.clientY - rect.top;
+        pointer.isDown = true;
+
+        robots.forEach(b => {
+          const dist = Math.hypot(pointer.x - b.x, pointer.y - b.y);
+          if (dist < b.r + 10) {
+            pointer.draggedBot = b;
+            b.mood = "happy";
+          }
+        });
+      });
+
+      window.addEventListener('pointerup', () => {
+        if (pointer.draggedBot) {
+          pointer.draggedBot.mood = "idle";
+          pointer.draggedBot = null;
+        }
+        pointer.isDown = false;
+      });
+
+      function shuffleBots() {
+        robots.forEach(b => {
+          b.vx = (Math.random() - 0.5) * 16;
+          b.vy = -Math.random() * 15 - 5;
+          b.mood = "wide";
+        });
+      }
+      function resetBots() {
+        robots.forEach((b, i) => {
+          b.x = width * (0.18 + i * 0.16);
+          b.y = 150 + (i % 2) * 50;
+          b.vx = 0;
+          b.vy = 0;
+          b.mood = "idle";
+        });
+      }
+      document.getElementById('btn-shuffle-bots').addEventListener('click', shuffleBots);
+      document.getElementById('btn-reset-bots').addEventListener('click', resetBots);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') { e.preventDefault(); shuffleBots(); }
+        if (e.key === 'r' || e.key === 'R') resetBots();
+      });
+
+      // Physics loop
+      const gravity = 0.42;
+      const floorFriction = 0.88;
+      const bounce = 0.65;
+
+      function drawRobot(b) {
+        ctx.save();
+        ctx.translate(b.x, b.y);
+
+        // Ground shadow
+        const shadowScale = Math.max(0.2, 1 - (height - 40 - b.y) / 300);
+        ctx.beginPath();
+        ctx.ellipse(0, height - 40 - b.y, b.r * shadowScale, b.r * 0.25 * shadowScale, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(9, 28, 9, 0.08)";
+        ctx.fill();
+
+        // Robot Chassis
+        ctx.beginPath();
+        if (b.shape === "circle") {
+          ctx.arc(0, 0, b.r, 0, Math.PI * 2);
+        } else if (b.shape === "box") {
+          ctx.roundRect(-b.r, -b.r, b.r * 2, b.r * 2, 16);
+        } else if (b.shape === "pill") {
+          ctx.roundRect(-b.r * 1.2, -b.r * 0.8, b.r * 2.4, b.r * 1.6, 22);
+        } else {
+          ctx.arc(0, 0, b.r, Math.PI, 0, false);
+          ctx.lineTo(b.r, b.r * 0.6);
+          ctx.lineTo(-b.r, b.r * 0.6);
+          ctx.closePath();
+        }
+        ctx.fillStyle = b.color;
+        ctx.fill();
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = "#091c09";
+        ctx.stroke();
+
+        // Eye tracking math
+        const angle = Math.atan2(pointer.y - b.y, pointer.x - b.x);
+        const eyeOffset = Math.min(b.r * 0.28, Math.hypot(pointer.x - b.x, pointer.y - b.y) * 0.04);
+        const ex = Math.cos(angle) * eyeOffset;
+        const ey = Math.sin(angle) * eyeOffset;
+
+        // Blinking
+        b.blinkTimer--;
+        if (b.blinkTimer < 0) b.blinkTimer = 120 + Math.random() * 100;
+        const isBlinking = b.blinkTimer < 8;
+
+        if (isBlinking) {
+          ctx.beginPath();
+          ctx.moveTo(-12, 0); ctx.lineTo(-2, 0);
+          ctx.moveTo(2, 0); ctx.lineTo(12, 0);
+          ctx.strokeStyle = b.eyeColor;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        } else if (b.mood === "happy") {
+          ctx.beginPath();
+          ctx.arc(-8, 2, 6, Math.PI * 1.1, Math.PI * 1.9);
+          ctx.arc(8, 2, 6, Math.PI * 1.1, Math.PI * 1.9);
+          ctx.strokeStyle = b.eyeColor;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        } else {
+          // Normal / Wide Pupils
+          const pupilRadius = b.mood === "wide" ? 6 : 4.5;
+          ctx.beginPath();
+          ctx.arc(-10 + ex, ey, pupilRadius, 0, Math.PI * 2);
+          ctx.arc(10 + ex, ey, pupilRadius, 0, Math.PI * 2);
+          ctx.fillStyle = b.eyeColor;
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+
+      function updatePhysics() {
+        ctx.clearRect(0, 0, width, height);
+
+        robots.forEach(b => {
+          if (b !== pointer.draggedBot) {
+            b.vy += gravity;
+            b.x += b.vx;
+            b.y += b.vy;
+            b.vx *= 0.99;
+
+            // Floor boundary
+            if (b.y + b.r > height - 40) {
+              b.y = height - 40 - b.r;
+              b.vy = -b.vy * bounce;
+              b.vx *= floorFriction;
+            }
+            // Ceiling boundary
+            if (b.y - b.r < 20) {
+              b.y = 20 + b.r;
+              b.vy = -b.vy * bounce;
+            }
+            // Wall boundaries
+            if (b.x - b.r < 20) {
+              b.x = 20 + b.r;
+              b.vx = -b.vx * bounce;
+            }
+            if (b.x + b.r > width - 20) {
+              b.x = width - 20 - b.r;
+              b.vx = -b.vx * bounce;
+            }
+          }
+
+          drawRobot(b);
+        });
+
+        requestAnimationFrame(updatePhysics);
+      }
+      requestAnimationFrame(updatePhysics);
+
+    })();
+  </script>
+</body>
+</html>

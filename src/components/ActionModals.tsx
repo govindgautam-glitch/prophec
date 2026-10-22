@@ -53,13 +53,18 @@ export const AuditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
         {status === "idle" ? (
           <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FDC836] text-[#091c09] text-[11px] font-mono font-bold tracking-wider shadow-sm">
+              <span>★</span>
+              <span>FREE 30-MIN ARCHITECTURE REVIEW</span>
+            </div>
+
             <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-urbanist">
               Our engineering team analyzes your operational bottlenecks and designs custom AI agent architectures for sales, support, and enterprise workflows.
             </p>
 
             <div className="p-3 sm:p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-white/70 space-y-1">
               <div className="flex items-center gap-1.5 text-white font-semibold">
-                <Sparkles className="w-4 h-4 text-white" />
+                <Sparkles className="w-4 h-4 text-[#FDC836]" />
                 <span>PropheC Project Discussion</span>
               </div>
               <p>
@@ -78,7 +83,7 @@ export const AuditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="founder@company.com"
-                className="w-full px-4 py-2.5 rounded-full bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all"
+                className="w-full px-4 py-2.5 rounded-full bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#FDC836] focus:ring-2 focus:ring-[#FDC836]/30 transition-all"
               />
             </div>
 
@@ -92,7 +97,7 @@ export const AuditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="e.g. AI agents, CRM integration, WhatsApp automation, enterprise dashboard..."
-                className="w-full px-4 py-2.5 rounded-2xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all resize-none"
+                className="w-full px-4 py-2.5 rounded-2xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#FDC836] focus:ring-2 focus:ring-[#FDC836]/30 transition-all resize-none"
               />
             </div>
 
