@@ -360,6 +360,18 @@
   will-change: transform;
 }
 
+.pc-scene .pc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2.5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, #FDC836, transparent);
+  opacity: 0.9;
+}
+
 .pc-scene .pc-card-ghost {
   position: absolute;
   top: 0;
@@ -382,9 +394,9 @@
   width: 48px;
   height: 48px;
   border-radius: 16px;
-  background: linear-gradient(145deg, #eaf8ee, #d9f1e0);
+  background: linear-gradient(145deg, #fef9ed, #fdf0cd);
   color: var(--pc-ink);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 0 14px rgba(253, 200, 54, 0.25);
 }
 
 .pc-scene .pc-tile svg {
@@ -393,9 +405,9 @@
 }
 
 .pc-scene .pc-num {
-  font: 600 12px/1 var(--pc-space);
+  font: 700 12px/1 var(--pc-space);
   letter-spacing: .08em;
-  color: rgba(9, 28, 9, .42);
+  color: #996c00;
 }
 
 .pc-scene .pc-card h3 {

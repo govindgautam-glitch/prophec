@@ -203,11 +203,11 @@
 }
 
 .argus-path.is-active {
-  stroke: #52D370;
-  stroke-width: 2.2;
+  stroke: #FDC836;
+  stroke-width: 2.4;
   stroke-dasharray: 6 8;
   animation: argus-flow-pulse 1.8s linear infinite;
-  filter: drop-shadow(0 0 6px rgba(82, 211, 112, 0.6));
+  filter: drop-shadow(0 0 6px rgba(253, 200, 54, 0.7));
 }
 
 @keyframes argus-flow-pulse {
@@ -328,14 +328,14 @@
 
 .argus-channel-btn.is-active {
   background: #092c15;
-  border: 2px solid #52D370;
+  border: 2px solid #FDC836;
   color: #ffffff;
-  box-shadow: 0 0 28px rgba(82, 211, 112, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 28px rgba(253, 200, 54, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .argus-channel-btn.is-active svg {
-  color: #52D370;
-  stroke: #52D370;
+  color: #FDC836;
+  stroke: #FDC836;
 }
 
 /* Channel Node Positioning */
